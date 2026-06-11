@@ -1,0 +1,277 @@
+<!-- @dsCard group="Website" viewport="1320x720" name="Storefront — Home" subtitle="bluesalon.com homepage: hero, categories, Trending Now, private client" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Salon — Home</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- ════════════════ Header ════════════════ -->
+  <header class="bs-nav-root bs-header">
+
+    <!-- Announcement -->
+    <div class="bs-announce">
+      Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments
+    </div>
+
+    <!-- Main bar -->
+    <div class="bs-topbar">
+      <!-- Search -->
+      <div class="bs-search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+        <input type="search" placeholder="Search 500+ luxury brands">
+      </div>
+      <!-- Logo -->
+      <a class="bs-logo" href="#">
+        <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+      </a>
+      <!-- Utilities -->
+      <div class="bs-utils">
+        <button class="bs-iconbtn" type="button" aria-label="Store locator" title="Store locator">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </button>
+        <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        </button>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg>
+          </button>
+          <span class="bs-count" id="wishCount" hidden>0</span>
+        </span>
+        <span class="bs-util-wrap">
+          <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          </button>
+          <span class="bs-count" id="cartCount" hidden>0</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Nav + mega menu hover zone -->
+    <div id="navZone">
+      <nav class="bs-nav">
+        <div class="bs-nav-inner" id="navInner">
+          <div class="bs-nav-item" data-menu="new">New In</div>
+          <div class="bs-nav-item" data-menu="women">Women</div>
+          <div class="bs-nav-item" data-menu="men">Men</div>
+          <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+          <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+          <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+          <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+          <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+          <div class="bs-nav-item" data-menu="brands">Brands</div>
+          <div class="bs-nav-item" data-menu="gift">Gift</div>
+          <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+          <div class="bs-mega-holder" id="megaHolder"></div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Services strip -->
+    <div class="bs-services">
+      <div class="bs-services-inner">
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">Complimentary delivery</div>
+            <div class="bs-service-sub">On orders over QAR 499 across Qatar</div>
+          </div>
+        </div>
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l4-4 4 4"/><path d="M7 5v8a4 4 0 0 0 4 4h9"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">Easy returns</div>
+            <div class="bs-service-sub">14-day returns on eligible items</div>
+          </div>
+        </div>
+        <div class="bs-service">
+          <span class="bs-service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>
+          </span>
+          <div>
+            <div class="bs-service-title">100% authentic</div>
+            <div class="bs-service-sub">Sourced directly from the maisons</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ════════════════ Hero ════════════════ -->
+    <section class="bs-hero">
+      <div class="bs-hero-panel">
+        <h1 class="bs-display bs-hero-title" id="heroTitle">Spring time</h1>
+        <p class="bs-hero-sub" id="heroSub">Fresh picks for the season ahead.</p>
+        <div>
+          <button class="bs-btn bs-btn-primary" type="button" id="heroCta">Shop men's</button>
+        </div>
+        <div class="bs-hero-dots" id="heroDots"></div>
+      </div>
+      <div class="bs-hero-media">
+        <img id="heroImg" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="">
+      </div>
+    </section>
+
+    <!-- ════════════════ Categories ════════════════ -->
+    <section class="bs-section-cats">
+      <div>
+        <span class="bs-eyebrow">Shop by category</span>
+        <h2 class="bs-display bs-heading-title">Explore the house</h2>
+      </div>
+      <div class="bs-cats-grid" id="catsGrid"></div>
+    </section>
+
+    <!-- ════════════════ Trending ════════════════ -->
+    <section class="bs-section-trending">
+      <div class="bs-trending-head">
+        <div>
+          <span class="bs-eyebrow">Trending now</span>
+          <h2 class="bs-display bs-heading-title">The most wanted</h2>
+        </div>
+        <a class="bs-viewall" href="#">View all →</a>
+      </div>
+      <div class="bs-products-grid" id="trendingGrid"></div>
+    </section>
+
+    <!-- ════════════════ Editorial banner ════════════════ -->
+    <section class="bs-editorial">
+      <div class="bs-editorial-inner">
+        <div>
+          <span class="bs-eyebrow bs-eyebrow-gold">Private Client</span>
+          <hr class="bs-rule-gold bs-editorial-rule">
+          <h2 class="bs-display bs-editorial-title">A personal service, by appointment.</h2>
+          <p class="bs-editorial-copy">
+            Our stylists curate edits for you across fashion, watches and home — in boutique or to your door anywhere in Doha.
+          </p>
+          <button class="bs-btn bs-btn-gold" type="button">Request an appointment</button>
+        </div>
+        <div class="bs-editorial-media">
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=900&q=80" alt="">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════ Footer ════════════════ -->
+  <footer class="bs-footer">
+
+    <!-- Shop more -->
+    <div class="bs-shopmore">
+      <div class="bs-shopmore-inner">
+        <h2>Shop more</h2>
+        <div class="bs-shopmore-grid" id="shopMoreGrid"></div>
+      </div>
+    </div>
+
+    <!-- Newsletter / App download -->
+    <div class="bs-appband">
+      <div class="bs-appband-inner">
+
+        <!-- Newsletter -->
+        <div>
+          <h3>Never miss a thing</h3>
+          <p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p>
+          <form class="bs-newsletter-form" onsubmit="return false;">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Sign up</button>
+          </form>
+          <p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p>
+        </div>
+
+        <!-- App download -->
+        <div>
+          <h3>Download our App</h3>
+          <p class="bs-app-sub">Your pocket-sized Blue Salon</p>
+          <p class="bs-appband-copy bs-app-copy">
+            The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised style inspiration from the brands you love.
+          </p>
+          <div class="bs-store-badges">
+            <div class="bs-store-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div><div class="small">Download on the</div><div class="big">App Store</div></div>
+            </div>
+            <div class="bs-store-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/></svg>
+              <div><div class="small">Get it on</div><div class="big">Google Play</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR code -->
+        <div class="bs-qr">
+          <div class="bs-qr-label">Scan to download</div>
+          <div class="bs-qr-box">
+            <svg width="70" height="70" viewBox="0 0 60 60" fill="none">
+              <rect x="4" y="4" width="18" height="18" rx="2" fill="var(--ink-200)"/>
+              <rect x="7" y="7" width="12" height="12" rx="1" fill="var(--ink-900)"/>
+              <rect x="10" y="10" width="6" height="6" fill="var(--ink-100)"/>
+              <rect x="38" y="4" width="18" height="18" rx="2" fill="var(--ink-200)"/>
+              <rect x="41" y="7" width="12" height="12" rx="1" fill="var(--ink-900)"/>
+              <rect x="44" y="10" width="6" height="6" fill="var(--ink-100)"/>
+              <rect x="4" y="38" width="18" height="18" rx="2" fill="var(--ink-200)"/>
+              <rect x="7" y="41" width="12" height="12" rx="1" fill="var(--ink-900)"/>
+              <rect x="10" y="44" width="6" height="6" fill="var(--ink-100)"/>
+              <rect x="28" y="4"  width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="34" y="4"  width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="10" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="4"  y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="10" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="16" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="34" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="40" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="46" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="52" y="28" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="34" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="40" y="34" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="40" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="34" y="40" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="46" y="40" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="46" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="40" y="46" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="52" y="46" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="28" y="52" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="34" y="52" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+              <rect x="46" y="52" width="4" height="4" rx="1" fill="var(--ink-900)"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer -->
+    <div class="bs-mainfooter">
+      <div class="bs-mainfooter-inner">
+        <div class="bs-mainfooter-about">
+          <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+          <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
+        </div>
+        <div id="footerCols" class="bs-mainfooter-cols"></div>
+      </div>
+      <div class="bs-bottomstrip">
+        <div class="bs-bottomstrip-inner">
+          <span class="bs-copyright">© 2026 Blue Salon · AbuIssa Holding · Doha, Qatar</span>
+          <span class="bs-payments">VISA · MASTERCARD · APPLE PAY · TABBY</span>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
