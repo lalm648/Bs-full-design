@@ -7,12 +7,28 @@
 
   var data = window.BS_DATA;
 
+  /* ── GCC locales (region · currency · language) ─────────────
+     Prices in the data are stored in QAR (base). `rate` converts
+     QAR → the country's currency; `dec` is the minor-unit count. */
+  var GCC = [
+    { cc: "QA", country: "Qatar",                ccy: "QAR", ccyName: "Qatari Riyal",   rate: 1,       dec: 2 },
+    { cc: "SA", country: "Saudi Arabia",         ccy: "SAR", ccyName: "Saudi Riyal",    rate: 1.030,   dec: 2 },
+    { cc: "AE", country: "United Arab Emirates", ccy: "AED", ccyName: "UAE Dirham",     rate: 1.009,   dec: 2 },
+    { cc: "KW", country: "Kuwait",               ccy: "KWD", ccyName: "Kuwaiti Dinar",  rate: 0.0843,  dec: 3 },
+    { cc: "BH", country: "Bahrain",              ccy: "BHD", ccyName: "Bahraini Dinar", rate: 0.1033,  dec: 3 },
+    { cc: "OM", country: "Oman",                 ccy: "OMR", ccyName: "Omani Rial",     rate: 0.1056,  dec: 3 },
+  ];
+
+  /* Active selection (mutated by the locale picker). */
+  var locale = { region: GCC[0], lang: "en" };
+
   /* ── Helpers ────────────────────────────────────────────── */
 
-  function formatQAR(amount) {
-    return "QAR " + Number(amount).toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+  function formatMoney(amountQAR) {
+    var r = locale.region;
+    return r.ccy + " " + (Number(amountQAR) * r.rate).toLocaleString("en-US", {
+      minimumFractionDigits: r.dec,
+      maximumFractionDigits: r.dec,
     });
   }
 
@@ -516,24 +532,34 @@
   /* ── Hero carousel ──────────────────────────────────────── */
 
   var SLIDES = [
-    {
-      heading: "Spring time",
-      sub: "Fresh picks for the season ahead.",
-      cta: "Shop men's",
-      img: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80",
+     {
+      full: true,
+      img: "https://www.bluesalon.com/cdn/shop/files/ZMWBanner1920x720px_1920x.jpg?v=1782204665",
     },
     {
-      heading: "New in Women's",
-      sub: "The latest arrivals from the world's defining maisons.",
-      cta: "Shop women's",
-      img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80",
+      heading: "ESCADA",
+      sub: "Bold prints, gold jewellery and statement timepieces — the new collection.",
+      cta: "Shop ESCADA",
+      img: "https://cdn.shopify.com/s/files/1/0370/6444/1991/files/esca.jpg?v=1782906735",
+    },
+    
+     {
+      full: true,
+      img: "https://www.bluesalon.com/cdn/shop/files/banner_9033da4d-42fc-45d1-a6fc-446d62d6be84_1920x.jpg?v=1780471512",
     },
     {
-      heading: "The Fragrance Edit",
-      sub: "Discover niche and luxury scents, only at Blue Salon.",
-      cta: "Shop beauty",
-      img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80",
+      heading: "from 81 to Now",
+      sub: "Shop the official products",
+      cta: "Shop Now",
+      img: "https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Screenshot_2026-07-01_at_2.58.25_PM.png?v=1782907116",
     },
+    // {
+    //   heading: "The Fragrance Edit",
+    //   sub: "Discover niche and luxury scents, only at Blue Salon.",
+    //   cta: "Shop beauty",
+    //   img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80",
+    // },
+   
   ];
 
   var heroTitle = document.getElementById("heroTitle");
@@ -541,40 +567,71 @@
   var heroCta = document.getElementById("heroCta");
   var heroImg = document.getElementById("heroImg");
   var heroDots = document.getElementById("heroDots");
+  var heroSection = document.querySelector(".bs-hero");
 
   function setSlide(i) {
     var s = SLIDES[i];
-    heroTitle.textContent = s.heading;
-    heroSub.textContent = s.sub;
-    heroCta.textContent = s.cta;
+    heroSection.classList.toggle("is-full", !!s.full);
+    if (!s.full) {
+      heroTitle.textContent = s.heading;
+      heroSub.textContent = s.sub;
+      heroCta.textContent = s.cta;
+    }
     heroImg.src = s.img;
     heroDots.querySelectorAll(".bs-hero-dot").forEach(function (dot, j) {
       dot.classList.toggle("is-active", j === i);
     });
   }
 
+  var current = 0;
+
   SLIDES.forEach(function (_, i) {
     var dot = document.createElement("button");
     dot.type = "button";
     dot.className = "bs-hero-dot" + (i === 0 ? " is-active" : "");
     dot.setAttribute("aria-label", "Slide " + (i + 1));
-    dot.addEventListener("click", function () { setSlide(i); });
+    dot.addEventListener("click", function () { goToSlide(i); resetAuto(); });
     heroDots.appendChild(dot);
   });
 
+  function goToSlide(i) {
+    current = (i + SLIDES.length) % SLIDES.length;
+    setSlide(current);
+  }
+
+  /* Auto-advance every 4s; pause on hover. */
+  var heroTimer = null;
+  function startAuto() {
+    if (SLIDES.length < 2) return;
+    heroTimer = setInterval(function () { goToSlide(current + 1); }, 4000);
+  }
+  function resetAuto() {
+    clearInterval(heroTimer);
+    startAuto();
+  }
+  if (heroSection) {
+    heroSection.addEventListener("mouseenter", function () { clearInterval(heroTimer); });
+    heroSection.addEventListener("mouseleave", resetAuto);
+  }
+  setSlide(current); // render slide 0 so the view matches the active dot
+  startAuto();
+
   /* ── Categories ─────────────────────────────────────────── */
 
-  document.getElementById("catsGrid").innerHTML = data.categories.map(function (c) {
-    return (
-      '<a class="bs-cat-link" href="#">' +
-        '<div class="bs-cat-card">' +
-          '<img src="' + c.img + '" alt="' + c.label + '">' +
-          '<div class="bs-cat-grad"></div>' +
-          '<span class="bs-cat-label">' + c.label + "</span>" +
-        "</div>" +
-      "</a>"
-    );
-  }).join("");
+  var catsGrid = document.getElementById("catsGrid");
+  if (catsGrid) {
+    catsGrid.innerHTML = data.categories.map(function (c) {
+      return (
+        '<a class="bs-cat-link" href="#">' +
+          '<div class="bs-cat-card">' +
+            '<img src="' + c.img + '" alt="' + c.label + '">' +
+            '<div class="bs-cat-grad"></div>' +
+            '<span class="bs-cat-label">' + c.label + "</span>" +
+          "</div>" +
+        "</a>"
+      );
+    }).join("");
+  }
 
   /* ── Trending products + wishlist ───────────────────────── */
 
@@ -613,8 +670,8 @@
           '<span class="bs-eyebrow bs-card-vendor">' + p.vendor + "</span>" +
           '<span class="bs-card-name">' + p.name + "</span>" +
           '<span class="bs-price' + (onSale ? " on-sale" : "") + '">' +
-            '<span class="bs-price-current">' + formatQAR(p.price) + "</span>" +
-            (onSale ? '<span class="bs-price-compare">' + formatQAR(p.compareAt) + "</span>" : "") +
+            '<span class="bs-price-current">' + formatMoney(p.price) + "</span>" +
+            (onSale ? '<span class="bs-price-compare">' + formatMoney(p.compareAt) + "</span>" : "") +
           "</span>" +
         "</div>" +
       "</article>"
@@ -622,22 +679,26 @@
   }
 
   function renderTrending() {
+    if (!trendingGrid) return;
     trendingGrid.innerHTML = data.products.slice(0, 4).map(cardHTML).join("");
-    wishCountEl.textContent = wishlist.length;
-    wishCountEl.hidden = wishlist.length === 0;
+    if (wishCountEl) {
+      wishCountEl.textContent = wishlist.length;
+      wishCountEl.hidden = wishlist.length === 0;
+    }
   }
 
-  trendingGrid.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-wish]");
-    if (!btn) return;
-    e.stopPropagation();
-    var id = btn.dataset.wish;
-    var i = wishlist.indexOf(id);
-    if (i === -1) wishlist.push(id); else wishlist.splice(i, 1);
+  if (trendingGrid) {
+    trendingGrid.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-wish]");
+      if (!btn) return;
+      e.stopPropagation();
+      var id = btn.dataset.wish;
+      var i = wishlist.indexOf(id);
+      if (i === -1) wishlist.push(id); else wishlist.splice(i, 1);
+      renderTrending();
+    });
     renderTrending();
-  });
-
-  renderTrending();
+  }
 
   /* ── Footer columns ─────────────────────────────────────── */
 
@@ -680,9 +741,170 @@
     );
   }).join("");
 
+  /* ── Locale picker: region · currency · language ────────── */
+  (function setupLocale() {
+    var btn = document.getElementById("localeBtn");
+    var panel = document.getElementById("localePanel");
+    var codeEl = document.getElementById("localeCode");
+    if (!btn || !panel) return;
+
+    var countryOpts = GCC.map(function (r, i) {
+      return '<option value="' + i + '">' + r.country + "</option>";
+    }).join("");
+    var currencyOpts = GCC.map(function (r, i) {
+      return '<option value="' + i + '">' + r.ccy + " — " + r.ccyName + "</option>";
+    }).join("");
+
+    panel.innerHTML =
+      '<div class="bs-locale-field">' +
+        '<label class="bs-locale-label" for="localeCountry">Shipping to</label>' +
+        '<select class="bs-locale-select" id="localeCountry">' + countryOpts + "</select>" +
+      "</div>" +
+      '<div class="bs-locale-field">' +
+        '<label class="bs-locale-label" for="localeCurrency">Currency</label>' +
+        '<select class="bs-locale-select" id="localeCurrency">' + currencyOpts + "</select>" +
+      "</div>" +
+      '<div class="bs-locale-field">' +
+        '<span class="bs-locale-label">Language</span>' +
+        '<div class="bs-locale-seg" id="localeLang">' +
+          '<button type="button" data-lang="en">English</button>' +
+          '<button type="button" data-lang="ar">العربية</button>' +
+        "</div>" +
+      "</div>" +
+      '<button type="button" class="bs-locale-apply" id="localeApply">Apply</button>';
+
+    var countrySel = panel.querySelector("#localeCountry");
+    var currencySel = panel.querySelector("#localeCurrency");
+    var langSeg = panel.querySelector("#localeLang");
+    var applyBtn = panel.querySelector("#localeApply");
+
+    // Draft selection while the panel is open; committed on Apply.
+    var draft = { regionIdx: 0, lang: "en" };
+
+    function syncDraftUI() {
+      countrySel.value = String(draft.regionIdx);
+      currencySel.value = String(draft.regionIdx);
+      langSeg.querySelectorAll("button").forEach(function (b) {
+        b.classList.toggle("is-active", b.dataset.lang === draft.lang);
+      });
+    }
+
+    function openPanel() {
+      // Seed the draft from the committed state.
+      draft.regionIdx = GCC.indexOf(locale.region);
+      draft.lang = locale.lang;
+      syncDraftUI();
+      panel.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+    }
+    function closePanel() {
+      panel.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
+
+    // Country and currency stay linked (each GCC country has one currency).
+    countrySel.addEventListener("change", function () {
+      draft.regionIdx = Number(countrySel.value);
+      syncDraftUI();
+    });
+    currencySel.addEventListener("change", function () {
+      draft.regionIdx = Number(currencySel.value);
+      syncDraftUI();
+    });
+    langSeg.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-lang]");
+      if (!b) return;
+      draft.lang = b.dataset.lang;
+      syncDraftUI();
+    });
+
+    function applyLocale() {
+      locale.region = GCC[draft.regionIdx];
+      locale.lang = draft.lang;
+      codeEl.textContent = locale.region.ccy;
+      document.documentElement.lang = locale.lang;
+      document.documentElement.dir = locale.lang === "ar" ? "rtl" : "ltr";
+      renderTrending();          // reprice products in the new currency
+    }
+
+    applyBtn.addEventListener("click", function () {
+      applyLocale();
+      closePanel();
+    });
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (panel.hidden) openPanel(); else closePanel();
+    });
+    // Close on outside click / Escape.
+    document.addEventListener("click", function (e) {
+      if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) closePanel();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !panel.hidden) closePanel();
+    });
+
+    if (codeEl) codeEl.textContent = locale.region.ccy;
+  })();
+
   /* Keep placeholder links from jumping the page */
   document.addEventListener("click", function (e) {
     var a = e.target.closest('a[href="#"]');
     if (a) e.preventDefault();
   });
+})();
+
+/* ════════════════════════════════════════════════════════════
+   Category fashion sliders (Women / Men) — standalone so it can
+   never be blocked by an error in the main app bundle above.
+   Any "*-collection-home-grid-wrapper" with a scroller div and
+   left/right arrow buttons becomes a horizontal slider.
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  function initSlider(wrap) {
+    var scroller = wrap.querySelector('[data-women-slider], [data-men-slider]');
+    if (!scroller) {
+      for (var i = 0; i < wrap.children.length; i++) {
+        if (wrap.children[i].tagName === "DIV") { scroller = wrap.children[i]; break; }
+      }
+    }
+    var prev = wrap.querySelector('[class*="arrow-left"]');
+    var next = wrap.querySelector('[class*="arrow-right"]');
+    if (!scroller || !prev || !next) return;
+
+    function step() {
+      var card = scroller.children[0];
+      var cardW = card ? card.getBoundingClientRect().width : scroller.clientWidth * 0.8;
+      var perView = Math.max(1, Math.round(scroller.clientWidth / (cardW + 20)));
+      return (cardW + 20) * perView;
+    }
+    function update() {
+      var max = scroller.scrollWidth - scroller.clientWidth - 2;
+      prev.disabled = scroller.scrollLeft <= 2;
+      next.disabled = scroller.scrollLeft >= max;
+    }
+
+    prev.addEventListener("click", function () {
+      scroller.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+    next.addEventListener("click", function () {
+      scroller.scrollBy({ left: step(), behavior: "smooth" });
+    });
+    scroller.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
+  function initAll() {
+    var wraps = document.querySelectorAll('[class*="collection-home-grid-wrapper"]');
+    for (var i = 0; i < wraps.length; i++) initSlider(wraps[i]);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll);
+  } else {
+    initAll();
+  }
 })();
