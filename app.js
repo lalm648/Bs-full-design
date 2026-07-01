@@ -529,6 +529,96 @@
 
   navZone.addEventListener("mouseleave", closeMenu);
 
+  /* ── Mobile drawer: hamburger-triggered accordion nav ──────
+     Reuses the top-level nav items and the MEGA_MENUS markup so
+     the mobile menu never drifts from the desktop one. Lives in
+     this IIFE because MEGA_MENUS is scoped here. */
+  (function initMobileNav() {
+    var btn = document.getElementById("hamburgerBtn");
+    var drawer = document.getElementById("mobileDrawer");
+    var scrim = document.getElementById("drawerScrim");
+    var closeBtn = document.getElementById("drawerClose");
+    var nav = document.getElementById("drawerNav");
+    if (!btn || !drawer || !scrim || !nav) return;
+
+    var CHEVRON =
+      '<svg class="bs-drawer-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+    // Build the accordion from the existing nav items.
+    var html = "";
+    navItems.forEach(function (el) {
+      var key = el.dataset.menu;
+      var sub = MEGA_MENUS[key] || "";
+      var sale = el.classList.contains("sale") ? " sale" : "";
+      html +=
+        '<div class="bs-drawer-item">' +
+          '<button class="bs-drawer-link' + sale + '" type="button" aria-expanded="false">' +
+            "<span>" + el.textContent + "</span>" +
+            (sub ? CHEVRON : "") +
+          "</button>" +
+          (sub ? '<div class="bs-drawer-sub">' + sub + "</div>" : "") +
+        "</div>";
+    });
+    nav.innerHTML = html;
+
+    function openDrawer() {
+      drawer.hidden = false;
+      scrim.hidden = false;
+      void drawer.offsetWidth; // commit the off-canvas state so the slide animates
+      drawer.classList.add("is-open");
+      scrim.classList.add("is-open");
+      drawer.setAttribute("aria-hidden", "false");
+      btn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("is-open");
+      scrim.classList.remove("is-open");
+      drawer.setAttribute("aria-hidden", "true");
+      btn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      var onEnd = function () {
+        drawer.hidden = true;
+        scrim.hidden = true;
+        drawer.removeEventListener("transitionend", onEnd);
+      };
+      drawer.addEventListener("transitionend", onEnd);
+    }
+
+    btn.addEventListener("click", openDrawer);
+    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+    scrim.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && drawer.classList.contains("is-open")) closeDrawer();
+    });
+
+    // Accordion toggle (one section open at a time).
+    nav.addEventListener("click", function (e) {
+      // A real link inside an open sub-panel: navigate + close.
+      if (e.target.closest(".bs-drawer-sub li, .bs-drawer-sub a")) { closeDrawer(); return; }
+
+      var link = e.target.closest(".bs-drawer-link");
+      if (!link) return;
+      var item = link.parentNode;
+      var wasOpen = item.classList.contains("is-open");
+      nav.querySelectorAll(".bs-drawer-item.is-open").forEach(function (o) {
+        o.classList.remove("is-open");
+        var l = o.querySelector(".bs-drawer-link");
+        if (l) l.setAttribute("aria-expanded", "false");
+      });
+      if (!wasOpen && item.querySelector(".bs-drawer-sub")) {
+        item.classList.add("is-open");
+        link.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    // Reset if the viewport grows back to desktop.
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900 && drawer.classList.contains("is-open")) closeDrawer();
+    });
+  })();
+
   /* ── Hero carousel ──────────────────────────────────────── */
 
   var SLIDES = [
@@ -724,127 +814,63 @@
     );
   }).join("");
 
+  var SOCIAL_HTML =
+    '<ul class="social-icons">' +
+      '<li class="facebook"><a href="https://www.facebook.com/bluesalonqatar/" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a></li>' +
+      '<li class="twitter"><a href="https://twitter.com/bluesalonqatar" title="X" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2h3.3l-7.2 8.3L23 22h-6.6l-5.2-6.8L5.3 22H2l7.7-8.8L1.5 2h6.8l4.7 6.2L18.2 2zm-1.2 18h1.8L7.1 3.9H5.2L17 20z"/></svg></a></li>' +
+      '<li class="instagram"><a href="https://www.instagram.com/bluesalon/" title="Instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></li>' +
+      '<li class="youtube"><a href="https://www.youtube.com/user/bluesalonqatar" title="YouTube" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></li>' +
+      '<li class="linkedin"><a href="https://www.linkedin.com/company/blue-salon/" title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg></a></li>' +
+    '</ul>' +
+    '<a class="footer-whatsapp" href="https://wa.me/97450109900" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp: +974 5010 9900">' +
+      'Whatsapp:' +
+      '<span>+974 5010 9900</span>' +
+    '</a>' +
+    '<a class="footer-email" href="mailto:info@bluesalon.com">' +
+      'Email:' +
+      '<span>info@bluesalon.com</span>' +
+    '</a>';
+
   var FOOTER_COLS = [
     { h: "Customer Care",    links: ["Track your order", "Shipping & delivery", "Returns & exchanges", "Contact us", "FAQ"] },
     { h: "About Blue Salon", links: ["Our story", "Boutiques in Qatar", "Careers", "Press", "Sustainability"] },
-    { h: "Shop",             links: ["Women", "Men", "Beauty", "Watches & Jewellery", "Gourmet", "Gift cards"] },
+    { h: "Follow our social", social: true },
   ];
 
   document.getElementById("footerCols").innerHTML = FOOTER_COLS.map(function (c) {
-    return (
-      "<div>" +
-        "<h4>" + c.h + "</h4>" +
-        "<ul>" +
-          c.links.map(function (l) { return '<li><a href="#">' + l + "</a></li>"; }).join("") +
-        "</ul>" +
-      "</div>"
-    );
+    var body = c.social
+      ? SOCIAL_HTML
+      : "<ul>" + c.links.map(function (l) { return '<li><a href="#">' + l + "</a></li>"; }).join("") + "</ul>";
+    return "<div><h4>" + c.h + "</h4>" + body + "</div>";
   }).join("");
 
   /* ── Locale picker: region · currency · language ────────── */
   (function setupLocale() {
     var btn = document.getElementById("localeBtn");
-    var panel = document.getElementById("localePanel");
     var codeEl = document.getElementById("localeCode");
-    if (!btn || !panel) return;
+    var langSwitch = document.getElementById("localeLangSwitch");
+    if (!btn) return;
 
-    var countryOpts = GCC.map(function (r, i) {
-      return '<option value="' + i + '">' + r.country + "</option>";
-    }).join("");
-    var currencyOpts = GCC.map(function (r, i) {
-      return '<option value="' + i + '">' + r.ccy + " — " + r.ccyName + "</option>";
-    }).join("");
-
-    panel.innerHTML =
-      '<div class="bs-locale-field">' +
-        '<label class="bs-locale-label" for="localeCountry">Shipping to</label>' +
-        '<select class="bs-locale-select" id="localeCountry">' + countryOpts + "</select>" +
-      "</div>" +
-      '<div class="bs-locale-field">' +
-        '<label class="bs-locale-label" for="localeCurrency">Currency</label>' +
-        '<select class="bs-locale-select" id="localeCurrency">' + currencyOpts + "</select>" +
-      "</div>" +
-      '<div class="bs-locale-field">' +
-        '<span class="bs-locale-label">Language</span>' +
-        '<div class="bs-locale-seg" id="localeLang">' +
-          '<button type="button" data-lang="en">English</button>' +
-          '<button type="button" data-lang="ar">العربية</button>' +
-        "</div>" +
-      "</div>" +
-      '<button type="button" class="bs-locale-apply" id="localeApply">Apply</button>';
-
-    var countrySel = panel.querySelector("#localeCountry");
-    var currencySel = panel.querySelector("#localeCurrency");
-    var langSeg = panel.querySelector("#localeLang");
-    var applyBtn = panel.querySelector("#localeApply");
-
-    // Draft selection while the panel is open; committed on Apply.
-    var draft = { regionIdx: 0, lang: "en" };
-
-    function syncDraftUI() {
-      countrySel.value = String(draft.regionIdx);
-      currencySel.value = String(draft.regionIdx);
-      langSeg.querySelectorAll("button").forEach(function (b) {
-        b.classList.toggle("is-active", b.dataset.lang === draft.lang);
-      });
+    function syncLangSwitch() {
+      if (!langSwitch) return;
+      var isAr = locale.lang === "ar";
+      // Show the language you can switch TO (Arabic label while in English, and vice versa).
+      langSwitch.textContent = isAr ? "EN" : "ع";
+      langSwitch.classList.toggle("is-ar", !isAr);
     }
 
-    function openPanel() {
-      // Seed the draft from the committed state.
-      draft.regionIdx = GCC.indexOf(locale.region);
-      draft.lang = locale.lang;
-      syncDraftUI();
-      panel.hidden = false;
-      btn.setAttribute("aria-expanded", "true");
-    }
-    function closePanel() {
-      panel.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-    }
-
-    // Country and currency stay linked (each GCC country has one currency).
-    countrySel.addEventListener("change", function () {
-      draft.regionIdx = Number(countrySel.value);
-      syncDraftUI();
-    });
-    currencySel.addEventListener("change", function () {
-      draft.regionIdx = Number(currencySel.value);
-      syncDraftUI();
-    });
-    langSeg.addEventListener("click", function (e) {
-      var b = e.target.closest("button[data-lang]");
-      if (!b) return;
-      draft.lang = b.dataset.lang;
-      syncDraftUI();
-    });
-
-    function applyLocale() {
-      locale.region = GCC[draft.regionIdx];
-      locale.lang = draft.lang;
-      codeEl.textContent = locale.region.ccy;
-      document.documentElement.lang = locale.lang;
-      document.documentElement.dir = locale.lang === "ar" ? "rtl" : "ltr";
-      renderTrending();          // reprice products in the new currency
-    }
-
-    applyBtn.addEventListener("click", function () {
-      applyLocale();
-      closePanel();
-    });
-
+    // Clicking the button toggles the language directly — no dropdown.
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
-      if (panel.hidden) openPanel(); else closePanel();
-    });
-    // Close on outside click / Escape.
-    document.addEventListener("click", function (e) {
-      if (!panel.hidden && !panel.contains(e.target) && e.target !== btn) closePanel();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !panel.hidden) closePanel();
+      locale.lang = locale.lang === "ar" ? "en" : "ar";
+      syncLangSwitch();
+      document.documentElement.lang = locale.lang;
+      document.documentElement.dir = locale.lang === "ar" ? "rtl" : "ltr";
+      renderTrending();
     });
 
     if (codeEl) codeEl.textContent = locale.region.ccy;
+    syncLangSwitch();
   })();
 
   /* Keep placeholder links from jumping the page */
@@ -906,5 +932,42 @@
     document.addEventListener("DOMContentLoaded", initAll);
   } else {
     initAll();
+  }
+})();
+
+/* ════════════════════════════════════════════════════════════
+   Brands marquee — continuous, smooth auto-scroll. Items are
+   wrapped in a track and duplicated so the loop is seamless.
+   ════════════════════════════════════════════════════════════ */
+(function () {
+  "use strict";
+
+  function initMarquee() {
+    var grid = document.querySelector(".brands-collection-home-grid");
+    if (!grid || grid.querySelector(".brands-marquee-track")) return;
+
+    var items = Array.prototype.slice.call(grid.querySelectorAll(".brand-item"));
+    if (!items.length) return;
+
+    var track = document.createElement("div");
+    track.className = "brands-marquee-track";
+    items.forEach(function (item) { track.appendChild(item); });
+
+    // Duplicate the set so translateX(-50%) loops without a visible jump.
+    items.forEach(function (item) {
+      var clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("tabindex", "-1");
+      track.appendChild(clone);
+    });
+
+    grid.textContent = "";
+    grid.appendChild(track);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMarquee);
+  } else {
+    initMarquee();
   }
 })();

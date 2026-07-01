@@ -16,11 +16,27 @@
 
     <!-- Announcement -->
     <div class="bs-announce">
-      Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments
+      <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator">
+          <span class="bs-lang-switch">Store</span>
+        </button>
+      </div>
+      </div>
     </div>
 
     <!-- Main bar -->
     <div class="bs-topbar">
+      <!-- Hamburger (mobile only) -->
+      <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button> 
       <!-- Search -->
       <div class="bs-search">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
@@ -32,16 +48,6 @@
       </a>
       <!-- Utilities -->
       <div class="bs-utils">
-        <span class="bs-util-wrap bs-locale">
-          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-haspopup="true" aria-expanded="false" aria-label="Region and language" title="Region &amp; language">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
-            <!-- <span class="bs-locale-code" id="localeCode">QAR</span> -->
-          </button>
-          <div class="bs-locale-panel" id="localePanel" hidden></div>
-        </span>
-        <button class="bs-iconbtn" type="button" aria-label="Store locator" title="Store locator">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </button>
         <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
         </button>
@@ -114,6 +120,18 @@
     </div>
   </header>
 
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
   <main>
 
     <!-- ════════════════ Hero ════════════════ -->
@@ -128,8 +146,8 @@
       <div class="bs-hero-media">
         <img id="heroImg" src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/esca.jpg?v=1782906735" alt="">
       </div>
-      <div class="bs-hero-dots" id="heroDots"></div>
     </section>
+    <div class="bs-hero-dots" id="heroDots"></div>
 
 
 
@@ -414,8 +432,12 @@
     </section>
 
     <!-- ════════════════ Editorial edits (two-up) ════════════════ -->
+     
     <section class="edit-duo">
       <div class="edit-duo-inner">
+        <div class="cat-fashion-head">
+          <h2 class="cat-fashion-title">Editorial edits</h2>
+        </div>
 
         <a href="/collections/occasion" class="edit-duo-card">
           <img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/womens-fashion_56845cc2-ab69-42ba-ac03-2fe02d90f9bf.jpg?v=1782392049" alt="For Every Invitation" class="edit-duo-img" loading="lazy">
@@ -447,9 +469,6 @@
         </div>
 
         <div class="brands-collection-home-grid-wrapper">
-          <button class="brands-slider-arrow brands-slider-arrow-left" aria-label="Previous" type="button" disabled="">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-          </button>
           <div class="brands-collection-home-grid" data-brands-slider="">
 
             <a title="Floris London" href="/collections/floris-london" class="brand-item">
@@ -485,9 +504,6 @@
             </a>
 
           </div>
-          <button class="brands-slider-arrow brands-slider-arrow-right" aria-label="Next" type="button">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-          </button>
         </div>
       </div>
     </section>
@@ -549,7 +565,7 @@
     <div class="bs-mainfooter">
       <div class="bs-mainfooter-inner">
         <div class="bs-mainfooter-about">
-          <img src="assets/logo-horizontal.svg" alt="Blue Salon">
+          <img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon">
           <p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p>
 
           <ul class="bs-contact">
@@ -557,49 +573,27 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Suhaim Bin Hamad Street, Doha, Qatar</span>
             </li>
-            <li>
+            <!-- <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
               <a href="mailto:info@bluesalon.com">info@bluesalon.com</a>
             </li>
             <li>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
               <a href="tel:+97450109900">+974 5010 9900</a>
-            </li>
+            </li> -->
           </ul>
 
-          <ul class="social-icons">
-            <li class="facebook">
-              <a href="https://www.facebook.com/bluesalonqatar/" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
-              </a>
-            </li>
-            <li class="twitter">
-              <a href="https://twitter.com/bluesalonqatar" title="X" target="_blank" rel="noopener" aria-label="X">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2h3.3l-7.2 8.3L23 22h-6.6l-5.2-6.8L5.3 22H2l7.7-8.8L1.5 2h6.8l4.7 6.2L18.2 2zm-1.2 18h1.8L7.1 3.9H5.2L17 20z"/></svg>
-              </a>
-            </li>
-            <li class="instagram">
-              <a href="https://www.instagram.com/bluesalon/" title="Instagram" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              </a>
-            </li>
-            <li class="youtube">
-              <a href="https://www.youtube.com/user/bluesalonqatar" title="YouTube" target="_blank" rel="noopener" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg>
-              </a>
-            </li>
-            <li class="linkedin">
-              <a href="https://www.linkedin.com/company/blue-salon/" title="LinkedIn" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg>
-              </a>
-            </li>
-          </ul>
         </div>
         <div id="footerCols" class="bs-mainfooter-cols"></div>
       </div>
       <div class="bs-bottomstrip">
         <div class="bs-bottomstrip-inner">
-          <span class="bs-copyright">Ⓒ Copyright 2026 Blue Salon all rights reserved.</span>
+          <span class="bs-copyright">Ⓒ Copyright 2026
+            <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">
+              <img src="https://www.abuissa.com/wp-content/uploads/2024/09/cropped-aih-favicon-192x192.png" alt="AbuIssa Holding" width="16" height="16" loading="lazy">
+              AbuIssa Holding
+            </a>
+            all rights reserved.</span>
           <ul class="payment-methods">
             <li><img src="//www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li>
             <li><img src="//www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li>
