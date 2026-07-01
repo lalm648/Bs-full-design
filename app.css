@@ -398,11 +398,12 @@ html, body { margin: 0; background: var(--paper); }
 .bs-service-sub { font-size: 12px; color: var(--text-muted); }
 
 /* ── Hero ─────────────────────────────────────────────────── */
-.bs-hero { height: 560px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; max-width: var(--container-max); margin: 0 auto; position: relative; }
-/* Full-bleed image slide: hide the text panel, let media span the row.
-   Follow the banner's native 1920×720 ratio at container width so the
-   whole image shows uncropped instead of being clipped to the fixed height. */
-.bs-hero.is-full { grid-template-columns: 1fr; height: auto; aspect-ratio: 1920 / 720; }
+/* All slides share the banner's native 1920×720 ratio at container width,
+   so the height stays constant between slide types (no layout jump) and the
+   full-bleed banners show uncropped. */
+.bs-hero { aspect-ratio: 1920 / 720; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; max-width: var(--container-max); margin: 0 auto; position: relative; }
+/* Full-bleed image slide: hide the text panel, let media span the row. */
+.bs-hero.is-full { grid-template-columns: 1fr; }
 .bs-hero.is-full .bs-hero-panel { display: none; }
 .bs-hero-panel {
   background: #fff;
