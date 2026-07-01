@@ -637,12 +637,12 @@
       full: true,
       img: "https://www.bluesalon.com/cdn/shop/files/banner_9033da4d-42fc-45d1-a6fc-446d62d6be84_1920x.jpg?v=1780471512",
     },
-    {
-      heading: "from 81 to Now",
-      sub: "Shop the official products",
-      cta: "Shop Now",
-      img: "https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Screenshot_2026-07-01_at_2.58.25_PM.png?v=1782907116",
-    },
+    // {
+    //   heading: "from 81 to Now",
+    //   sub: "Shop the official products",
+    //   cta: "Shop Now",
+    //   img: "https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Screenshot_2026-07-01_at_2.58.25_PM.png?v=1782907116",
+    // },
     // {
     //   heading: "The Fragrance Edit",
     //   sub: "Discover niche and luxury scents, only at Blue Salon.",

@@ -381,12 +381,16 @@ html, body { margin: 0; background: var(--paper); }
 /* ── Services strip ───────────────────────────────────────── */
 .bs-services { background: #fff; }
 .bs-services-inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 18px 24px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.12);
 }
 .bs-service { display: flex; gap: 14px; align-items: center; justify-content: center; }
 .bs-service-icon { color: var(--blue-700); display: inline-flex; }
@@ -395,8 +399,10 @@ html, body { margin: 0; background: var(--paper); }
 
 /* ── Hero ─────────────────────────────────────────────────── */
 .bs-hero { height: 560px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; max-width: var(--container-max); margin: 0 auto; position: relative; }
-/* Full-bleed image slide: hide the text panel, let media span the row */
-.bs-hero.is-full { grid-template-columns: 1fr; }
+/* Full-bleed image slide: hide the text panel, let media span the row.
+   Follow the banner's native 1920×720 ratio at container width so the
+   whole image shows uncropped instead of being clipped to the fixed height. */
+.bs-hero.is-full { grid-template-columns: 1fr; height: auto; aspect-ratio: 1920 / 720; }
 .bs-hero.is-full .bs-hero-panel { display: none; }
 .bs-hero-panel {
   background: #fff;
