@@ -85,7 +85,36 @@
         </div>
       </nav>
     </div>
+  </header>
 
+  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
+  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+    <div class="bs-drawer-head">
+      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="bs-drawer-nav" id="drawerNav"></nav>
+  </aside>
+
+  <main>
+
+    <!-- ════════════════ Hero ════════════════ -->
+    <section class="bs-hero">
+      <div class="bs-hero-panel">
+        <h1 class="bs-display bs-hero-title" id="heroTitle">ESCADA</h1>
+        <p class="bs-hero-sub" id="heroSub">Bold prints, gold jewellery and statement timepieces — the new collection.</p>
+        <div>
+          <button class="bs-btn bs-btn-primary" type="button" id="heroCta">Shop ESCADA</button>
+        </div>
+      </div>
+      <div class="bs-hero-media">
+        <img id="heroImg" src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/esca.jpg?v=1782906735" alt="">
+      </div>
+    </section>
+    <div class="bs-hero-dots" id="heroDots"></div>
     <!-- Services strip -->
     <div class="bs-services">
       <div class="bs-services-inner">
@@ -118,39 +147,6 @@
         </div>
       </div>
     </div>
-  </header>
-
-  <!-- ════════════════ Mobile drawer (built by app.js) ════════════════ -->
-  <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
-  <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
-    <div class="bs-drawer-head">
-      <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
-      <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-    </div>
-    <nav class="bs-drawer-nav" id="drawerNav"></nav>
-  </aside>
-
-  <main>
-
-    <!-- ════════════════ Hero ════════════════ -->
-    <section class="bs-hero">
-      <div class="bs-hero-panel">
-        <h1 class="bs-display bs-hero-title" id="heroTitle">ESCADA</h1>
-        <p class="bs-hero-sub" id="heroSub">Bold prints, gold jewellery and statement timepieces — the new collection.</p>
-        <div>
-          <button class="bs-btn bs-btn-primary" type="button" id="heroCta">Shop ESCADA</button>
-        </div>
-      </div>
-      <div class="bs-hero-media">
-        <img id="heroImg" src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/esca.jpg?v=1782906735" alt="">
-      </div>
-    </section>
-    <div class="bs-hero-dots" id="heroDots"></div>
-
-
-
 
     <!-- ════════════════ Shop by Category ════════════════ -->
     <section class="bs-shopcat">
@@ -158,7 +154,6 @@
 
         <div class="bs-shopcat-head">
           <h2 class="bs-display bs-shopcat-title">Shop by Category</h2>
-          <hr class="bs-rule-gold bs-shopcat-rule">
         </div>
 
         <div class="bs-shopcat-grid">

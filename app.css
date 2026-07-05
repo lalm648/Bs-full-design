@@ -304,7 +304,7 @@ html, body { margin: 0; background: var(--paper); }
   text-transform: uppercase;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   white-space: nowrap;
   transition: background var(--dur-base) var(--ease-standard),
               color var(--dur-base) var(--ease-standard),
@@ -470,6 +470,7 @@ html, body { margin: 0; background: var(--paper); }
   max-width: var(--container-max);
   margin: 0 auto;
   padding: var(--space-9) 24px var(--space-7);
+  padding-top: 100px;
 }
 
 /* Centered editorial header with gold rule */
@@ -619,7 +620,7 @@ html, body { margin: 0; background: var(--paper); }
 /* ── Category fashion sliders (Women / Men) ───────────────────
    Selectors are generic so any "<prefix>-collection-home-*" block
    (women, men, …) shares the same styling. */
-.cat-fashion { padding: var(--space-7) 0; }
+.cat-fashion { padding: var(--space-7) 0;padding-top: 80px; }
 .cat-fashion-women { background: var(--paper); }
 .cat-fashion-men { background: var(--paper); }
 .cat-fashion-kids { background: var(--paper); }

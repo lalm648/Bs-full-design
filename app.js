@@ -675,6 +675,9 @@
 
   var current = 0;
 
+  /* Hero exists only on the homepage — guard so shared pages
+     (listing, product detail) can reuse this bundle safely. */
+  if (heroSection && heroDots) {
   SLIDES.forEach(function (_, i) {
     var dot = document.createElement("button");
     dot.type = "button";
@@ -699,12 +702,11 @@
     clearInterval(heroTimer);
     startAuto();
   }
-  if (heroSection) {
-    heroSection.addEventListener("mouseenter", function () { clearInterval(heroTimer); });
-    heroSection.addEventListener("mouseleave", resetAuto);
-  }
+  heroSection.addEventListener("mouseenter", function () { clearInterval(heroTimer); });
+  heroSection.addEventListener("mouseleave", resetAuto);
   setSlide(current); // render slide 0 so the view matches the active dot
   startAuto();
+  } // end hero guard
 
   /* ── Categories ─────────────────────────────────────────── */
 
