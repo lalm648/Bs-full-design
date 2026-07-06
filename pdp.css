@@ -795,7 +795,7 @@
 
 .pdp-frame,
 .pdp-related .bs-card-media {
-  background: var(--product-canvas);
+  background:#cdd8e725;
   isolation: isolate;
 }
 
@@ -1968,7 +1968,7 @@
   margin: clamp(64px, 8vw, 104px) auto 0;
   padding: clamp(34px, 5vw, 58px);
   border-radius: 10px;
-  background: #f8f7f4;
+  /* background: #f8f7f4; */
 }
 
 .pdp-detail-tabs {
@@ -2196,7 +2196,7 @@
 }
 
 .pdp-detail-section {
-  background: #f7f6f3;
+  background: #cdd8e725;
 }
 
 /* ============================================================
@@ -2479,7 +2479,7 @@
   gap: 48px;
   margin: 0 auto;
   padding: 56px 124px 40px;
-  background: var(--pdp-cream);
+  /* background: var(--pdp-cream); */
 }
 
 .pdp-reference-page .pdp-media {
@@ -2917,8 +2917,8 @@
   width: calc(100% - 48px);
   margin: 0 auto;
   padding: 56px 0 70px;
-  border-radius: 0;
-  background: var(--pdp-section);
+  border-radius: 4px;
+  /* background: var(--pdp-section); */
 }
 
 .pdp-reference-page .pdp-detail-tabs {
@@ -3020,7 +3020,7 @@
   width: calc(100% - 48px);
   margin: 0 auto;
   padding: 80px 100px 70px;
-  background: #f8f4ef;
+  /* background: #f8f4ef; */
 }
 
 .pdp-reference-page .pdp-related-head {
