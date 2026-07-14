@@ -395,14 +395,12 @@
   width:100%;aspect-ratio:16/9;background:var(--ivory);
   cursor:ew-resize;touch-action:none;user-select:none;
 }
-.bsb-compare__img{
+.bsb-compare__after,
+.bsb-compare__before{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
   pointer-events:none;
 }
-.bsb-compare__blur{
-  position:absolute;inset:-5px;width:calc(100% + 10px);height:calc(100% + 10px);
-  object-fit:cover;object-position:center;pointer-events:none;
-  filter:blur(5px);transform:scale(1.01);
+.bsb-compare__before{
   clip-path:inset(0 calc(100% - var(--pos)) 0 0);
 }
 .bsb-compare:focus-visible{outline:2px solid var(--brown);outline-offset:4px}
