@@ -9,24 +9,34 @@
   /* -------- data: max 8 products, one grid only -------- */
   var PRODUCTS = [
     { brand: "Blue Salon", name: "Radiance Vitamin C Serum", rating: 4, price: "QAR 285", was: "", badge: "New",
-      img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80" },
-    { brand: "Atelier", name: "Soft Matte Lip Colour", rating: 5, price: "QAR 145", was: "", badge: "",
-      img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80" },
+      img: "images/beauty/prod-1.jpg" },
+    { brand: "Atelier", name: "Precision Liquid Liner", rating: 5, price: "QAR 145", was: "", badge: "",
+      img: "images/beauty/prod-2.jpg" },
     { brand: "Maison Rose", name: "Eau de Parfum 50ml", rating: 4, price: "QAR 420", was: "QAR 480", badge: "Exclusive",
-      img: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80" },
+      img: "images/beauty/prod-3.jpg" },
     { brand: "Lumière", name: "Hydrating Day Cream", rating: 5, price: "QAR 210", was: "", badge: "",
-      img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80" },
+      img: "images/beauty/prod-4.jpg" },
     { brand: "Blue Salon", name: "Silk Foundation Fluid", rating: 4, price: "QAR 175", was: "", badge: "",
-      img: "https://images.unsplash.com/photo-1631730359585-38a4935cbec4?auto=format&fit=crop&w=500&q=80" },
-    { brand: "Atelier", name: "Volumising Mascara", rating: 5, price: "QAR 130", was: "", badge: "New",
-      img: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?auto=format&fit=crop&w=500&q=80" },
+      img: "images/beauty/prod-5.jpg" },
+    { brand: "Atelier", name: "Revitalising Face Oil", rating: 5, price: "QAR 130", was: "", badge: "New",
+      img: "images/beauty/prod-6.jpg" },
     { brand: "Clarelle", name: "Nourishing Hair Oil", rating: 4, price: "QAR 165", was: "QAR 195", badge: "",
-      img: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=500&q=80" },
-    { brand: "Lumière", name: "Gentle Cleansing Balm", rating: 5, price: "QAR 155", was: "", badge: "",
-      img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80" }
+      img: "images/beauty/prod-7.jpg" },
+    { brand: "Lumière", name: "Restorative Hair Mask", rating: 5, price: "QAR 155", was: "", badge: "",
+      img: "images/beauty/prod-8.jpg" }
   ];
 
-  var BRANDS = ["Chanel", "Dior", "Guerlain", "Clarins", "Lancôme", "Yves Saint Laurent", "Tom Ford"];
+  // brand logos from the Blue Salon CDN — mirrors the homepage Featured Brands strip
+  var BRANDS = [
+    { name: "Floris London", img: "//www.bluesalon.com/cdn/shop/files/floris_250x_a3e21544-7a23-4a0a-bc28-8e1734e3fd54_250x.avif?v=1771916867" },
+    { name: "La Perla", img: "//www.bluesalon.com/cdn/shop/files/la-perla_250x_fb3e3d61-b391-436c-8b52-e1792a457f80_250x.avif?v=1771916867" },
+    { name: "Sensai", img: "//www.bluesalon.com/cdn/shop/files/Untitled-2_250x_db6c3e68-8632-4d58-83fa-78317400f90c_250x.avif?v=1771916863" },
+    { name: "Tom Ford", img: "//www.bluesalon.com/cdn/shop/files/tomford_250x_5d1e944a-5c1b-4604-b294-ab9ff1bb8351_250x.avif?v=1771402650" },
+    { name: "MCM", img: "//www.bluesalon.com/cdn/shop/files/mcm_logo_250x_1_250x.avif?v=1771916863" },
+    { name: "Aigner", img: "//www.bluesalon.com/cdn/shop/files/aigner_250x_65346155-e057-4adb-aae5-ddc4a61f9a72_250x.webp?v=1771916863" },
+    { name: "Creed", img: "//www.bluesalon.com/cdn/shop/files/creed_250x_868053a3-0460-4a8d-9f00-9b2df02d3474_250x.avif?v=1771916863" },
+    { name: "Swarovski", img: "//www.bluesalon.com/cdn/shop/files/swarovski_250x_8ae97c0e-56d0-4cfb-b2e2-70120be6819e_250x.avif?v=1771916863" }
+  ];
 
   function stars(n) {
     var full = "";
@@ -61,9 +71,13 @@
 
     var brands = document.getElementById("bsbBrands");
     if (brands) {
-      brands.innerHTML = BRANDS.map(function (b) {
-        return '<li><a href="#"><span>' + b + "</span></a></li>";
-      }).join("");
+      var tile = function (b) {
+        return '<a class="bsb-brand" href="#" title="' + b.name + '" aria-label="' + b.name + '">' +
+               '<span class="bsb-brand__logo"><img src="' + b.img + '" alt="' + b.name + '" loading="lazy"></span></a>';
+      };
+      // duplicate the set so the -50% marquee loops seamlessly
+      var tiles = BRANDS.concat(BRANDS).map(tile).join("");
+      brands.innerHTML = '<div class="bsb-brands__track">' + tiles + "</div>";
     }
   }
 
@@ -76,9 +90,9 @@
   var SLIDES = [
     {
       color: "#F7EFE8",
-      left: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=900&q=80",
-      leftAlt: "Close-up of a model with radiant, natural complexion",
-      right: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80",
+      left: "images/beauty/hero-1-left.jpg",
+      leftAlt: "Beauty ritual close-up with radiant complexion",
+      right: "images/beauty/hero-1-right.jpg",
       rightAlt: "Flat-lay of makeup brushes, powder and lipstick",
       eyebrow: "Blue Salon Beauty",
       title: "Discover Beauty,<br>Curated for You",
@@ -87,9 +101,9 @@
     },
     {
       color: "#EFD9D0",
-      left: "https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=900&q=80",
-      leftAlt: "Model with luminous skin and soft makeup",
-      right: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=900&q=80",
+      left: "images/beauty/hero-2-left.jpg",
+      leftAlt: "Model receiving a luminous skincare facial",
+      right: "images/beauty/hero-2-right.jpg",
       rightAlt: "Skincare bottles arranged on a soft surface",
       eyebrow: "The Skincare Edit",
       title: "Radiance,<br>Rediscovered",
@@ -98,9 +112,9 @@
     },
     {
       color: "#F2C7B3",
-      left: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80",
-      leftAlt: "Close-up of expressive eye makeup",
-      right: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80",
+      left: "images/beauty/hero-3-left.jpg",
+      leftAlt: "Portrait celebrating beauty for every skin tone",
+      right: "images/beauty/hero-3-right.jpg",
       rightAlt: "Luxury fragrance bottle in warm light",
       eyebrow: "Colour & Fragrance",
       title: "Express<br>Yourself",
@@ -177,6 +191,70 @@
     hero.addEventListener("mouseleave", function () { if (!reduce) schedule(); });
   }
 
+  /* -------- featured product carousel (Editor's Picks) -------- */
+  var FEATURED = [
+    { img: "images/beauty/prod-1.jpg", model: "images/beauty/feature-model.jpg",  name: "Radiance Vitamin C Serum", price: "QAR 285" },
+    { img: "images/beauty/campaign.jpg", model: "images/beauty/feature-model2.jpg", name: "Velvet Matte Lipstick", price: "QAR 120 – QAR 180" },
+    { img: "images/beauty/prod-8.jpg", model: "images/beauty/hero-3-left.jpg", name: "Restorative Hair Mask", price: "QAR 155" }
+  ];
+
+  function initFeature() {
+    var root = document.getElementById("bsbFeature");
+    if (!root) return;
+    var img = document.getElementById("bsbFeatImg");
+    var model = document.getElementById("bsbFeatModel");
+    var name = document.getElementById("bsbFeatName");
+    var price = document.getElementById("bsbFeatPrice");
+    var dots = document.getElementById("bsbFeatDots");
+    var prev = root.querySelector(".bsb-feature__arrow--prev");
+    var next = root.querySelector(".bsb-feature__arrow--next");
+    var i = 0;
+
+    FEATURED.forEach(function (_, n) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-label", "Featured product " + (n + 1));
+      if (n === 0) b.className = "is-active";
+      b.addEventListener("click", function () { show(n); });
+      dots.appendChild(b);
+    });
+    var dotEls = dots.querySelectorAll("button");
+
+    function show(n) {
+      i = (n + FEATURED.length) % FEATURED.length;
+      var f = FEATURED[i];
+      img.style.opacity = "0";
+      if (model) model.style.opacity = "0";
+      setTimeout(function () {
+        img.src = f.img; img.alt = f.name;
+        if (model && f.model) { model.src = f.model; model.style.opacity = "1"; }
+        name.textContent = f.name; price.textContent = f.price;
+        img.style.opacity = "1";
+      }, 180);
+      dotEls.forEach(function (d, k) { d.classList.toggle("is-active", k === i); });
+    }
+    prev && prev.addEventListener("click", function () { show(i - 1); });
+    next && next.addEventListener("click", function () { show(i + 1); });
+  }
+
+  /* -------- instagram gallery -------- */
+  var INSTA = [
+    "images/beauty/edit-makeup.jpg", "images/beauty/hero-1-right.jpg", "images/beauty/edit-eyes.jpg",
+    "images/beauty/cat-fragrance.jpg", "images/beauty/hero-3-left.jpg", "images/beauty/campaign.jpg"
+  ];
+  function initInsta() {
+    var grid = document.getElementById("bsbInsta");
+    if (!grid) return;
+    var icon = '<span class="bsb-insta__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7">' +
+               '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/>' +
+               '<circle cx="17.2" cy="6.8" r="1.15" fill="#fff" stroke="none"/></svg></span>';
+    grid.innerHTML = INSTA.map(function (src, n) {
+      return '<a href="#" aria-label="Instagram post ' + (n + 1) + '">' +
+             '<img src="' + src + '" alt="Blue Salon Beauty on Instagram" loading="lazy">' + icon + '</a>';
+    }).join("");
+  }
+
   /* -------- mobile drawer -------- */
   function initDrawer() {
     var burger = document.getElementById("bsbBurger");
@@ -204,7 +282,7 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") shut(); });
   }
 
-  function boot() { render(); initHero(); initDrawer(); }
+  function boot() { render(); initHero(); initFeature(); initInsta(); initDrawer(); }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {

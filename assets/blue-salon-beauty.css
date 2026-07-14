@@ -79,10 +79,10 @@
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
   padding:14px 30px;border:1px solid transparent;transition:.25s ease;
 }
-.bsb-btn--dark{background:var(--brown);color:#fff}
-.bsb-btn--dark:hover{background:var(--navy)}
-.bsb-btn--light{background:#fff;color:var(--ink)}
-.bsb-btn--light:hover{background:var(--ink);color:#fff}
+.bs-beauty-page .bsb-btn--dark{background:var(--brown);color:#fff}
+.bs-beauty-page .bsb-btn--dark:hover{background:var(--navy);color:#fff}
+.bs-beauty-page .bsb-btn--light{background:#fff;color:var(--ink)}
+.bs-beauty-page .bsb-btn--light:hover{background:var(--ink);color:#fff}
 
 /* ---- centered section heading ---- */
 .bsb-heading{text-align:center;margin-bottom:clamp(28px,4vw,44px)}
@@ -140,7 +140,8 @@
 .bsb-hero{
   --hero-color:var(--cream);        /* current middle/curtain colour, set per slide by JS */
   --curtain:.9s cubic-bezier(.76,0,.24,1);
-  max-width:var(--page);margin-inline:auto;
+  /* same content box as every other section */
+  width:calc(100% - var(--pad) * 2);max-width:calc(var(--page) - var(--pad) * 2);margin-inline:auto;
   display:grid;grid-template-columns:34% 32% 34%;
   min-height:clamp(460px,54vw,580px);
 }
@@ -185,10 +186,10 @@
 }
 
 /* ============ 4. CATEGORY STRIP ============ */
-.bsb-strip{background:var(--brown);color:#fff}
+.bsb-strip{max-width:var(--page);margin-inline:auto;padding-inline:var(--pad)}
 .bsb-strip__list{
-  display:flex;justify-content:center;flex-wrap:wrap;gap:4px 0;
-  max-width:var(--page);margin-inline:auto;padding:14px var(--pad);
+  background:var(--brown);color:#fff;
+  display:flex;justify-content:center;flex-wrap:wrap;gap:4px 0;padding:14px 24px;
 }
 .bsb-strip__list li{position:relative;padding:0 18px}
 .bsb-strip__list li + li::before{content:"·";position:absolute;left:-2px;opacity:.55}
@@ -202,7 +203,7 @@
   width:100%;aspect-ratio:1/1;background:var(--ivory);
   display:grid;place-items:center;overflow:hidden;
 }
-.bsb-cat__stage img{width:78%;height:78%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s ease}
+.bsb-cat__stage img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .bsb-cat:hover .bsb-cat__stage img{transform:scale(1.05)}
 .bsb-cat__name{font-family:var(--serif);font-size:22px;font-weight:600;margin-top:4px}
 .bsb-cat__link{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -211,19 +212,20 @@
 /* ============ 6. EDITORIAL GRID ============ */
 .bsb-editorial{
   display:grid;gap:var(--gap);
-  grid-template-columns:1.9fr 1.1fr;
-  grid-template-areas:"wide tall" "tall2 wide2";
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,clamp(240px,26vw,340px));
+  grid-template-areas:
+    "wide wide tall"
+    "small wide2 wide2";
 }
 .bsb-tile--wide{grid-area:wide}
 .bsb-tile--tall{grid-area:tall}
-.bsb-tile--tall2{grid-area:tall2}
+.bsb-tile--tall2{grid-area:small}
 .bsb-tile--wide2{grid-area:wide2}
-.bsb-tile{position:relative;overflow:hidden;display:block;min-height:300px}
+.bsb-tile{position:relative;overflow:hidden;display:block}
 .bsb-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .6s ease}
 .bsb-tile:hover img{transform:scale(1.04)}
-.bsb-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(37,30,27,.55) 100%)}
-.bsb-tile--wide,.bsb-tile--wide2{aspect-ratio:16/9}
-.bsb-tile--tall,.bsb-tile--tall2{aspect-ratio:4/5}
+.bsb-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(37,30,27,.6) 100%)}
 .bsb-tile__body{position:absolute;left:0;bottom:0;z-index:2;padding:clamp(20px,2.2vw,32px);color:#fff}
 .bsb-tile__title{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.4vw,32px);line-height:1.1;margin:6px 0 14px}
 .bsb-tile__cta{
@@ -239,7 +241,7 @@
   width:100%;aspect-ratio:1/1;background:var(--ivory);
   display:grid;place-items:center;overflow:hidden;position:relative;
 }
-.bsb-card__stage img{width:76%;height:76%;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s ease}
+.bsb-card__stage img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 .bsb-card:hover .bsb-card__stage img{transform:scale(1.05)}
 .bsb-badge{
   position:absolute;top:12px;left:12px;z-index:2;
@@ -261,7 +263,7 @@
 .bsb-card:hover .bsb-card__link{opacity:1;transform:none;color:var(--navy)}
 
 /* ============ 8. CAMPAIGN BANNER ============ */
-.bsb-campaign{position:relative;overflow:hidden;min-height:clamp(420px,45vw,520px);display:grid;align-items:center}
+.bsb-campaign{position:relative;overflow:hidden;min-height:clamp(420px,45vw,520px);width:calc(100% - var(--pad) * 2);max-width:calc(var(--page) - var(--pad) * 2);margin-inline:auto;display:grid;align-items:center}
 .bsb-campaign__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bsb-campaign::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,30,27,.5) 0%,rgba(37,30,27,.15) 45%,rgba(37,30,27,0) 70%)}
 .bsb-campaign__inner{position:relative;z-index:2}
@@ -270,26 +272,76 @@
 .bsb-campaign__text{font-size:15px;color:rgba(255,255,255,.9);max-width:340px}
 .bsb-campaign__panel .bsb-btn{align-self:flex-start;margin-top:6px}
 
-/* ============ 9. SPLIT FEATURE ============ */
-.bsb-split{display:grid;grid-template-columns:55% 45%;background:var(--ivory);align-items:stretch}
-.bsb-split__media{overflow:hidden}
-.bsb-split__media img{width:100%;height:100%;object-fit:cover;min-height:340px}
-.bsb-split__body{padding:clamp(28px,4vw,64px);display:flex;flex-direction:column;justify-content:center;gap:14px}
-.bsb-split__title{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,38px);line-height:1.1;color:var(--brown)}
-.bsb-split__text{color:var(--muted);font-size:15px;max-width:420px}
-.bsb-split__price{font-size:18px;font-weight:500;margin-top:4px}
-.bsb-split__body .bsb-btn{align-self:flex-start;margin-top:8px}
+/* ============ 9. FEATURED PRODUCT CAROUSEL ============ */
+.bsb-feature{
+  position:relative;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+}
+/* left: arched beauty portrait on a soft blush stage */
+.bsb-feature__model{
+  justify-self:center;width:100%;max-width:540px;aspect-ratio:3.5/5;overflow:hidden;
+  border-radius:999px 999px 0 0;background:var(--cream);
+}
+.bsb-feature__model img{width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
+/* right: isolated product on a light stage + name/price/indicator */
+.bsb-feature__panel{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:420px;margin-inline:auto}
+.bsb-feature__panel .bsb-eyebrow{margin-bottom:6px}
+.bsb-feature__stage{
+  width:100%;max-width:440px;aspect-ratio:1/1;background:var(--ivory);
+  display:grid;place-items:center;overflow:hidden;
+}
+.bsb-feature__stage img{width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
+.bsb-feature__name{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.4vw,30px);color:var(--ink);margin-top:8px}
+.bsb-feature__price{font-size:16px;color:var(--muted);letter-spacing:.02em}
+.bsb-feature__dots{display:flex;gap:8px;margin-top:6px}
+.bsb-feature__dots button{width:26px;height:2px;background:var(--border);padding:0;transition:.25s}
+.bsb-feature__dots button.is-active{background:var(--brown)}
+.bsb-feature__arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:60px;height:60px;display:grid;place-items:center;color:var(--brown);
+  border:1px solid var(--border);border-radius:50%;background:#fff;transition:.2s;
+}
+.bsb-feature__arrow svg{width:56px;height:56px}
+.bsb-feature__arrow:hover{background:var(--border);color:#fff;border-color:var(--brown)}
+.bsb-feature__arrow:active{transform:translateY(-50%) scale(.94)}
+.bsb-feature__arrow--prev{left:0}
+.bsb-feature__arrow--next{right:0}
 
-/* ============ 10. BRAND ROW ============ */
-.bsb-brands{
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px 40px;
+/* ============ 11b. INSTAGRAM ============ */
+.bsb-insta__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.bsb-insta__grid a{position:relative;aspect-ratio:1/1;overflow:hidden;display:block}
+.bsb-insta__grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.bsb-insta__grid a::after{content:"";position:absolute;inset:0;background:rgba(37,30,27,0);transition:.3s;z-index:1}
+.bsb-insta__icon{
+  position:absolute;inset:0;margin:auto;z-index:2;width:42px;height:42px;
+  display:grid;place-items:center;opacity:0;transform:scale(.8);transition:.3s;pointer-events:none;
 }
-.bsb-brands li{flex:1;min-width:120px;text-align:center}
-.bsb-brands span{
-  font-family:var(--serif);font-size:clamp(18px,2vw,24px);letter-spacing:.14em;
-  color:var(--muted);text-transform:uppercase;transition:.25s;white-space:nowrap;
+.bsb-insta__icon svg{width:100%;height:100%}
+.bsb-insta__grid a:hover img{transform:scale(1.06)}
+.bsb-insta__grid a:hover::after{background:rgba(37,30,27,.34)}
+.bsb-insta__grid a:hover .bsb-insta__icon{opacity:1;transform:scale(1)}
+
+/* ============ 10. BRAND ROW (auto-scrolling logo marquee) ============ */
+.bsb-brands{overflow:hidden}
+.bsb-brands__track{display:flex;width:max-content;animation:bsb-marquee 45s linear infinite}
+.bsb-brands:hover .bsb-brands__track{animation-play-state:paused}
+@keyframes bsb-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.bsb-brand{flex:0 0 auto;width:200px;margin-inline-end:20px;display:flex}
+.bsb-brand__logo{
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:80px;padding:12px 16px;
+  background:#fff;border:1px solid var(--border);transition:border-color .25s,box-shadow .25s;
 }
-.bsb-brands a:hover span{color:var(--ink)}
+.bsb-brand:hover .bsb-brand__logo{border-color:var(--taupe);box-shadow:0 2px 10px rgba(37,30,27,.06)}
+.bsb-brand__logo img{
+  max-width:100%;max-height:54px;object-fit:contain;
+  filter:grayscale(1);opacity:.7;transition:filter .25s,opacity .25s;
+}
+.bsb-brand:hover .bsb-brand__logo img{filter:none;opacity:1}
+@media (prefers-reduced-motion:reduce){
+  .bsb-brands{overflow-x:auto}
+  .bsb-brands__track{animation:none}
+}
 
 /* ============ 11. SERVICE STRIP ============ */
 .bsb-services{background:var(--cream);border-block:1px solid var(--border)}
@@ -362,19 +414,27 @@
   .bsb-products{grid-template-columns:repeat(2,1fr)}
 
   /* editorial tiles stack with varied heights */
-  .bsb-editorial{grid-template-columns:1fr;grid-template-areas:"wide" "tall" "tall2" "wide2"}
+  .bsb-editorial{grid-template-columns:1fr;grid-template-rows:none;grid-template-areas:"wide" "tall" "small" "wide2"}
+  .bsb-tile{height:auto}
   .bsb-tile--wide,.bsb-tile--wide2{aspect-ratio:4/3}
   .bsb-tile--tall,.bsb-tile--tall2{aspect-ratio:4/5}
+  .bsb-tile img{position:absolute}
 
-  /* split feature stacks: image above content */
-  .bsb-split{grid-template-columns:1fr}
+  /* feature carousel stacks: arch image above product */
+  .bsb-feature{grid-template-columns:1fr;gap:28px}
+  .bsb-feature__model{max-width:340px}
+  .bsb-feature__arrow--prev{left:0}
+  .bsb-feature__arrow--next{right:0}
 
   /* campaign gradient full so text stays legible */
   .bsb-campaign::after{background:linear-gradient(180deg,rgba(37,30,27,.15) 0%,rgba(37,30,27,.6) 100%)}
 
   /* brand row scrollable */
-  .bsb-brands{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:28px;-webkit-overflow-scrolling:touch}
-  .bsb-brands li{flex:0 0 auto;min-width:0}
+  .bsb-brand{width:150px;margin-inline-end:14px}
+
+  /* instagram → horizontal scroll */
+  .bsb-insta__grid{grid-auto-flow:column;grid-auto-columns:42%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .bsb-insta__grid a{scroll-snap-align:start}
 
   .bsb-services__grid{grid-template-columns:repeat(2,1fr);gap:20px 16px}
   .bsb-footer__cols{grid-template-columns:repeat(2,1fr);gap:28px 16px}
