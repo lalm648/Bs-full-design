@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Salon — Watches Editorial</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/blue-salon-watches-editorial.css">
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<header class="bs-nav-root bs-header">
+  <div class="bs-announce"><div class="bs-announce-inner"><span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span><div class="bs-announce-utils"><span class="bs-util-wrap bs-locale"><button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language"><span class="bs-lang-switch is-ar" id="localeLangSwitch">ع</span></button></span><button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator"><span class="bs-lang-switch">Store</span></button></div></div></div>
+  <div class="bs-topbar">
+    <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <div class="bs-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg><input type="search" placeholder="Search 500+ luxury brands"></div>
+    <a class="bs-logo" href="index.html"><img src="assets/logo-horizontal.svg" alt="Blue Salon"></a>
+    <div class="bs-utils"><button class="bs-iconbtn" type="button" aria-label="Account"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button><span class="bs-util-wrap"><button class="bs-iconbtn" type="button" aria-label="Wishlist">♡</button><span class="bs-count" id="wishCount" hidden>0</span></span><span class="bs-util-wrap"><button class="bs-iconbtn" type="button" aria-label="Bag">⌑</button><span class="bs-count" id="cartCount" hidden>0</span></span></div>
+  </div>
+  <div id="navZone"><nav class="bs-nav"><div class="bs-nav-inner" id="navInner"><div class="bs-nav-item" data-menu="new">New In</div><div class="bs-nav-item" data-menu="women">Women</div><div class="bs-nav-item" data-menu="men">Men</div><div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div><div class="bs-nav-item" data-menu="beauty">Beauty</div><div class="bs-nav-item" data-menu="luggage">Luggage</div><div class="bs-nav-item" data-menu="home">Home &amp; Linen</div><div class="bs-nav-item" data-menu="gourmet">Gourmet</div><div class="bs-nav-item" data-menu="brands">Brands</div><div class="bs-nav-item" data-menu="gift">Gift</div><div class="bs-nav-item sale" data-menu="sale">Sale</div><div class="bs-mega-holder" id="megaHolder"></div></div></nav></div>
+</header>
+<div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+<aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden><div class="bs-drawer-head"><img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon"><button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu">×</button></div><nav class="bs-drawer-nav" id="drawerNav"></nav></aside>
+
+<div class="bs-watch-landing bs-watches-editorial">
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="bs-hero" role="region" aria-roledescription="carousel" aria-label="Featured timepieces" tabindex="0">
+    <button class="bs-hero__arrow bs-hero__arrow--prev" type="button" aria-label="Previous timepiece">
+      <svg viewBox="0 0 22 38" aria-hidden="true"><path d="M18 3 4 19l14 16"/></svg>
+    </button>
+
+    <div class="bs-hero__inner">
+      <article class="bs-hero__slide is-active" aria-hidden="false" aria-label="Slide 1 of 2">
+        <div class="bs-hero__left">
+          <div class="bs-label bs-hero__eyebrow">Swiss Precision</div>
+          <h1 class="bs-hero__title">The Classic Automatic</h1>
+          <p class="bs-hero__sub">Blue sunray dial · 40&nbsp;mm<br>Designed for timeless occasions</p>
+        </div>
+        <div class="bs-hero__media">
+          <img class="bs-prod bs-blend"
+               src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/RAL212-SS-9_540x.png?v=1724570126"
+               width="540" height="540" fetchpriority="high"
+               alt="Rama Classic Automatic, blue dial steel watch"
+               onerror="this.onerror=null;this.src='images/bs-ral212.png'">
+        </div>
+        <div class="bs-hero__right">
+          <div class="bs-hero__price">QAR&nbsp;4,750</div>
+          <a class="bs-hero__cta" href="#">Shop the Watch <span class="bs-tri" aria-hidden="true"></span></a>
+          <div class="bs-hero__service">Complimentary delivery in Qatar</div>
+          <a class="bs-hero__collection" href="#">View the collection</a>
+        </div>
+      </article>
+
+      <article class="bs-hero__slide" aria-hidden="true" aria-label="Slide 2 of 2">
+        <div class="bs-hero__left">
+          <div class="bs-label bs-hero__eyebrow">Smalto — Diamonds</div>
+          <h1 class="bs-hero__title">Midnight &amp; Rose</h1>
+          <p class="bs-hero__sub">Navy leather · diamond bezel<br>rose-gold case</p>
+        </div>
+        <div class="bs-hero__media">
+          <img class="bs-prod bs-blend"
+               src="https://cdn.shopify.com/s/files/1/0370/6444/1991/products/SMT120FAS00310_540x.jpg?v=1606642214"
+               width="540" height="540" loading="lazy"
+               alt="Smalto Diamonds watch with navy strap and rose gold case"
+               onerror="this.onerror=null;this.src='images/bs-smt310.jpg'">
+        </div>
+        <div class="bs-hero__right">
+          <div class="bs-hero__price">QAR&nbsp;2,890</div>
+          <a class="bs-hero__cta" href="#">Shop Now <span class="bs-tri" aria-hidden="true"></span></a>
+        </div>
+      </article>
+    </div>
+
+    <button class="bs-hero__arrow bs-hero__arrow--next" type="button" aria-label="Next timepiece">
+      <svg viewBox="0 0 22 38" aria-hidden="true"><path d="M4 3l14 16L4 35"/></svg>
+    </button>
+  </section>
+
+  <!-- ============ 2. EDITORIAL DUO ============ -->
+  <section class="bs-section bs-container">
+    <div class="bs-duo">
+      <a class="bs-duo__campaign" href="#">
+        <img src="images/03-banner1-copyright.jpg" width="850" height="480"
+             alt="Signature collection — gold and steel chronograph" loading="lazy">
+        <div class="bs-duo__campaign-caption">
+          <h2>SIGNATURE<br>COLLECTION</h2>
+          <span class="bs-label">Browse the Collection</span>
+        </div>
+      </a>
+      <a class="bs-duo__new" href="#">
+        <h2>NEW ARRIVALS</h2>
+        <span class="bs-label">Shop Now</span>
+        <div class="bs-duo__new-media">
+          <img class="bs-prod bs-blend"
+               src="https://cdn.shopify.com/s/files/1/0370/6444/1991/products/SMT120FAS00358_540x.jpg?v=1606642471"
+               width="540" height="540" loading="lazy"
+               alt="Smalto gold diamonds watch, new arrival"
+               onerror="this.onerror=null;this.src='images/bs-smt358.jpg'">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 3. SHOP BY PERSON OR PURPOSE ============ -->
+  <section class="bs-section bs-container bs-purpose" aria-label="Shop by person or purpose">
+    <div class="bs-purpose__lead"><img src="images/bs-ral238.jpg" class="bs-prod bs-blend" alt="For Her" loading="lazy"><div><span class="bs-label">For every occasion</span><h2>For Her</h2><p>Elegant watches and jewellery selected for every occasion.</p><b>Explore her edit <i class="bs-tri"></i></b></div></div>
+    <a class="bs-purpose__card bs-purpose__card--him" href="#"><img src="images/03-ban4-copyright.jpg" alt="For Him" loading="lazy"><span><small>Distinctive character</small>For Him</span></a>
+    <a class="bs-purpose__card" href="#"><img class="bs-prod bs-blend" src="images/bs-pr710.png" alt="For Couples" loading="lazy"><span><small>Shared milestones</small>For Couples</span></a>
+    <a class="bs-purpose__card" href="#"><img class="bs-prod bs-blend" src="images/bs-deluxe.png" alt="Gifts and Accessories" loading="lazy"><span><small>Celebrations and business gifting</small>Gifts &amp; Accessories</span></a>
+  </section>
+
+  <!-- ============ 4. CURATED PRODUCT EDIT ============ -->
+  <section class="bs-section bs-container bs-edit" aria-label="The Blue Salon Watch Edit">
+    <div class="bs-edit__grid">
+      <a class="bs-edit__item" href="#"><div><img class="bs-prod bs-blend" src="images/bs-od721.webp" alt="Steel automatic watch" loading="lazy"></div><small>Saint Honoré</small><h3>Steel Automatic</h3><p>QAR 4,750</p><span>View product</span></a>
+      <a class="bs-edit__item" href="#"><div><img class="bs-prod bs-blend" src="images/bs-ral238.jpg" alt="Jewellery watch" loading="lazy"></div><small>Rama</small><h3>Jewellery Watch</h3><p>QAR 2,890</p><span>View product</span></a>
+      <a class="bs-edit__item" href="#"><div><img class="bs-prod bs-blend" src="images/22-copyright-630x630.jpg" alt="Fine jewellery" loading="lazy"></div><small>Blue Salon</small><h3>Fine Jewellery</h3><p>QAR 1,650</p><span>View product</span></a>
+      <a class="bs-edit__item" href="#"><div><img class="bs-prod bs-blend" src="images/bs-deluxe.png" alt="Watch gift set" loading="lazy"></div><small>Freelook Paris</small><h3>Deluxe Gift Set</h3><p>QAR 1,250</p><span>View product</span></a>
+    </div>
+  </section>
+
+  <!-- ============ 4. HER / HIM ============ -->
+  <section class="bs-section bs-container">
+    <div class="bs-gender">
+      <a class="bs-panel bs-panel--her" href="#">
+        <div class="bs-panel__head">
+          <h2>WATCHES<br><em>for</em> HER</h2>
+          <span class="bs-panel__cta"><span class="bs-label">Explore the Collection</span> <span class="bs-tri" aria-hidden="true"></span></span>
+        </div>
+        <div class="bs-panel__media">
+          <img class="bs-prod bs-blend"
+               src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/RAL238-RR-S-8-1000x1000-1_540x.jpg?v=1699769694"
+               width="540" height="540" loading="lazy"
+               alt="Rama rose gold ladies watch with blue dial"
+               onerror="this.onerror=null;this.src='images/bs-ral238.jpg'">
+        </div>
+      </a>
+      <a class="bs-panel bs-panel--him" href="#">
+        <img src="images/03-ban4-copyright.jpg" width="625" height="800"
+             alt="Skeleton automatic watch on driftwood" loading="lazy">
+        <div class="bs-panel__head">
+          <h2>WATCHES<br><em>for</em> HIM</h2>
+          <span class="bs-panel__cta"><span class="bs-label">Explore the Collection</span> <span class="bs-tri" aria-hidden="true"></span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 5. CHOSEN TOGETHER ============ -->
+  <section class="bs-section bs-container bs-together" aria-label="Couple watches">
+    <div><span class="bs-label">For shared milestones</span><h2>Chosen<br><em>Together</em></h2><p>Complementary timepieces for anniversaries, weddings and the occasions you celebrate side by side.</p><a href="#">Explore Couple Watches <i class="bs-tri"></i></a></div>
+    <div class="bs-together__watches"><img class="bs-prod bs-blend" src="images/bs-smt310.jpg" alt="Women's navy watch" loading="lazy"><img class="bs-prod bs-blend" src="images/bs-od721.webp" alt="Men's steel watch" loading="lazy"></div>
+  </section>
+
+  <!-- ============ 6. ACCESSORIES AND GIFTING ============ -->
+  <section class="bs-section bs-container bs-beyond" aria-label="Accessories and gifting">
+    <div class="bs-beyond__grid"><a class="bs-beyond__feature" href="#"><img src="images/03-ban4-copyright.jpg" alt="Gift presentation" loading="lazy"><span>Gift Presentation <i class="bs-tri"></i></span></a><a href="#"><img class="bs-prod bs-blend" src="images/25-copyright-630x630.jpg" alt="Bracelets" loading="lazy"><span>Bracelets</span></a><a href="#"><img class="bs-prod bs-blend" src="images/28-copyright-630x630.jpg" alt="Jewellery" loading="lazy"><span>Jewellery</span></a><a href="#"><img class="bs-prod bs-blend" src="images/bs-deluxe.png" alt="Watch boxes" loading="lazy"><span>Watch Boxes</span></a><a href="#"><img class="bs-prod bs-blend" src="images/bs-smt310.jpg" alt="Leather accessories" loading="lazy"><span>Leather Accessories</span></a></div>
+  </section>
+
+  <!-- ============ 7. SHOP BY OCCASION ============ -->
+  <section class="bs-section bs-container" aria-label="Shop by occasion">
+    <div class="bs-cats">
+      <div class="bs-cats__title">
+        <div class="bs-cats__script">shop for</div><h2>EVERY<br>OCCASION</h2>
+      </div>
+      <ul><li><a href="#">Eid Gifting</a></li><li><a href="#">Wedding Gifts</a></li><li><a href="#">Anniversary Gifts</a></li></ul>
+      <ul><li><a href="#">Graduation Gifts</a></li><li><a href="#">Corporate Gifts</a></li><li><a href="#">New Arrivals</a></li></ul>
+      <ul><li><a href="#">Gifts for Her</a></li><li><a href="#">Gifts for Him</a></li><li><a href="#">Explore Gift Ideas</a></li></ul>
+    </div>
+  </section>
+  <!-- ============ 9. PRIVILEGE ============ -->
+  <section class="bs-container bs-priv">
+    <div class="bs-priv__media">
+      <img src="images/03-banner1-copyright.jpg" width="960" height="672"
+           alt="Blue Salon Privilege — luxury timepiece" loading="lazy">
+    </div>
+    <div class="bs-priv__panel">
+      <div class="bs-priv__panel-inner">
+        <h2>BLUE SALON<br>PRIVILEGE</h2>
+        <p>Enjoy exclusive rewards, private offers and member-only experiences.<br><small>Available to customers across Qatar.</small></p>
+        <a class="bs-priv__cta" href="#">Join Blue Salon Privilege <span class="bs-tri" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="bs-footer">
+  <div class="bs-shopmore"><div class="bs-shopmore-inner"><h2>Shop more</h2><div class="bs-shopmore-grid" id="shopMoreGrid"></div></div></div>
+  <div class="bs-appband"><div class="bs-appband-inner"><div><h3>Never miss a thing</h3><p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p><form class="bs-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email address"><button type="submit">Sign up</button></form><p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p></div><div><h3>Download our App</h3><p class="bs-app-sub">Your pocket-sized Blue Salon</p><p class="bs-appband-copy bs-app-copy">The extraordinary world of Blue Salon, at your fingertips.</p></div><div class="bs-qr"><div class="bs-qr-label">Scan to download</div><div class="foot-qr-code"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="App Store" width="98"></a><a href="#"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Play Store" width="120"></a></div></div></div></div>
+  <div class="bs-mainfooter"><div class="bs-mainfooter-inner"><div class="bs-mainfooter-about"><img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon"><p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p><ul class="bs-contact"><li><span>Suhaim Bin Hamad Street, Doha, Qatar</span></li></ul></div><div id="footerCols" class="bs-mainfooter-cols"></div></div><div class="bs-bottomstrip"><div class="bs-bottomstrip-inner"><span class="bs-copyright">© Copyright 2026 AbuIssa Holding. All rights reserved.</span></div></div></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="assets/blue-salon-watches-editorial.js" defer></script>
+</body>
+</html>
