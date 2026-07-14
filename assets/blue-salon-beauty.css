@@ -19,7 +19,7 @@
   --navy:#003979;
 
   /* ---- layout ---- */
-  --page:1560px;
+  --page:1440px;
   --pad:40px;             /* desktop horizontal padding */
   --gap:24px;
 
@@ -44,10 +44,10 @@
 
 /* ---- shared shell (centered, max 1440, responsive padding) ---- */
 .bsb-shell{
-  width:100%;
+  width:calc(100% - var(--pad) * 2);
   max-width:var(--page);
   margin-inline:auto;
-  padding-inline:var(--pad);
+  padding-inline:0;
 }
 
 /* ---- section rhythm ---- */
@@ -141,7 +141,7 @@
   --hero-color:var(--cream);        /* current middle/curtain colour, set per slide by JS */
   --curtain:.9s cubic-bezier(.76,0,.24,1);
   /* same content box as every other section */
-  width:calc(100% - var(--pad) * 2);max-width:calc(var(--page) - var(--pad) * 2);margin-inline:auto;
+  width:calc(100% - var(--pad) * 2);max-width:var(--page);margin-inline:auto;
   display:grid;grid-template-columns:33% 34% 33%;
   min-height:clamp(480px,56vw,620px);
 }
@@ -186,7 +186,7 @@
 }
 
 /* ============ 4. CATEGORY STRIP ============ */
-.bsb-strip{max-width:var(--page);margin-inline:auto;padding-inline:var(--pad)}
+.bsb-strip{width:calc(100% - var(--pad) * 2);max-width:var(--page);margin-inline:auto}
 .bsb-strip__list{
   background:var(--brown);color:#fff;
   display:flex;justify-content:center;flex-wrap:wrap;gap:4px 0;padding:14px 24px;
@@ -286,7 +286,7 @@
 .bsb-card:hover .bsb-card__link{opacity:1;transform:none;color:var(--navy)}
 
 /* ============ 8. CAMPAIGN BANNER ============ */
-.bsb-campaign{position:relative;overflow:hidden;min-height:clamp(420px,45vw,520px);width:calc(100% - var(--pad) * 2);max-width:calc(var(--page) - var(--pad) * 2);margin-inline:auto;display:grid;align-items:center}
+.bsb-campaign{position:relative;overflow:hidden;min-height:clamp(420px,45vw,520px);width:calc(100% - var(--pad) * 2);max-width:var(--page);margin-inline:auto;display:grid;align-items:center}
 .bsb-campaign__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bsb-campaign::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,30,27,.5) 0%,rgba(37,30,27,.15) 45%,rgba(37,30,27,0) 70%)}
 .bsb-campaign__inner{position:relative;z-index:2}
@@ -296,7 +296,7 @@
 .bsb-campaign__panel .bsb-btn{align-self:flex-start;margin-top:6px}
 
 /* ---- full-width video banner ---- */
-.bsb-videoband{position:relative;overflow:hidden;min-height:clamp(420px,45vw,560px);width:calc(100% - var(--pad) * 2);max-width:calc(var(--page) - var(--pad) * 2);margin-inline:auto}
+.bsb-videoband{position:relative;overflow:hidden;min-height:clamp(420px,45vw,560px);width:calc(100% - var(--pad) * 2);max-width:var(--page);margin-inline:auto}
 .bsb-videoband__media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .bsb-videoband:hover .bsb-videoband__media{transform:scale(1.04)}
 /* restrained editorial anchor, bottom-left */
