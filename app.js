@@ -113,7 +113,7 @@
           "<li>Scarves &amp; belts</li><li>Sunglasses</li><li>Hair accessories</li>" +
         "</ul></div>" +
         '<div class="bs-col"><h4>Watches &amp; jewellery</h4><ul>' +
-          "<li>Luxury timepieces " + pill("signature", "PREMIUM") + "</li>" +
+          '<li class="featured"><a href="blue-salon-landing.html">Luxury timepieces</a> ' + pill("signature", "PREMIUM") + "</li>" +
           "<li>Fashion timepieces</li><li>Fine jewellery</li>" +
           "<li>Fashion jewellery</li><li>Necklaces &amp; sets</li>" +
           "<li>Earrings &amp; rings</li><li>Bracelets</li>" +
@@ -157,7 +157,7 @@
           "<li>Backpacks</li><li>Crossbody bags</li><li>Wallets &amp; cardholders</li>" +
         "</ul></div>" +
         '<div class="bs-col"><h4>Watches</h4><ul>' +
-          '<li class="featured">Luxury timepieces ' + pill("signature", "PREMIUM") + "</li>" +
+          '<li class="featured"><a href="blue-salon-landing.html">Luxury timepieces</a> ' + pill("signature", "PREMIUM") + "</li>" +
           "<li>Breitling</li><li>Fashion timepieces</li><li>Smart watches</li>" +
         "</ul>" +
         '<h4 class="sub">Accessories</h4><ul>' +
@@ -231,7 +231,7 @@
     beauty:
       '<div class="bs-mega cols-6">' +
         '<div class="bs-col"><h4>Fragrances</h4><ul>' +
-          '<li class="featured">All fragrances →</li>' +
+          '<li class="featured"><a href="blue-salon-beauty.html">All fragrances →</a></li>' +
           "<li>Women's fragrance</li><li>Men's fragrance</li>" +
           "<li>Bathline</li><li>Extracts &amp; oils</li>" +
           "<li>Home fragrance</li><li>Gift sets</li>" +
@@ -255,7 +255,7 @@
           "<li>Nails</li><li>Tools &amp; brushes</li><li>Accessories</li>" +
         "</ul></div>" +
         '<div class="bs-col"><h4>Skincare &amp; self-care</h4><ul>' +
-          '<li class="featured">All self-care →</li>' +
+          '<li class="featured"><a href="blue-salon-beauty.html">All self-care →</a></li>' +
           "<li>Skincare</li><li>Face masks</li><li>Bodycare</li>" +
           "<li>Haircare</li><li>Bathing</li><li>Oral care</li>" +
         "</ul>" +
@@ -518,6 +518,9 @@
     navItems.forEach(function (el) { el.classList.remove("active"); });
   }
 
+  // top-level nav items that navigate to a dedicated landing page
+  var NAV_PAGES = { beauty: "blue-salon-beauty.html" };
+
   navItems.forEach(function (el) {
     el.addEventListener("mouseenter", function () {
       navItems.forEach(function (other) { other.classList.remove("active"); });
@@ -525,6 +528,11 @@
       megaHolder.innerHTML = MEGA_MENUS[el.dataset.menu] || "";
       megaHolder.classList.add("is-open");
     });
+    var page = NAV_PAGES[el.dataset.menu];
+    if (page) {
+      el.style.cursor = "pointer";
+      el.addEventListener("click", function () { window.location.href = page; });
+    }
   });
 
   navZone.addEventListener("mouseleave", closeMenu);

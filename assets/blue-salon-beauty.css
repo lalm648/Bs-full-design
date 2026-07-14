@@ -225,9 +225,9 @@
 .bsb-tile{position:relative;overflow:hidden;display:block}
 .bsb-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .6s ease}
 .bsb-tile:hover img{transform:scale(1.04)}
-.bsb-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(37,30,27,.6) 100%)}
+.bsb-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(37,30,27,.42) 100%)}
 .bsb-tile__body{position:absolute;left:0;bottom:0;z-index:2;padding:clamp(20px,2.2vw,32px);color:#fff}
-.bsb-tile__title{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.4vw,32px);line-height:1.1;margin:6px 0 14px}
+.bs-beauty-page .bsb-tile__title{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.4vw,32px);line-height:1.1;margin:6px 0 14px;color:#fff}
 .bsb-tile__cta{
   display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   background:#fff;color:var(--ink);padding:9px 20px;transition:.25s;
@@ -268,7 +268,7 @@
 .bsb-campaign::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,30,27,.5) 0%,rgba(37,30,27,.15) 45%,rgba(37,30,27,0) 70%)}
 .bsb-campaign__inner{position:relative;z-index:2}
 .bsb-campaign__panel{max-width:440px;color:#fff;display:flex;flex-direction:column;gap:16px}
-.bsb-campaign__title{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,50px);line-height:1.06}
+.bs-beauty-page .bsb-campaign__title{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,50px);line-height:1.06;color:#fff}
 .bsb-campaign__text{font-size:15px;color:rgba(255,255,255,.9);max-width:340px}
 .bsb-campaign__panel .bsb-btn{align-self:flex-start;margin-top:6px}
 

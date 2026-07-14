@@ -194,7 +194,7 @@
   /* -------- featured product carousel (Editor's Picks) -------- */
   var FEATURED = [
     { img: "images/beauty/prod-1.jpg", model: "images/beauty/feature-model.jpg",  name: "Radiance Vitamin C Serum", price: "QAR 285" },
-    { img: "images/beauty/campaign.jpg", model: "images/beauty/feature-model2.jpg", name: "Velvet Matte Lipstick", price: "QAR 120 – QAR 180" },
+    { img: "images/beauty/prod-lipstick.jpg", model: "images/beauty/feature-model2.jpg", name: "Velvet Matte Lipstick", price: "QAR 120 – QAR 180" },
     { img: "images/beauty/prod-8.jpg", model: "images/beauty/hero-3-left.jpg", name: "Restorative Hair Mask", price: "QAR 155" }
   ];
 
