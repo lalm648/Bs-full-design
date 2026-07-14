@@ -113,7 +113,7 @@
   grid-template-columns:none;
   overflow:visible;
   background:var(--bs-warm-grey);
-  max-width:var(--bs-page);
+  max-width:1440px;
   margin:20px auto 0;
 }
 .bs-hero__inner{

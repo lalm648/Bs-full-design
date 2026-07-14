@@ -193,9 +193,12 @@
 
   /* -------- featured product carousel (Editor's Picks) -------- */
   var FEATURED = [
-    { img: "images/beauty/prod-1.jpg", model: "images/beauty/feature-model.jpg",  name: "Radiance Vitamin C Serum", price: "QAR 285" },
-    { img: "images/beauty/prod-lipstick.jpg", model: "images/beauty/feature-model2.jpg", name: "Velvet Matte Lipstick", price: "QAR 120 – QAR 180" },
-    { img: "images/beauty/prod-8.jpg", model: "images/beauty/hero-3-left.jpg", name: "Restorative Hair Mask", price: "QAR 155" }
+    { img: "images/beauty/prod-1.jpg", model: "images/beauty/feature-model.jpg",  brand: "Blue Salon", name: "Radiance Vitamin C Serum", price: "QAR 285",
+      desc: "A brightening daily serum that revives radiance and evens tone." },
+    { img: "images/beauty/prod-lipstick.jpg", model: "images/beauty/feature-model2.jpg", brand: "Atelier", name: "Velvet Matte Lipstick", price: "QAR 120 – QAR 180",
+      desc: "Long-wear colour with a soft matte finish and weightless feel." },
+    { img: "images/beauty/prod-8.jpg", model: "images/beauty/hero-3-left.jpg", brand: "Lumière", name: "Restorative Hair Mask", price: "QAR 155",
+      desc: "An intensive weekly treatment that restores softness and shine." }
   ];
 
   function initFeature() {
@@ -203,7 +206,9 @@
     if (!root) return;
     var img = document.getElementById("bsbFeatImg");
     var model = document.getElementById("bsbFeatModel");
+    var brand = document.getElementById("bsbFeatBrand");
     var name = document.getElementById("bsbFeatName");
+    var desc = document.getElementById("bsbFeatDesc");
     var price = document.getElementById("bsbFeatPrice");
     var dots = document.getElementById("bsbFeatDots");
     var prev = root.querySelector(".bsb-feature__arrow--prev");
@@ -229,6 +234,8 @@
       setTimeout(function () {
         img.src = f.img; img.alt = f.name;
         if (model && f.model) { model.src = f.model; model.style.opacity = "1"; }
+        if (brand) brand.textContent = f.brand;
+        if (desc) desc.textContent = f.desc;
         name.textContent = f.name; price.textContent = f.price;
         img.style.opacity = "1";
       }, 180);
@@ -282,7 +289,80 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") shut(); });
   }
 
-  function boot() { render(); initHero(); initFeature(); initInsta(); initDrawer(); }
+  /* -------- full-width video banner: cursor-following pause/play -------- */
+  function initVideoBand() {
+    var video = document.getElementById("bsbVideoBand");
+    var toggle = document.getElementById("bsbVideoToggle");
+    if (!video || !toggle) return;
+    var band = video.closest(".bsb-videoband");
+
+    function sync() {
+      var playing = !video.paused;
+      toggle.textContent = playing ? "Pause" : "Play";
+      toggle.setAttribute("aria-pressed", String(playing));
+      toggle.setAttribute("aria-label", playing ? "Pause video" : "Play video");
+    }
+
+    // the button chases the cursor while it's over the video
+    band.addEventListener("pointerenter", function () { band.classList.add("is-cursor"); });
+    band.addEventListener("pointerleave", function () { band.classList.remove("is-cursor"); });
+    band.addEventListener("pointermove", function (e) {
+      var r = band.getBoundingClientRect();
+      toggle.style.left = (e.clientX - r.left) + "px";
+      toggle.style.top = (e.clientY - r.top) + "px";
+    });
+    // clicking the video toggles playback — but let links (the CTA) work normally
+    band.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      if (video.paused) { video.play(); } else { video.pause(); }
+    });
+
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    sync();
+  }
+
+  /* -------- before/after comparison -------- */
+  function initCompare() {
+    var compare = document.getElementById("bsbCompare");
+    if (!compare) return;
+    var pos = 50;
+    var dragging = false;
+
+    function setPosition(next) {
+      pos = Math.max(0, Math.min(100, next));
+      compare.style.setProperty("--pos", pos + "%");
+      compare.setAttribute("aria-valuenow", String(Math.round(pos)));
+    }
+    function positionFromEvent(event) {
+      var rect = compare.getBoundingClientRect();
+      setPosition(((event.clientX - rect.left) / rect.width) * 100);
+    }
+
+    compare.addEventListener("pointerdown", function (event) {
+      dragging = true;
+      compare.setPointerCapture(event.pointerId);
+      positionFromEvent(event);
+    });
+    compare.addEventListener("pointermove", function (event) {
+      if (dragging) positionFromEvent(event);
+    });
+    compare.addEventListener("pointerup", function (event) {
+      dragging = false;
+      if (compare.hasPointerCapture(event.pointerId)) compare.releasePointerCapture(event.pointerId);
+    });
+    compare.addEventListener("pointercancel", function () { dragging = false; });
+    compare.addEventListener("keydown", function (event) {
+      var step = event.shiftKey ? 10 : 2;
+      if (event.key === "ArrowLeft") { event.preventDefault(); setPosition(pos - step); }
+      if (event.key === "ArrowRight") { event.preventDefault(); setPosition(pos + step); }
+      if (event.key === "Home") { event.preventDefault(); setPosition(0); }
+      if (event.key === "End") { event.preventDefault(); setPosition(100); }
+    });
+    setPosition(pos);
+  }
+
+  function boot() { render(); initHero(); initFeature(); initInsta(); initDrawer(); initVideoBand(); initCompare(); }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {

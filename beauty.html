@@ -150,24 +150,40 @@
     </header>
     <div class="bsb-catgrid">
       <a class="bsb-cat" href="#">
-        <div class="bsb-cat__stage"><img src="images/beauty/cat-skincare.jpg" alt="Skincare products" loading="lazy"></div>
-        <span class="bsb-cat__name">Skincare</span>
-        <span class="bsb-cat__link">Shop now <i class="bsb-arrow"></i></span>
+        <div class="bsb-cat__stage">
+          <img src="images/beauty/cat-skincare.jpg" alt="Skincare products" loading="lazy">
+        </div>
+        <div class="bsb-cat__body">
+          <span class="bsb-cat__eyebrow">Glow &amp; Care</span>
+          <h3 class="bsb-cat__name">Skincare</h3>
+        </div>
       </a>
       <a class="bsb-cat" href="#">
-        <div class="bsb-cat__stage"><img src="images/beauty/cat-makeup.jpg" alt="Makeup collection" loading="lazy"></div>
-        <span class="bsb-cat__name">Makeup</span>
-        <span class="bsb-cat__link">Shop now <i class="bsb-arrow"></i></span>
+        <div class="bsb-cat__stage">
+          <img src="images/beauty/cat-makeup.jpg" alt="Makeup collection" loading="lazy">
+        </div>
+        <div class="bsb-cat__body">
+          <span class="bsb-cat__eyebrow">Colour Studio</span>
+          <h3 class="bsb-cat__name">Makeup</h3>
+        </div>
       </a>
       <a class="bsb-cat" href="#">
-        <div class="bsb-cat__stage"><img src="images/beauty/cat-fragrance.jpg" alt="Fragrance bottle" loading="lazy"></div>
-        <span class="bsb-cat__name">Fragrance</span>
-        <span class="bsb-cat__link">Shop now <i class="bsb-arrow"></i></span>
+        <div class="bsb-cat__stage">
+          <img src="images/beauty/cat-fragrance.jpg" alt="Fragrance bottle" loading="lazy">
+        </div>
+        <div class="bsb-cat__body">
+          <span class="bsb-cat__eyebrow">Signature Scents</span>
+          <h3 class="bsb-cat__name">Fragrance</h3>
+        </div>
       </a>
       <a class="bsb-cat" href="#">
-        <div class="bsb-cat__stage"><img src="images/beauty/cat-haircare.jpg" alt="Haircare products" loading="lazy"></div>
-        <span class="bsb-cat__name">Haircare</span>
-        <span class="bsb-cat__link">Shop now <i class="bsb-arrow"></i></span>
+        <div class="bsb-cat__stage">
+          <img src="images/beauty/cat-haircare.jpg" alt="Haircare products" loading="lazy">
+        </div>
+        <div class="bsb-cat__body">
+          <span class="bsb-cat__eyebrow">Hair Rituals</span>
+          <h3 class="bsb-cat__name">Haircare</h3>
+        </div>
       </a>
     </div>
   </section>
@@ -176,7 +192,7 @@
   <section class="bsb-section bsb-shell" aria-label="Beauty editorial">
     <div class="bsb-editorial">
       <a class="bsb-tile bsb-tile--wide" href="#">
-        <img src="images/beauty/edit-makeup.jpg" alt="Makeup application with a palette" loading="lazy">
+        <video src="https://amiy.wpenginepowered.com/wp-content/uploads/2023/10/Amiy-masonary-banner-video-1.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Makeup application with a palette"></video>
         <div class="bsb-tile__body">
           <p class="bsb-eyebrow bsb-eyebrow--light">Long Lasting</p>
           <h3 class="bsb-tile__title">Makeup Essentials</h3>
@@ -200,7 +216,7 @@
         </div>
       </a>
       <a class="bsb-tile bsb-tile--wide2" href="#">
-        <img src="images/beauty/edit-skintone.jpg" alt="Beauty for every skin tone" loading="lazy">
+        <video src="https://amiy.wpenginepowered.com/wp-content/uploads/2023/10/Amiy-masonary-banner-video-2.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Beauty for every skin tone"></video>
         <div class="bsb-tile__body">
           <p class="bsb-eyebrow bsb-eyebrow--light">Inclusive Shades</p>
           <h3 class="bsb-tile__title">Beauty for Every Skin Tone</h3>
@@ -209,46 +225,70 @@
       </a>
     </div>
   </section>
-  <!-- ============ 8. FULL-WIDTH CAMPAIGN BANNER ============ -->
-  <section class="bsb-campaign" aria-label="The art of beauty">
-    <img class="bsb-campaign__bg" src="images/beauty/campaign-banner.jpg" alt="Editorial makeup application close-up" loading="lazy">
-    <div class="bsb-shell bsb-campaign__inner">
-      <div class="bsb-campaign__panel">
-        <p class="bsb-eyebrow bsb-eyebrow--light">The Art of Beauty</p>
-        <h2 class="bsb-campaign__title">Colour, Care<br>and Expression</h2>
-        <p class="bsb-campaign__text">Discover modern makeup and skincare selected for effortless beauty.</p>
-        <a class="bsb-btn bsb-btn--light" href="#">Explore Makeup</a>
-      </div>
+  <!-- ============ 8. FULL-WIDTH VIDEO BANNER ============ -->
+  <section class="bsb-videoband" aria-label="Beauty in motion">
+    <video class="bsb-videoband__media" id="bsbVideoBand"
+           src="https://amiy.wpenginepowered.com/wp-content/uploads/2023/10/home-1-video.mp4"
+           autoplay muted loop playsinline preload="metadata"
+           aria-label="Close-up of a beauty makeup application"></video>
+    <div class="bsb-videoband__overlay">
+      <p class="bsb-eyebrow bsb-eyebrow--light">The Art of Colour</p>
+      <h2 class="bsb-videoband__title">Statement Lips,<br>Effortless Beauty</h2>
+      <a class="bsb-videoband__cta" href="#">Explore Makeup</a>
     </div>
+    <button class="bsb-videoband__toggle" id="bsbVideoToggle" type="button" aria-pressed="true" aria-label="Pause video">Pause</button>
   </section>
 
   <!-- ============ 9. FEATURED PRODUCT CAROUSEL ============ -->
   <section class="bsb-section bsb-shell bsb-feature" aria-label="Editor's picks" id="bsbFeature">
-    <button class="bsb-feature__arrow bsb-feature__arrow--prev" type="button" aria-label="Previous product">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><path d="M15 5 8 12l7 7"/></svg>
-    </button>
-
     <figure class="bsb-feature__model">
       <img id="bsbFeatModel" src="images/beauty/feature-model.jpg" alt="Model enjoying a beauty ritual" loading="lazy">
     </figure>
 
     <div class="bsb-feature__panel">
-      <p class="bsb-eyebrow">Editor's Picks</p>
+      <p class="bsb-eyebrow bsb-feature__eyebrow">Editor's Picks</p>
       <div class="bsb-feature__stage"><img id="bsbFeatImg" src="images/beauty/prod-1.jpg" alt="Featured product"></div>
+      <span class="bsb-feature__brand" id="bsbFeatBrand">Blue Salon</span>
       <h3 class="bsb-feature__name" id="bsbFeatName">Radiance Vitamin C Serum</h3>
+      <p class="bsb-feature__desc" id="bsbFeatDesc">A brightening daily serum that revives radiance and evens tone.</p>
       <p class="bsb-feature__price" id="bsbFeatPrice">QAR 285</p>
-      <div class="bsb-feature__dots" id="bsbFeatDots" role="tablist" aria-label="Featured products"></div>
-    </div>
+      <a class="bsb-btn bsb-btn--dark bsb-feature__cta" href="#">View Product</a>
 
-    <button class="bsb-feature__arrow bsb-feature__arrow--next" type="button" aria-label="Next product">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><path d="m9 5 7 7-7 7"/></svg>
-    </button>
+      <div class="bsb-feature__controls">
+        <button class="bsb-feature__arrow bsb-feature__arrow--prev" type="button" aria-label="Previous product">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <div class="bsb-feature__dots" id="bsbFeatDots" role="tablist" aria-label="Featured products"></div>
+        <button class="bsb-feature__arrow bsb-feature__arrow--next" type="button" aria-label="Next product">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9b. BEFORE / AFTER COMPARE ============ -->
+  <section class="bsb-section bsb-shell" aria-label="Before and after">
+    <div class="bsb-compare" id="bsbCompare" role="slider" tabindex="0"
+         aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+      <img class="bsb-compare__img"
+           src="images/before-after-asian.png"
+           alt="Skin before and after treatment — acne-prone on the left, clear and smooth on the right" loading="lazy">
+      <img class="bsb-compare__blur" src="images/before-after-asian.png" alt="" aria-hidden="true">
+      <span class="bsb-compare__label bsb-compare__label--before">Before</span>
+      <span class="bsb-compare__label bsb-compare__label--after">After</span>
+      <span class="bsb-compare__handle" aria-hidden="true">
+        <span class="bsb-compare__grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 4 12l5 6M15 6l5 6-5 6"/></svg>
+        </span>
+      </span>
+    </div>
   </section>
 
   <!-- ============ 10. BEAUTY BRAND ROW ============ -->
   <section class="bsb-section bsb-shell" aria-label="Iconic beauty houses">
     <header class="bsb-heading">
-      <h2 class="bsb-heading__title bsb-heading__title--sm">Iconic Beauty Houses</h2>
+      <p class="bsb-eyebrow">Curated Houses</p>
+      <h2 class="bsb-heading__title">Iconic Beauty Houses</h2>
     </header>
     <ul class="bsb-brands" id="bsbBrands"></ul>
   </section>
@@ -259,6 +299,40 @@
       <h2 class="bsb-heading__title bsb-heading__title--sm">Us @bluesalonbeauty</h2>
     </header>
     <div class="bsb-insta__grid" id="bsbInsta"></div>
+  </section>
+
+  <!-- ============ 12. QATAR SERVICE STRIP ============ -->
+  <section class="bsb-services" aria-label="Blue Salon services">
+    <div class="bsb-shell bsb-services__grid">
+      <div class="bsb-service">
+        <span class="bsb-service__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17.5" cy="17" r="1.6"/></svg>
+        </span>
+        <h4>Complimentary Delivery</h4>
+        <p>Across Qatar on every beauty order.</p>
+      </div>
+      <div class="bsb-service">
+        <span class="bsb-service__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 9h16v11H4zM4 9l2-4h12l2 4M12 5v15M9 5 7 9M15 5l2 4"/></svg>
+        </span>
+        <h4>Gift Wrapping</h4>
+        <p>Elegant complimentary wrapping available.</p>
+      </div>
+      <div class="bsb-service">
+        <span class="bsb-service__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M2.5 10h19M6 14h4"/></svg>
+        </span>
+        <h4>Flexible Instalments</h4>
+        <p>Split your purchase into easy payments.</p>
+      </div>
+      <div class="bsb-service">
+        <span class="bsb-service__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        </span>
+        <h4>Beauty Assistance</h4>
+        <p>Personal advice from our in-store experts.</p>
+      </div>
+    </div>
   </section>
 
 </div><!-- /.bs-beauty-page -->
