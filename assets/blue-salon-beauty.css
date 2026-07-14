@@ -508,9 +508,14 @@
   .bsb-nav{display:none}
   .bsb-header__utils .bsb-iconbtn:first-child{display:none}
 
-  /* hero stacks: center panel first */
-  .bsb-hero{grid-template-columns:1fr;min-height:0}
-  .bsb-hero__panel{order:-1;padding-block:40px}
+  /* hero: image panels first, then the content panel */
+  .bsb-hero{
+    grid-template-columns:1fr;grid-template-areas:"left" "right" "panel";
+    min-height:0;
+  }
+  .bsb-hero__img--left{grid-area:left}
+  .bsb-hero__img--right{grid-area:right}
+  .bsb-hero__panel{grid-area:panel;padding-block:40px}
   .bsb-hero__img{aspect-ratio:4/3}
 
   /* category strip scrollable */
