@@ -1,0 +1,242 @@
+/* ============================================================
+   Blue Salon — Gourmet landing page
+   Structure mirrors the reference cake landing (hero → category
+   mosaic → product tabs → collections → service promise) while
+   keeping the shared Blue Salon design system: Cormorant Garamond
+   display serif, Inter UI sans, and the gourmet warm palette.
+   All rules are scoped under .gourmet-page so they never collide
+   with the global header/footer loaded from app.css / styles.css.
+   ============================================================ */
+:root {
+  --gg-white: #fff;
+  --gg-cream: #f5f5f4;
+  --gg-ivory: #ededec;
+  --gg-stone: #f0f0ef;
+  --gg-espresso: #1f1410;
+  --gg-caramel: #b78863;
+  --gg-text: #181411;
+  --gg-muted: #756860;
+  --gg-border: #e4ddd7;
+  --gg-burgundy: #8d2f35;
+  --gg-sale: #b23a3f;
+  --gg-page: 1400px;
+  --gg-pad: 32px;
+  --gg-serif: 'Cormorant Garamond', Georgia, serif;
+  --gg-sans: 'Inter', Arial, sans-serif;
+  /* controlled vertical rhythm between major blocks */
+  --gg-space-sm: clamp(20px, 2vw, 26px);
+  --gg-space-md: clamp(64px, 7vw, 84px);
+  --gg-space-lg: clamp(80px, 8vw, 104px);
+  /* one consistent bottom-up overlay for text-over-image cards */
+  --gg-scrim: linear-gradient(to top, rgba(18,12,8,.74), rgba(18,12,8,.14) 58%, rgba(18,12,8,0) 82%);
+  /* mild grade so bright shots sit with the chocolate/cream palette */
+  --gg-grade: saturate(.9) contrast(1.03);
+}
+
+.gourmet-page { color: var(--gg-text); font-family: var(--gg-sans); background: var(--gg-white); overflow-x: clip; }
+.gourmet-page *,
+.gourmet-page *::before,
+.gourmet-page *::after { box-sizing: border-box; }
+.gourmet-page img { display: block; max-width: 100%; }
+.gourmet-page a { color: inherit; text-decoration: none; }
+/* base.css sets h1-h4 -> --text-strong and a -> --text-link; restore
+   white on dark-image sections and keep our button/link colours. */
+.gourmet-page .gg-hero h1,
+.gourmet-page .gg-tile__body h3,
+.gourmet-page .gg-duo__body h3,
+.gourmet-page .gg-feature__copy h2,
+.gourmet-page .gg-collection__body h3 { color: #fff; }
+.gourmet-page a:hover { text-decoration: none; }
+/* buttons are <a>; pin their label colours so the shared a{color} and
+   the hero's inherited white can never wash them out. */
+.gourmet-page .gg-btn--light { color: #1f1410; }
+.gourmet-page .gg-btn--dark { color: #fff; }
+.gourmet-page .gg-btn--outline { color: var(--gg-text); }
+.gourmet-page .gg-btn--dark:hover,
+.gourmet-page .gg-btn--light:hover,
+.gourmet-page .gg-btn--outline:hover { color: #fff; }
+
+.gg-shell { width: min(var(--gg-page), calc(100% - var(--gg-pad) * 2)); margin-inline: auto; }
+
+/* shared type helpers ------------------------------------------------ */
+.gg-kicker { margin: 0 0 16px; color: var(--gg-caramel); font: 600 11px/1 var(--gg-sans); letter-spacing: .2em; text-transform: uppercase; }
+.gourmet-page .gg-display { margin: 0; font: 500 clamp(38px, 5vw, 72px)/1 var(--gg-serif); letter-spacing: -.02em; }
+.gourmet-page .gg-display em { font-style: italic; }
+
+/* pill / text buttons ------------------------------------------------ */
+.gg-btn { display: inline-block; padding: 15px 34px; font: 600 10px/1 var(--gg-sans); letter-spacing: .2em; text-transform: uppercase; border: 1px solid transparent; transition: background .25s ease, color .25s ease, border-color .25s ease; cursor: pointer; }
+.gg-btn--light { background: #fff; color: var(--gg-espresso); }
+.gg-btn--light:hover { background: var(--gg-caramel); color: #fff; }
+.gg-btn--dark { background: var(--gg-espresso); color: #fff; }
+.gg-btn--dark:hover { background: var(--gg-caramel); }
+.gg-btn--outline { border-color: var(--gg-text); color: var(--gg-text); background: transparent; }
+.gg-btn--outline:hover { background: var(--gg-espresso); color: #fff; border-color: var(--gg-espresso); }
+
+/* section heads ------------------------------------------------------ */
+.gg-head { text-align: center; margin-bottom: 46px; }
+.gg-head .gg-kicker { margin-bottom: 12px; }
+.gg-head h2 { margin: 0; font: 500 clamp(30px, 3.4vw, 46px)/1.05 var(--gg-serif); letter-spacing: -.01em; }
+.gg-head__sub { max-width: 580px; margin: 16px auto 0; color: var(--gg-muted); font-size: 15px; line-height: 1.65; }
+.gg-head--strip { margin-bottom: 40px; }
+
+/* ============ 1. HERO (boxed two-image slider) ============ */
+.gg-hero { position: relative; width: min(var(--gg-page), calc(100% - var(--gg-pad) * 2)); margin: clamp(16px, 2vw, 28px) auto 0; min-height: min(72vh, 660px); color: #fff; background: var(--gg-espresso); overflow: hidden; }
+.gg-hero__slide { position: absolute; inset: 0; display: flex; align-items: center; text-align: left; opacity: 0; visibility: hidden; transition: opacity .9s ease; }
+.gg-hero__slide.is-active { opacity: 1; visibility: visible; }
+.gg-hero__media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+.gg-hero__slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,8,5,.78), rgba(15,8,5,.34) 48%, rgba(15,8,5,.04)); }
+.gg-hero__inner { position: relative; z-index: 1; padding: clamp(40px, 6vw, 92px); max-width: 600px; }
+.gg-hero .gg-kicker { color: #f3e4d1; }
+.gg-hero .gg-btn { padding: 17px 46px; }
+.gg-hero h1 { margin: 0 0 34px; font: 500 clamp(42px, 5.6vw, 82px)/1 var(--gg-serif); letter-spacing: -.02em; }
+.gg-hero h1 em { display: block; font-style: italic; }
+/* minimal centered pill nav */
+.gg-hero__nav { position: absolute; z-index: 3; left: 50%; bottom: 24px; transform: translateX(-50%); display: flex; align-items: center; gap: 9px; padding: 9px 15px; background: rgba(18,12,8,.34); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; }
+.gg-hero__dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: rgba(255,255,255,.5); cursor: pointer; transition: width .35s ease, background .35s ease; }
+.gg-hero__dot.is-active { width: 26px; background: #fff; }
+.gg-hero__dot:hover { background: rgba(255,255,255,.8); }
+
+/* ============ 2. SHOP BY CRAFT (refined mosaic) ============ */
+.gg-mosaic { padding-top: var(--gg-space-lg); }
+.gg-mosaic__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.gg-tile { position: relative; min-height: 62vw; overflow: hidden; background: var(--gg-stone); display: block; }
+.gg-tile img { width: 100%; height: 100%; object-fit: cover; filter: var(--gg-grade); transition: transform 1s cubic-bezier(.2,.6,.2,1); }
+.gg-tile:hover img { transform: scale(1.06); }
+.gg-tile::after { content: ''; position: absolute; inset: 0; background: var(--gg-scrim); }
+.gg-tile__body { position: absolute; z-index: 1; inset: auto 0 0 0; padding: clamp(26px, 2.4vw, 40px); text-align: left; color: #fff; }
+.gg-tile__eyebrow { display: block; margin-bottom: 11px; color: #f0dfc8; font: 600 10.5px/1 var(--gg-sans); letter-spacing: .22em; text-transform: uppercase; }
+.gourmet-page .gg-tile__body h3 { margin: 0; font: 500 clamp(25px, 2.3vw, 36px)/1.02 var(--gg-serif); }
+.gg-tile__cta { display: inline-flex; align-items: center; gap: 9px; margin-top: 15px; font: 600 10.5px/1 var(--gg-sans); letter-spacing: .18em; text-transform: uppercase; }
+.gg-tile__cta::after { content: '→'; font-size: 13px; transition: transform .3s ease; }
+.gg-tile:hover .gg-tile__cta::after { transform: translateX(5px); }
+
+@media (min-width: 721px) {
+  .gg-mosaic__grid { grid-template-columns: 1.16fr .8fr 1.16fr; grid-template-rows: repeat(2, minmax(232px, 29vw)); gap: clamp(16px, 1.6vw, 24px); }
+  .gg-tile { min-height: 0; }
+  .gg-mosaic__grid > :nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+  .gg-mosaic__grid > :nth-child(2) { grid-column: 2; grid-row: 1; }
+  .gg-mosaic__grid > :nth-child(3) { grid-column: 2; grid-row: 2; }
+  .gg-mosaic__grid > :nth-child(4) { grid-column: 3; grid-row: 1 / 3; }
+}
+
+/* ============ 2b. HANDCRAFTED STORY (image-led band, white low-text overlay) ============ */
+.gg-feature { position: relative; margin-top: var(--gg-space-md); min-height: clamp(360px, 42vw, 540px); overflow: hidden; display: flex; align-items: flex-end; background: var(--gg-espresso); }
+.gg-feature__media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--gg-grade); transition: transform 1.1s cubic-bezier(.2,.6,.2,1); }
+.gg-feature:hover .gg-feature__media { transform: scale(1.05); }
+.gg-feature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,10,7,.82), rgba(15,10,7,.22) 58%, rgba(15,10,7,0) 84%); }
+.gg-feature__copy { position: relative; z-index: 1; padding: clamp(30px, 3.4vw, 56px); color: #fff; }
+.gg-feature__copy .gg-kicker { color: #f0dfc8; margin-bottom: 14px; }
+.gourmet-page .gg-feature__copy h2 { margin: 0; color: #fff; font: 500 clamp(30px, 3.4vw, 50px)/1.03 var(--gg-serif); letter-spacing: -.01em; }
+.gg-feature .gg-text-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; color: #fff; font: 600 10.5px/1 var(--gg-sans); letter-spacing: .2em; text-transform: uppercase; }
+.gg-feature .gg-text-link::after { content: '→'; font-size: 15px; transition: transform .3s ease; }
+.gg-feature .gg-text-link:hover::after { transform: translateX(5px); }
+
+/* ============ 3. THE PATISSERIE EDIT (editorial product section) ============ */
+.gg-edit { padding-top: var(--gg-space-lg); }
+.gg-edit .gg-head { margin-bottom: clamp(28px, 2.6vw, 38px); }
+
+/* tab bar (neutral, no warm accents) */
+.gg-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(20px, 3vw, 44px); margin-bottom: clamp(34px, 3.4vw, 48px);}
+.gg-tab { position: relative; padding: 0 2px 16px; background: none; border: 0; cursor: pointer; color: var(--gg-muted); font: 600 11px/1 var(--gg-sans); letter-spacing: .16em; text-transform: uppercase; transition: color .25s ease; }
+.gg-tab::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--gg-espresso); transform: scaleX(0); transition: transform .3s ease; }
+.gg-tab:hover { color: var(--gg-text); }
+.gg-tab.is-active { color: var(--gg-espresso); }
+.gg-tab.is-active::after { transform: scaleX(1); }
+
+/* product panels + grid */
+.gg-tabpanel[hidden] { display: none; }
+.gg-tabpanel.is-active { animation: gg-fade .4s ease; }
+@keyframes gg-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.gg-prodgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 2.4vw, 34px) clamp(16px, 1.8vw, 26px); }
+.gg-prod { display: block; }
+.gg-prod__media { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--gg-stone); }
+.gg-prod__media img { width: 100%; height: 100%; object-fit: cover; filter: var(--gg-grade); transition: transform .8s cubic-bezier(.2,.6,.2,1); }
+.gg-prod:hover .gg-prod__media img { transform: scale(1.05); }
+.gourmet-page .gg-prod__title { margin: 18px 0 0; font: 500 clamp(19px, 1.5vw, 23px)/1.2 var(--gg-serif); color: var(--gg-text); letter-spacing: -.005em; }
+.gg-prod__price { display: block; margin-top: 8px; font: 500 15px/1 var(--gg-sans); color: var(--gg-espresso); }
+
+/* ============ 3b. DUAL FEATURE CARDS ============ */
+.gg-duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 1.8vw, 26px); margin-top: var(--gg-space-sm); }
+.gg-duo__card { position: relative; min-height: clamp(460px, 44vw, 580px); overflow: hidden; display: flex; align-items: flex-end; background: var(--gg-espresso); }
+.gg-duo__card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: var(--gg-grade); transition: transform 1.1s cubic-bezier(.2,.6,.2,1); }
+.gg-duo__card:hover img { transform: scale(1.05); }
+.gg-duo__card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,10,7,.8), rgba(15,10,7,.2) 55%, rgba(15,10,7,0) 82%); }
+.gg-duo__body { position: relative; z-index: 1; padding: clamp(32px, 3.2vw, 52px); color: #fff; }
+.gg-duo__eyebrow { display: block; margin-bottom: 13px; color: #f0dfc8; font: 600 11px/1 var(--gg-sans); letter-spacing: .22em; text-transform: uppercase; }
+.gourmet-page .gg-duo__body h3 { margin: 0 0 22px; font: 500 clamp(29px, 2.8vw, 44px)/1.04 var(--gg-serif); }
+
+/* ============ 5b. INSTAGRAM GALLERY ============ */
+.gg-gram { padding-block: var(--gg-space-md); }
+.gg-gram .gg-head { margin-bottom: clamp(34px, 3.4vw, 44px); }
+.gourmet-page .gg-gram .gg-head h2 { font: 500 clamp(24px, 2.2vw, 32px)/1.1 var(--gg-serif); }
+.gg-gram__grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.gg-gram__item { position: relative; aspect-ratio: 2 / 2; overflow: hidden; background: var(--gg-stone); display: block; }
+.gg-gram__item img { width: 100%; height: 100%; object-fit: cover; filter: var(--gg-grade); transition: transform .7s ease; }
+.gg-gram__item::after { content: ''; position: absolute; inset: 0; background: rgba(31,20,16,0); transition: background .3s ease; }
+.gg-gram__item:hover img { transform: scale(1.08); }
+.gg-gram__item:hover::after { background: rgba(31,20,16,.26); }
+.gg-gram__follow { display: block; width: max-content; margin: clamp(30px, 3vw, 40px) auto 0; color: var(--gg-espresso); font: 600 11px/1 var(--gg-sans); letter-spacing: .18em; text-transform: uppercase; border-bottom: 1px solid var(--gg-caramel); padding-bottom: 6px; }
+.gg-gram__follow:hover { color: var(--gg-burgundy); border-color: var(--gg-burgundy); }
+
+/* ============ 3. SIGNATURE SELECTION (editorial product edit) ============ */
+.gg-shop { padding-bottom: clamp(64px, 8vw, 110px); }
+.gg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(30px, 3vw, 46px) clamp(22px, 2.2vw, 34px); }
+.gg-card { position: relative; }
+.gg-card__media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--gg-ivory); }
+.gg-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.6,.2,1); }
+.gg-card:hover .gg-card__media img { transform: scale(1.045); }
+.gg-card__tag { position: absolute; top: 14px; left: 14px; z-index: 2; background: var(--gg-burgundy); color: #fff; font: 600 8.5px/1 var(--gg-sans); letter-spacing: .18em; text-transform: uppercase; padding: 6px 11px; }
+.gg-card__type { margin: 20px 0 8px; color: var(--gg-caramel); font: 600 9.5px/1 var(--gg-sans); letter-spacing: .18em; text-transform: uppercase; }
+.gourmet-page .gg-card h3 { margin: 0; font: 500 24px/1.22 var(--gg-serif); letter-spacing: -.005em; }
+.gg-card__price { margin: 11px 0 0; font: 500 15px/1 var(--gg-sans); color: var(--gg-espresso); }
+.gg-card__price s { margin-left: 9px; color: var(--gg-muted); font-weight: 400; font-size: 13px; text-decoration-thickness: 1px; }
+.gg-shop__more { text-align: center; margin-top: clamp(46px, 5vw, 66px); }
+
+/* ============ 4. CURATED BY OCCASION (full-bleed collection strip) ============ */
+.gg-curated { padding-top: var(--gg-space-lg); }
+.gg-curated .gg-head { margin-bottom: clamp(42px, 4vw, 56px); }
+.gg-collections { display: grid; grid-template-columns: repeat(4, 1fr); }
+.gg-collection { position: relative; min-height: clamp(400px, 38vw, 540px); overflow: hidden; background: var(--gg-espresso); display: flex; align-items: flex-end; justify-content: center; text-align: center; }
+.gg-collection img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; filter: var(--gg-grade); transition: transform .8s cubic-bezier(.2,.6,.2,1), opacity .4s ease; }
+.gg-collection:hover img { transform: scale(1.055); opacity: 1; }
+.gg-collection::after { content: ''; position: absolute; inset: 0; background: var(--gg-scrim); }
+.gg-collection__body { position: relative; z-index: 1; padding: 46px 24px; color: #fff; }
+.gourmet-page .gg-collection__body h3 { margin: 0 0 11px; font: 500 clamp(25px, 2vw, 32px)/1.1 var(--gg-serif); }
+.gg-collection__count { display: block; font: 600 10.5px/1 var(--gg-sans); letter-spacing: .18em; text-transform: uppercase; color: #f0dfc8; }
+
+/* ============ 5. SERVICE / PROMISE BAR ============ */
+.gg-promise { background: var(--gg-cream); }
+.gg-promise__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-block: clamp(48px, 6vw, 74px); text-align: center; }
+.gg-promise__item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.gg-promise__icon { width: 46px; height: 46px; margin-bottom: 14px; color: var(--gg-espresso); }
+.gg-promise__icon svg { width: 100%; height: 100%; }
+.gg-promise__item h4 { margin: 0; font: 600 12px/1 var(--gg-sans); letter-spacing: .14em; text-transform: uppercase; }
+.gg-promise__item p { margin: 8px 0 0; color: var(--gg-muted); font-size: 13px; }
+.margin-no { margin: 0 !important; }
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1000px) {
+  :root { --gg-pad: 28px; }
+  .gg-grid { grid-template-columns: repeat(2, 1fr); }
+  .gg-prodgrid { grid-template-columns: repeat(2, 1fr); }
+  .gg-collections { grid-template-columns: repeat(2, 1fr); }
+  .gg-gram__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  :root { --gg-pad: 18px; }
+  .gg-hero { min-height: 560px; }
+  .gg-hero__media { object-position: center 64%; }
+  .gg-hero__inner { padding: 40px 28px; }
+  .gg-grid { gap: 22px 16px; }
+  .gg-duo { grid-template-columns: 1fr; }
+  .gg-promise__grid { grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 560px) {
+  .gg-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 14px; }
+  .gg-prodgrid { gap: 24px 14px; }
+  .gg-tabs { gap: 16px; }
+  .gg-card__media { aspect-ratio: 3 / 4; }
+  .gourmet-page .gg-card h3 { font-size: 18px; }
+  .gg-card__type { margin-top: 14px; }
+  .gg-collections { grid-template-columns: repeat(2, 1fr); }
+  .gg-gram__grid { grid-template-columns: repeat(3, 1fr); }
+}
