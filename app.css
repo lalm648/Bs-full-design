@@ -430,6 +430,61 @@ html, body { margin: 0; background: var(--paper); }
 .bs-hero-media { overflow: hidden; }
 .bs-hero-media img { width: 100%; height: 100%; object-fit: cover; }
 
+/* Men collection quick navigation — borderless circular imagery below the hero */
+.men-quicknav {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 22px 24px 26px;
+}
+.men-quicknav-title {
+  margin: 0 0 18px;
+  color: var(--text-strong);
+  font-size: 26px;
+  line-height: 1.15;
+  text-align: center;
+}
+.men-quicknav-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.men-quicknav-item {
+  min-width: 0;
+  color: var(--text-strong);
+  text-align: center;
+  text-decoration: none;
+}
+.men-quicknav-item:hover { text-decoration: none; }
+.men-quicknav-circle {
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-card);
+  max-width: 74px;
+}
+.men-quicknav-circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .55s cubic-bezier(.2, .6, .2, 1);
+}
+.men-quicknav-label {
+  display: block;
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .04em;
+}
+.men-quicknav-item:hover .men-quicknav-circle img,
+.men-quicknav-item:focus-visible .men-quicknav-circle img { transform: scale(1.08); }
+.men-quicknav-item:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 4px; }
+
 /* ── Section headings ─────────────────────────────────────── */
 .bs-heading-title { font-size: 34px; margin-top: 8px; }
 
@@ -1328,6 +1383,17 @@ html, body { margin: 0; background: var(--paper); }
   .bs-hero-sub { font-size: 14px; margin-bottom: 24px; }
   .bs-hero-dots { padding: 16px 0; }
 
+  .men-quicknav { padding-top: 20px; padding-bottom: 24px; }
+  .men-quicknav-row {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+  .men-quicknav-item { flex: 0 0 116px; scroll-snap-align: start; }
+
   .bs-shopcat-title { font-size: 34px; }
 }
 
@@ -1372,6 +1438,11 @@ html, body { margin: 0; background: var(--paper); }
   .bs-hero-title { font-size: 30px; }
   .bs-hero-panel { padding: 26px 20px 34px; }
   .bs-hero-media { aspect-ratio: 4 / 3; }
+  .men-quicknav { padding: 18px 16px 22px; }
+  .men-quicknav-title { margin-bottom: 16px; font-size: 24px; }
+  .men-quicknav-row { gap: 12px; }
+  .men-quicknav-item { flex-basis: 102px; }
+  .men-quicknav-label { margin-top: 8px; font-size: 11px; }
   .bs-shopcat-title { font-size: 30px; }
 
   .bs-appband { padding: 18px 16px; }
