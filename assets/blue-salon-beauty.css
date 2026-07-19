@@ -24,8 +24,8 @@
   --gap:24px;
 
   /* ---- type ---- */
-  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --sans:'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --serif:var(--font-display);
+  --sans:var(--font-sans);
 
   font-family:var(--sans);
   color:var(--ink);
@@ -88,8 +88,8 @@
 .bsb-heading{text-align:center;margin-bottom:clamp(36px,5vw,60px)}
 .bsb-heading .bsb-eyebrow{margin-bottom:14px}
 .bsb-heading__title{
-  font-family:var(--serif);font-weight:600;
-  font-size:clamp(30px,4vw,42px);line-height:1.1;color:var(--ink);
+  font-family:var(--serif);font-weight:var(--fw-light);
+  font-size:clamp(30px,4vw,42px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);color:var(--text-strong);
 }
 .bsb-heading__title--sm{font-size:clamp(26px,3vw,34px)}
 .bsb-heading__sub{
@@ -120,7 +120,7 @@
 .bsb-search input{border:0;outline:0;background:none;font-size:13px;width:100%;color:var(--ink)}
 .bsb-search input::placeholder{color:var(--muted)}
 .bsb-logo{text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1}
-.bsb-logo__mark{font-family:var(--serif);font-weight:600;font-size:26px;letter-spacing:.14em;color:var(--navy)}
+.bsb-logo__mark{font-family:var(--serif);font-weight:var(--fw-light);font-size:26px;letter-spacing:var(--ls-tight);color:var(--navy)}
 .bsb-logo__sub{font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--taupe)}
 .bsb-header__utils{display:flex;align-items:center;gap:6px;justify-self:end}
 .bsb-iconbtn{display:grid;place-items:center;width:40px;height:40px;color:var(--ink);border-radius:50%;transition:.2s}
@@ -168,8 +168,8 @@
 .bsb-hero.is-covering .bsb-hero__content{opacity:0}
 .bsb-hero__panel .bsb-eyebrow{margin-bottom:2px;color:var(--brown);opacity:.85}
 .bsb-hero__title{
-  font-family:var(--serif);font-weight:600;color:var(--brown);
-  font-size:clamp(40px,4.6vw,62px);line-height:1;
+  font-family:var(--serif);font-weight:var(--fw-light);color:var(--brown);
+  font-size:clamp(40px,4.6vw,62px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);
 }
 .bsb-hero__text{color:var(--ink);opacity:.72;font-size:15.5px;line-height:1.65;max-width:380px}
 .bsb-hero__panel .bsb-btn{margin-top:8px;padding:16px 34px}
@@ -220,8 +220,8 @@
 }
 /* name carries an understated underline-reveal on hover */
 .bs-beauty-page .bsb-cat__name{
-  font-family:var(--serif);font-weight:600;line-height:1.1;
-  font-size:clamp(22px,2vw,30px);color:var(--ink);
+  font-family:var(--serif);font-weight:var(--fw-light);line-height:var(--lh-tight);
+  font-size:clamp(22px,2vw,30px);letter-spacing:var(--ls-tight);color:var(--text-strong);
   position:relative;
 }
 .bsb-cat__name::after{
@@ -250,7 +250,7 @@
 .bsb-tile:hover img,.bsb-tile:hover video{transform:scale(1.04)}
 .bsb-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,30,27,0) 52%,rgba(37,30,27,.16) 74%,rgba(37,30,27,.58) 100%)}
 .bsb-tile__body{position:absolute;left:0;bottom:0;z-index:2;padding:clamp(20px,2.2vw,32px);color:#fff}
-.bs-beauty-page .bsb-tile__title{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.4vw,32px);line-height:1.1;margin:6px 0 14px;color:#fff}
+.bs-beauty-page .bsb-tile__title{font-family:var(--serif);font-weight:var(--fw-light);font-size:clamp(22px,2.4vw,32px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);margin:6px 0 14px;color:#fff}
 .bsb-tile__cta{
   display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   background:#fff;color:var(--ink);padding:9px 20px;transition:.25s;
@@ -291,7 +291,7 @@
 .bsb-campaign::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,30,27,.5) 0%,rgba(37,30,27,.15) 45%,rgba(37,30,27,0) 70%)}
 .bsb-campaign__inner{position:relative;z-index:2}
 .bsb-campaign__panel{max-width:440px;color:#fff;display:flex;flex-direction:column;gap:16px}
-.bs-beauty-page .bsb-campaign__title{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,50px);line-height:1.06;color:#fff}
+.bs-beauty-page .bsb-campaign__title{font-family:var(--serif);font-weight:var(--fw-light);font-size:clamp(30px,4.4vw,50px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);color:#fff}
 .bsb-campaign__text{font-size:15px;color:rgba(255,255,255,.9);max-width:340px}
 .bsb-campaign__panel .bsb-btn{align-self:flex-start;margin-top:6px}
 
@@ -308,8 +308,8 @@
   pointer-events:none;
 }
 .bs-beauty-page .bsb-videoband__title{
-  font-family:var(--serif);font-weight:600;line-height:1.04;
-  font-size:clamp(28px,3.4vw,46px);color:#fff;
+  font-family:var(--serif);font-weight:var(--fw-light);line-height:var(--lh-tight);
+  font-size:clamp(28px,3.4vw,46px);letter-spacing:var(--ls-tight);color:#fff;
 }
 .bsb-videoband__cta{
   pointer-events:auto;cursor:pointer;display:inline-block;margin-top:4px;
@@ -357,7 +357,7 @@
 }
 .bsb-feature__stage img{width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
 .bsb-feature__brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
-.bsb-feature__name{font-family:var(--serif);font-weight:600;font-size:clamp(24px,2.6vw,34px);line-height:1.08;color:var(--ink)}
+.bsb-feature__name{font-family:var(--serif);font-weight:var(--fw-light);font-size:clamp(24px,2.6vw,34px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);color:var(--text-strong)}
 .bsb-feature__desc{font-size:14.5px;line-height:1.6;color:var(--muted);max-width:400px}
 .bsb-feature__price{font-size:18px;color:var(--ink);letter-spacing:.02em;margin-top:2px}
 .bsb-feature__cta{margin-top:12px;padding:14px 32px}

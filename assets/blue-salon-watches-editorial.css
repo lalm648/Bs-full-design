@@ -36,8 +36,8 @@
   --bs-grid-gap:20px;
 
   /* ---- type ---- */
-  --bs-serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --bs-sans:'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --bs-serif:var(--font-display);
+  --bs-sans:var(--font-sans);
 
   font-family:var(--bs-sans);
   color:var(--bs-ink);
@@ -814,6 +814,26 @@
   .bs-services-watch{grid-template-columns:1fr;text-align:center;gap:10px}
   .bs-panel{min-height:420px}
 }
+
+/* Shared homepage display typography across the Watches experience. */
+.bs-watches-editorial .bs-hero__title,
+.bs-watches-editorial .bs-duo__campaign-caption h2,
+.bs-watches-editorial .bs-duo__new h2,
+.bs-watches-editorial .bs-purpose__lead h2,
+.bs-watches-editorial .bs-purpose__card > span,
+.bs-watches-editorial .bs-edit__item h3,
+.bs-watches-editorial .bs-panel__head h2,
+.bs-watches-editorial .bs-together h2,
+.bs-watches-editorial .bs-beyond__feature span,
+.bs-watches-editorial .bs-beyond__grid > a:not(.bs-beyond__feature) span,
+.bs-watches-editorial .bs-cats__title h2,
+.bs-watches-editorial .bs-priv__panel h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+.bs-watches-editorial .bs-together h2 em { font-weight: inherit; }
 
 /* ============================================================
    MOTION SAFETY

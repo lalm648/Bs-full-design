@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Blue Salon Gourmet — Patisserie &amp; Fine Cakes</title>
 <link rel="icon" href="assets/app-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Global Blue Salon header/footer styles (shared across pages) -->
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="app.css">
@@ -15,8 +15,7 @@
 <link rel="stylesheet" href="assets/blue-salon-gourmet.css">
 <style>body{margin:0}</style>
 </head>
-<body>
-
+<body class="gourmet-shell">
 <!-- ════════════════ Global Blue Salon Header ════════════════ -->
 <header class="bs-nav-root bs-header">
   <div class="bs-announce">
@@ -82,7 +81,6 @@
     </nav>
   </div>
 </header>
-
 <!-- Mobile drawer (built by app.js) -->
 <div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
 <aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
@@ -94,52 +92,41 @@
   </div>
   <nav class="bs-drawer-nav" id="drawerNav"></nav>
 </aside>
-
 <main class="gourmet-page">
-
-  <!-- Men collection quick navigation -->
-  <section class="men-quicknav" aria-labelledby="men-quicknav-title">
-    <h2 class="bs-display men-quicknav-title" id="men-quicknav-title">Men</h2>
+  <!-- Gourmet category quick navigation -->
+  <section class="men-quicknav gourmet-quicknav" aria-labelledby="gourmet-quicknav-title">
+    <h2 class="bs-display men-quicknav-title" id="gourmet-quicknav-title">Gourmet</h2>
     <div class="men-quicknav-row">
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://bluesalon-new-simple.vercel.app/assets/fashion-belt.jpg" alt="New In"></span>
-        <span class="men-quicknav-label">New In</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-chocolates-v1.png" alt="Fine chocolates"></span>
+        <span class="men-quicknav-label">Chocolates</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/Tshirt_600x.jpg?v=1771757883" alt="T-Shirts"></span>
-        <span class="men-quicknav-label">T-Shirts</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-biscuits-v1.png" alt="Luxury biscuits"></span>
+        <span class="men-quicknav-label">Biscuits</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/jackets_600x.jpg?v=1771758064" alt="Jackets"></span>
-        <span class="men-quicknav-label">Jackets</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-tea-v1.png" alt="Premium tea"></span>
+        <span class="men-quicknav-label">Tea</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/Bottoms_600x.jpg?v=1771758080" alt="Trousers &amp; Shorts"></span>
-        <span class="men-quicknav-label">Trousers &amp; Shorts</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-coffee-v1.png" alt="Coffee machines and capsules"></span>
+        <span class="men-quicknav-label">Coffee</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_3_4d986f89-cdda-4581-9205-e8df028f8930_600x.jpg?v=1778140893" alt="Watches"></span>
-        <span class="men-quicknav-label">Watches</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-gifting-v1.png" alt="Gourmet gifts and hampers"></span>
+        <span class="men-quicknav-label">Gifting</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/Cole_Haan-_SHOES_600x.jpg?v=1771757631" alt="Footwear"></span>
-        <span class="men-quicknav-label">Footwear</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-tableware-v1.png" alt="Tea and coffee tableware"></span>
+        <span class="men-quicknav-label">Tableware</span>
       </a>
-
       <a href="listing.html" class="men-quicknav-item">
-        <span class="men-quicknav-circle"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_8_7748af8b-f11e-4762-9b26-309fa3381940_600x.jpg?v=1778152597" alt="Fragrance"></span>
-        <span class="men-quicknav-label">Fragrance</span>
+        <span class="men-quicknav-circle"><img src="images/gourmet/generated/category-ramadan-v1.png" alt="Ramadan gourmet gifts"></span>
+        <span class="men-quicknav-label">Ramadan Gifts</span>
       </a>
-
     </div>
   </section>
-
   <!-- ============ 1. HERO (supplied banner slider) ============ -->
   <section class="gg-hero gg-hero--banners" id="ggHero" aria-label="Blue Salon Gourmet banners">
     <div class="gg-hero__slide is-active">
@@ -157,7 +144,6 @@
       <button class="gg-hero__dot" type="button" data-i="2" aria-label="Show slide 3"></button>
     </div>
   </section>
-
   <!-- ============ 2. THE CHOCOLATIER'S EDIT (hero + tile mosaic) ============ -->
   <section class="gg-mosaic gg-shell" aria-label="The Chocolatier's Edit">
     <div class="gg-mosaic__grid">
@@ -165,27 +151,25 @@
         <img src="images/gourmet-chocolatier.webp" alt="Godiva centennial collection — open box of fine Belgian chocolates">
         <span class="gg-mosaic__hero-caption">
           <span class="gg-mosaic__hero-title">The Chocolatier's Edit</span>
-          <span class="gg-mosaic__hero-cta">Shop the edit <svg width="18" height="10" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"></path></svg></span>
+          <span class="gg-mosaic__hero-cta">Shop the edit</span>
         </span>
       </a>
-
       <div class="gg-mosaic__side">
         <a class="gg-mosaic__tile" href="listing.html">
           <img src="images/Biscuits.webp" alt="Stack of chocolate chunk biscuits with Whittard and Cartwright &amp; Butler tins">
-          <span class="gg-mosaic__tag">Biscuits <svg width="14" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"></path></svg></span>
+          <span class="gg-mosaic__tag">Biscuits</span>
         </a>
         <a class="gg-mosaic__tile" href="listing.html">
           <img src="images/Chocolate.webp" alt="Charbonnel et Walker sea salt caramel truffles and Godiva dark chocolate">
-          <span class="gg-mosaic__tag">Chocolate <svg width="14" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"></path></svg></span>
+          <span class="gg-mosaic__tag">Chocolate</span>
         </a>
         <a class="gg-mosaic__tile gg-mosaic__tile--wide" href="listing.html">
           <img src="images/gourmet-gift-tins.webp" alt="Cartwright &amp; Butler shortbread rounds in decorative gift tins">
-          <span class="gg-mosaic__tag">Gift Tins <svg width="14" height="8" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h23M19 1l5 5-5 5"></path></svg></span>
+          <span class="gg-mosaic__tag">Gift Tins</span>
         </a>
       </div>
     </div>
   </section>
-
   <!-- ============ 2b. EDITORIAL BANNER ============ -->
   <section class="gg-feature gg-shell" aria-labelledby="gg-feature-title">
     <img class="gg-feature__media" src="images/gourmet-artisan-pantry.webp" alt="Rare raw honey jars presented in dark gift boxes with a gold spoon">
@@ -194,168 +178,183 @@
       <a class="gg-text-link" href="listing.html">Discover honey &amp; preserves</a>
     </div>
   </section>
-
-  <!-- ============ 3. THE PATISSERIE EDIT (tabbed product browser) ============ -->
+  <!-- ============ 3. THE GOURMET EDIT (tabbed product browser) ============ -->
   <section class="gg-edit gg-shell" id="ggEdit" aria-labelledby="gg-edit-title">
     <header class="gg-head">
-      <h2 id="gg-edit-title">The Patisserie Edit</h2>
+      <h2 id="gg-edit-title">The Gourmet Edit</h2>
     </header>
-
     <div class="gg-tabs" role="tablist" aria-label="Product categories">
-      <button class="gg-tab is-active" type="button" role="tab" aria-selected="true" data-panel="cakes">Signature Cakes</button>
-      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="patisserie">French Patisserie</button>
-      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="chocolate">Chocolate</button>
-      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="gifting">Gifting</button>
+      <button class="gg-tab is-active" type="button" role="tab" aria-selected="true" data-panel="honey">Honey</button>
+      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="oil-spices">Oil &amp; Spices</button>
+      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="tea">Tea</button>
+      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="chocolates">Chocolates</button>
+      <button class="gg-tab" type="button" role="tab" aria-selected="false" data-panel="arabic-sweets">Arabic Sweets</button>
     </div>
-
-    <!-- Signature Cakes -->
-    <div class="gg-tabpanel is-active" role="tabpanel" data-panel="cakes">
+    <!-- Honey -->
+    <div class="gg-tabpanel is-active" role="tabpanel" data-panel="honey">
       <div class="gg-prodgrid">
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Dark chocolate cherry gâteau"></span>
-          <h3 class="gg-prod__title">Dark Chocolate Cherry Gâteau</h3>
-          <span class="gg-prod__price">QAR 220</span>
+          <span class="gg-prod__media"><img src="images/gourmet-artisan-pantry.webp" alt="Rare raw honey collection in dark presentation boxes"></span>
+          <h3 class="gg-prod__title">Rare Raw Honey Collection</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Tiered berry celebration cake"></span>
-          <h3 class="gg-prod__title">Berry Celebration Cake</h3>
-          <span class="gg-prod__price">QAR 260</span>
+          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1668510468038-3607aae3f03c?auto=format&amp;fit=crop&amp;w=700&amp;q=85" onerror="this.onerror=null;this.src='images/gourmet-artisan-pantry.webp'" alt="Golden acacia honey in a glass jar"></span>
+          <h3 class="gg-prod__title">Acacia Honey</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/strawberry-millefeuille.png'" alt="Raspberry cream layer cake"></span>
-          <h3 class="gg-prod__title">Raspberry Cream Layer</h3>
-          <span class="gg-prod__price">QAR 240</span>
+          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&amp;fit=crop&amp;w=700&amp;q=85" onerror="this.onerror=null;this.src='images/gourmet-artisan-pantry.webp'" alt="Natural wildflower honey with honeycomb"></span>
+          <h3 class="gg-prod__title">Wildflower Honey</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Chocolate drip cake"></span>
-          <h3 class="gg-prod__title">Chocolate Drip Cake</h3>
-          <span class="gg-prod__price">QAR 210</span>
+          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&amp;fit=crop&amp;w=700&amp;q=85" onerror="this.onerror=null;this.src='images/gourmet-artisan-pantry.webp'" alt="Premium honey gift selection"></span>
+          <h3 class="gg-prod__title">Honey Gift Selection</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
       </div>
     </div>
-
-    <!-- French Patisserie -->
-    <div class="gg-tabpanel" role="tabpanel" data-panel="patisserie" hidden>
+    <!-- Oil and Spices -->
+    <div class="gg-tabpanel" role="tabpanel" data-panel="oil-spices" hidden>
       <div class="gg-prodgrid">
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="images/gourmet/strawberry-millefeuille.png" alt="Strawberry mille-feuille"></span>
-          <h3 class="gg-prod__title">Strawberry Mille-Feuille</h3>
-          <span class="gg-prod__price">QAR 65</span>
+          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&amp;fit=crop&amp;w=700&amp;q=85" onerror="this.onerror=null;this.src='images/gourmet-artisan-pantry.webp'" alt="Extra virgin olive oil in a glass bottle"></span>
+          <h3 class="gg-prod__title">Extra Virgin Olive Oil</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="images/gourmet/pistachio-tart.png" alt="Pistachio and rose tart"></span>
-          <h3 class="gg-prod__title">Pistachio &amp; Rose Tart</h3>
-          <span class="gg-prod__price">QAR 75</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/alard-premium-dukkah.webp" alt="Al'Ard Premium Palestinian Dukkah Blend"></span>
+          <h3 class="gg-prod__title">Premium Palestinian Dukkah Blend</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/pistachio-tart.png'" alt="Box of French macarons"></span>
-          <h3 class="gg-prod__title">French Macarons, Box of 12</h3>
-          <span class="gg-prod__price">QAR 90</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/alard-green-olives.webp" alt="Al'Ard Palestinian green olives pickle"></span>
+          <h3 class="gg-prod__title">Palestinian Green Olives Pickle</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1548848221-0c2e497ed557?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/strawberry-millefeuille.png'" alt="Assorted petits fours"></span>
-          <h3 class="gg-prod__title">Assorted Petits Fours</h3>
-          <span class="gg-prod__price">QAR 80</span>
+          <span class="gg-prod__media"><img src="images/gourmet/generated/category-gifting-v1.png" alt="Curated gourmet pantry gift selection"></span>
+          <h3 class="gg-prod__title">Gourmet Pantry Gift Set</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
       </div>
     </div>
-
-    <!-- Chocolate -->
-    <div class="gg-tabpanel" role="tabpanel" data-panel="chocolate" hidden>
+    <!-- Tea -->
+    <div class="gg-tabpanel" role="tabpanel" data-panel="tea" hidden>
       <div class="gg-prodgrid">
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Praline selection box"></span>
-          <h3 class="gg-prod__title">Praline Selection Box</h3>
-          <span class="gg-prod__price">QAR 150</span>
+          <span class="gg-prod__media"><img src="images/gourmet/generated/category-tea-v1.png" alt="Premium loose-leaf tea selection"></span>
+          <h3 class="gg-prod__title">Premium Tea Selection</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Chocolate truffle cake"></span>
-          <h3 class="gg-prod__title">Single-Origin Truffle Cake</h3>
-          <span class="gg-prod__price">QAR 190</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/1_5ff6d4a7-6fe7-4dc4-a61b-520ec01d49c6_540x.webp" alt="Akbar premium tea tin"></span>
+          <h3 class="gg-prod__title">Akbar Heritage Tea</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Dark chocolate gâteau"></span>
-          <h3 class="gg-prod__title">Dark Chocolate Gâteau</h3>
-          <span class="gg-prod__price">QAR 200</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/SLE103DKW00009_540x.webp" alt="Fine tea served in a white and green cup"></span>
+          <h3 class="gg-prod__title">The Tea Ritual</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="images/gourmet/hero-chocolate-cake.png" alt="Cocoa-dusted bonbons"></span>
-          <h3 class="gg-prod__title">Cocoa-Dusted Bonbons</h3>
-          <span class="gg-prod__price">QAR 120</span>
+          <span class="gg-prod__media"><img src="images/gourmet/generated/category-tableware-v1.png" alt="Tea service with cups and teapot"></span>
+          <h3 class="gg-prod__title">Tea &amp; Cup Collection</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
       </div>
     </div>
-
-    <!-- Gifting -->
-    <div class="gg-tabpanel" role="tabpanel" data-panel="gifting" hidden>
+    <!-- Chocolates -->
+    <div class="gg-tabpanel" role="tabpanel" data-panel="chocolates" hidden>
       <div class="gg-prodgrid">
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Grand praline hamper"></span>
-          <h3 class="gg-prod__title">Grand Praline Hamper</h3>
-          <span class="gg-prod__price">QAR 340</span>
+          <span class="gg-prod__media"><img src="images/gourmet/generated/category-chocolates-v1.png" alt="Open box of assorted fine chocolates"></span>
+          <h3 class="gg-prod__title">Assorted Fine Chocolates</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/strawberry-millefeuille.png'" alt="Gold ribbon gift box"></span>
-          <h3 class="gg-prod__title">Gold Ribbon Gift Box</h3>
-          <span class="gg-prod__price">QAR 180</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/FG85500GOLDCOLLECTIONGIFTBOX8PCSEDMOPEN_5093c010-f9b4-436a-8eaa-9a7c3e9d7149_360x.jpg" alt="Godiva Gold Collection chocolate gift box"></span>
+          <h3 class="gg-prod__title">Gold Collection Gift Box</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Celebration gift set"></span>
-          <h3 class="gg-prod__title">Celebration Gift Set</h3>
-          <span class="gg-prod__price">QAR 220</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/5_2_360x.webp" alt="Heart-shaped Godiva chocolate box"></span>
+          <h3 class="gg-prod__title">Heart-Shaped Chocolate Box</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
         <a class="gg-prod" href="listing.html">
-          <span class="gg-prod__media"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=700&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Chocolate gift tower"></span>
-          <h3 class="gg-prod__title">Chocolate Gift Tower</h3>
-          <span class="gg-prod__price">QAR 260</span>
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/GiftTrayofAssortedBelgianChocolates_Large-2_540x.webp" alt="Large Belgian chocolate gift tray"></span>
+          <h3 class="gg-prod__title">Belgian Chocolate Gift Tray</h3>
+          <span class="gg-prod__price">Explore collection</span>
+        </a>
+      </div>
+    </div>
+    <!-- Arabic Sweets -->
+    <div class="gg-tabpanel" role="tabpanel" data-panel="arabic-sweets" hidden>
+      <div class="gg-prodgrid">
+        <a class="gg-prod" href="listing.html">
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/1_0_b55796cb-7281-4acb-b733-d1ebb8e06b54_360x.webp" alt="Large presentation tray of assorted Arabic sweets"></span>
+          <h3 class="gg-prod__title">Assorted Arabic Sweets</h3>
+          <span class="gg-prod__price">Explore collection</span>
+        </a>
+        <a class="gg-prod" href="listing.html">
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/G2_1_3215cd47-70dc-4310-b648-f2494e429a92_540x.webp" alt="Premium dates and sweets gift assortment"></span>
+          <h3 class="gg-prod__title">Premium Dates Selection</h3>
+          <span class="gg-prod__price">Explore collection</span>
+        </a>
+        <a class="gg-prod" href="listing.html">
+          <span class="gg-prod__media"><img src="images/gourmet/new-inspiration/0_0_360x.webp" alt="Navy and gold Ramadan sweets gift box"></span>
+          <h3 class="gg-prod__title">Ramadan Sweets Gift Box</h3>
+          <span class="gg-prod__price">Explore collection</span>
+        </a>
+        <a class="gg-prod" href="listing.html">
+          <span class="gg-prod__media"><img src="images/gourmet/generated/category-ramadan-v1.png" alt="Elegant selection of maamoul and baklava"></span>
+          <h3 class="gg-prod__title">Maamoul &amp; Baklava Selection</h3>
+          <span class="gg-prod__price">Explore collection</span>
         </a>
       </div>
     </div>
   </section>
-
   <!-- ============ 3b. DUAL FEATURE CARDS ============ -->
   <section class="gg-duo gg-shell" aria-label="Featured gourmet edits">
     <a class="gg-duo__card" href="listing.html">
-      <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=900&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Open box of assorted fine chocolates">
+      <img src="images/gourmet/generated/category-chocolates-v1.png" alt="Open gold box of assorted fine chocolates">
       <div class="gg-duo__body">
         <h3>The Chocolate<br>Boutique</h3>
         <span class="gg-btn gg-btn--light">Discover</span>
       </div>
     </a>
     <a class="gg-duo__card" href="listing.html">
-      <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=900&q=80" onerror="this.onerror=null;this.src='images/gourmet/strawberry-millefeuille.png'" alt="Gift boxes finished with gold ribbon">
+      <img src="images/gourmet/generated/category-gifting-v1.png" alt="Large assorted Belgian chocolate gift tray with ribbon">
       <div class="gg-duo__body">
         <h3>Gourmet Gifting<br>&amp; Hampers</h3>
         <span class="gg-btn gg-btn--light">Explore</span>
       </div>
     </a>
   </section>
-
   <!-- ============ 4. CURATED BY OCCASION ============ -->
   <section class="gg-curated" aria-labelledby="gg-coll-title">
     <header class="gg-head gg-shell">
-      <p class="gg-kicker">Collections</p>
       <h2 id="gg-coll-title">Curated by Occasion</h2>
       <!-- <p class="gg-head__sub">Thoughtfully selected creations for celebrations, gifting and memorable moments.</p> -->
     </header>
     <div class="gg-collections gg-shell">
       <a class="gg-collection" href="listing.html">
-        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=760&q=80" onerror="this.onerror=null;this.src='images/gourmet/strawberry-millefeuille.png'" alt="Celebration cake with drip icing">
-        <div class="gg-collection__body"><h3>Celebration Cakes</h3></div>
+        <img src="images/gourmet/generated/category-ramadan-v1.png" alt="Navy and gold Ramadan gourmet gift box">
+        <div class="gg-collection__body"><h3>Ramadan Gifting</h3></div>
       </a>
-
          <a class="gg-collection" href="listing.html">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=760&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Chocolate cake on a light stone stand">
+        <img src="images/gourmet/generated/category-chocolates-v1.png" alt="Gold collection box of assorted chocolates">
         <div class="gg-collection__body"><h3>Chocolate Collection</h3></div>
       </a>
       <a class="gg-collection" href="listing.html">
-        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=760&q=80" onerror="this.onerror=null;this.src='images/gourmet/pistachio-tart.png'" alt="Strawberry cream verrines">
-        <div class="gg-collection__body"><h3>French Patisserie</h3></div>
+        <img src="images/gourmet/generated/category-coffee-v1.png" alt="Black coffee machine with coffee and capsules">
+        <div class="gg-collection__body"><h3>Coffee &amp; Tea</h3></div>
       </a>
-   
       <a class="gg-collection" href="listing.html">
-        <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=760&q=80" onerror="this.onerror=null;this.src='images/gourmet/hero-chocolate-cake.png'" alt="Gift boxes with gold ribbons">
-        <div class="gg-collection__body"><h3>Gourmet Gifting</h3></div>
+        <img src="images/gourmet/generated/category-tableware-v1.png" alt="White porcelain teacups with gold trim">
+        <div class="gg-collection__body"><h3>Gourmet Tableware</h3></div>
       </a>
     </div>
   </section>
@@ -385,9 +384,7 @@
       </div>
     </div>
   </section>
-
 </main>
-
 <!-- ════════════════ Global Blue Salon Footer ════════════════ -->
 <footer class="bs-footer">
   <div class="bs-shopmore">
@@ -453,7 +450,6 @@
     </div>
   </div>
 </footer>
-
 <script src="data.js"></script>
 <script src="app.js"></script>
 <script>
@@ -475,8 +471,7 @@
   });
   play();
 })();
-
-/* Patisserie Edit — product tabs */
+/* Gourmet Edit — product tabs */
 (function () {
   var root = document.getElementById('ggEdit');
   if (!root) return;
