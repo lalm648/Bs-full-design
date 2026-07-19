@@ -1,0 +1,393 @@
+{% comment %}
+  ============================================================
+  BLUE SALON — WATCHES EDITORIAL (Online Store 2.0 section)
+  Editorial luxury landing inspired by classic watch-catalogue
+  composition. All styles scoped under .bs-watches-editorial.
+  ============================================================
+{% endcomment %}
+
+{{ 'blue-salon-watches-editorial.css' | asset_url | stylesheet_tag }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+{%- comment -%} CDN fallbacks used when no image is picked in the customizer {%- endcomment -%}
+{%- assign fb_hero_1   = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/files/RAL212-SS-9_540x.png?v=1724570126' -%}
+{%- assign fb_hero_2   = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/products/SMT120FAS00310_540x.jpg?v=1606642214' -%}
+{%- assign fb_new      = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/products/SMT120FAS00358_540x.jpg?v=1606642471' -%}
+{%- assign fb_tile_1   = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/files/OD721116_1AA__3_540x.webp?v=1699450210' -%}
+{%- assign fb_tile_2   = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/files/PR710156-4Y4DT_03_540x.png?v=1760880353' -%}
+{%- assign fb_tile_3   = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/products/SMT120FAS00310_540x.jpg?v=1606642214' -%}
+{%- assign fb_her      = 'https://cdn.shopify.com/s/files/1/0370/6444/1991/files/RAL238-RR-S-8-1000x1000-1_540x.jpg?v=1699769694' -%}
+
+<div class="bs-watch-landing bs-watches-editorial" id="bs-editorial-{{ section.id }}">
+
+  {%- comment -%} ============ 1. HERO ============ {%- endcomment -%}
+  {%- assign hero_slides = section.blocks | where: 'type', 'hero_slide' -%}
+  <section class="bs-hero" role="region" aria-roledescription="carousel" aria-label="Featured timepieces" tabindex="0">
+    <button class="bs-hero__arrow bs-hero__arrow--prev" type="button" aria-label="Previous timepiece">
+      <svg viewBox="0 0 22 38" aria-hidden="true"><path d="M18 3 4 19l14 16"/></svg>
+    </button>
+
+    <div class="bs-hero__inner">
+      {%- if hero_slides.size > 0 -%}
+        {%- for block in hero_slides -%}
+          <article class="bs-hero__slide{% if forloop.first %} is-active{% endif %}"
+                   aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+                   aria-label="Slide {{ forloop.index }} of {{ hero_slides.size }}"
+                   {{ block.shopify_attributes }}>
+            <div class="bs-hero__left">
+              {%- if block.settings.eyebrow != blank -%}
+                <div class="bs-label bs-hero__eyebrow">{{ block.settings.eyebrow }}</div>
+              {%- endif -%}
+              <h1 class="bs-hero__title">{{ block.settings.heading }}</h1>
+              {%- if block.settings.description != blank -%}
+                <p class="bs-hero__sub">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+            <div class="bs-hero__media">
+              {%- if block.settings.image != blank -%}
+                <img class="bs-prod bs-blend"
+                     src="{{ block.settings.image | image_url: width: 800 }}"
+                     srcset="{{ block.settings.image | image_url: width: 540 }} 540w, {{ block.settings.image | image_url: width: 800 }} 800w"
+                     sizes="(max-width: 860px) 80vw, 400px"
+                     width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | default: block.settings.heading | escape }}"
+                     {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+              {%- else -%}
+                <img class="bs-prod bs-blend"
+                     src="{% if forloop.index == 2 %}{{ fb_hero_2 }}{% else %}{{ fb_hero_1 }}{% endif %}"
+                     width="540" height="540"
+                     alt="{{ block.settings.heading | escape }}"
+                     {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+              {%- endif -%}
+            </div>
+            <div class="bs-hero__right">
+              {%- if block.settings.price != blank -%}
+                <div class="bs-hero__price">{{ block.settings.price }}</div>
+              {%- endif -%}
+              <a class="bs-hero__cta" href="{{ block.settings.button_url | default: '#' }}">
+                {{ block.settings.button_text | default: 'Shop Now' }} <span class="bs-tri" aria-hidden="true"></span>
+              </a>
+            </div>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%} Default content when no blocks configured yet {%- endcomment -%}
+        <article class="bs-hero__slide is-active" aria-hidden="false">
+          <div class="bs-hero__left">
+            <div class="bs-label bs-hero__eyebrow">Rama — Swiss Made</div>
+            <h1 class="bs-hero__title">The Classic Automatic</h1>
+            <p class="bs-hero__sub">Blue sunray dial · 40&nbsp;mm<br>polished steel bracelet</p>
+          </div>
+          <div class="bs-hero__media">
+            <img class="bs-prod bs-blend" src="{{ fb_hero_1 }}" width="540" height="540"
+                 alt="Rama Classic Automatic, blue dial steel watch" fetchpriority="high">
+          </div>
+          <div class="bs-hero__right">
+            <div class="bs-hero__price">QAR&nbsp;4,750</div>
+            <a class="bs-hero__cta" href="#">Shop Now <span class="bs-tri" aria-hidden="true"></span></a>
+          </div>
+        </article>
+        <article class="bs-hero__slide" aria-hidden="true">
+          <div class="bs-hero__left">
+            <div class="bs-label bs-hero__eyebrow">Smalto — Diamonds</div>
+            <h1 class="bs-hero__title">Midnight &amp; Rose</h1>
+            <p class="bs-hero__sub">Navy leather · diamond bezel<br>rose-gold case</p>
+          </div>
+          <div class="bs-hero__media">
+            <img class="bs-prod bs-blend" src="{{ fb_hero_2 }}" width="540" height="540"
+                 alt="Smalto Diamonds watch with navy strap and rose gold case" loading="lazy">
+          </div>
+          <div class="bs-hero__right">
+            <div class="bs-hero__price">QAR&nbsp;2,890</div>
+            <a class="bs-hero__cta" href="#">Shop Now <span class="bs-tri" aria-hidden="true"></span></a>
+          </div>
+        </article>
+      {%- endif -%}
+    </div>
+
+    <button class="bs-hero__arrow bs-hero__arrow--next" type="button" aria-label="Next timepiece">
+      <svg viewBox="0 0 22 38" aria-hidden="true"><path d="M4 3l14 16L4 35"/></svg>
+    </button>
+  </section>
+
+  {%- comment -%} ============ 2. EDITORIAL DUO ============ {%- endcomment -%}
+  <section class="bs-section bs-container">
+    <div class="bs-duo">
+      <a class="bs-duo__campaign" href="{{ section.settings.campaign_url | default: '#' }}">
+        {%- if section.settings.campaign_image != blank -%}
+          <img src="{{ section.settings.campaign_image | image_url: width: 1400 }}"
+               width="{{ section.settings.campaign_image.width }}" height="{{ section.settings.campaign_image.height }}"
+               alt="{{ section.settings.campaign_image.alt | default: section.settings.campaign_heading | escape }}" loading="lazy">
+        {%- else -%}
+          <img src="{{ '03-banner1-copyright.jpg' | asset_url }}" width="850" height="480"
+               alt="{{ section.settings.campaign_heading | escape }}" loading="lazy">
+        {%- endif -%}
+        <div class="bs-duo__campaign-caption">
+          <h2>{{ section.settings.campaign_heading | default: 'SIGNATURE<br>COLLECTION' }}</h2>
+          <span class="bs-label">{{ section.settings.campaign_subtext | default: 'Browse the Collection' }}</span>
+        </div>
+      </a>
+      <a class="bs-duo__new" href="{{ section.settings.new_url | default: '#' }}">
+        <h2>{{ section.settings.new_heading | default: 'NEW ARRIVALS' }}</h2>
+        <span class="bs-label">{{ section.settings.new_subtext | default: 'Shop Now' }}</span>
+        <div class="bs-duo__new-media">
+          {%- if section.settings.new_image != blank -%}
+            <img class="bs-prod bs-blend" src="{{ section.settings.new_image | image_url: width: 540 }}"
+                 width="{{ section.settings.new_image.width }}" height="{{ section.settings.new_image.height }}"
+                 alt="{{ section.settings.new_image.alt | default: section.settings.new_heading | escape }}" loading="lazy">
+          {%- else -%}
+            <img class="bs-prod bs-blend" src="{{ fb_new }}" width="540" height="540"
+                 alt="New arrival gold watch" loading="lazy">
+          {%- endif -%}
+        </div>
+      </a>
+    </div>
+  </section>
+
+  {%- comment -%} ============ 3. THREE-WATCH ROW ============ {%- endcomment -%}
+  {%- assign tiles = section.blocks | where: 'type', 'product_tile' -%}
+  <section class="bs-section bs-container" aria-label="Featured watches">
+    <div class="bs-trio">
+      {%- if tiles.size > 0 -%}
+        {%- for block in tiles limit: 3 -%}
+          <a class="bs-trio__tile" href="{{ block.settings.url | default: '#' }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img class="bs-prod bs-blend" src="{{ block.settings.image | image_url: width: 540 }}"
+                   width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"
+                   alt="{{ block.settings.image.alt | default: 'Blue Salon watch' | escape }}" loading="lazy">
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <a class="bs-trio__tile" href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_1 }}" width="540" height="540" alt="Saint Honoré steel bracelet watch" loading="lazy"></a>
+        <a class="bs-trio__tile" href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_2 }}" width="540" height="540" alt="Saint Honoré two-tone square watch" loading="lazy"></a>
+        <a class="bs-trio__tile" href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_3 }}" width="540" height="540" alt="Smalto navy diamond watch" loading="lazy"></a>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ============ 3B. SHOP BY PERSON OR PURPOSE ============ {%- endcomment -%}
+  <section class="bs-section bs-container bs-purpose" aria-label="Shop by person or purpose">
+    <a class="bs-purpose__lead" href="#"><img class="bs-prod bs-blend" src="{{ fb_her }}" width="540" height="540" alt="For Her" loading="lazy"><div><span class="bs-label">For every occasion</span><h2>For Her</h2><p>Elegant watches and jewellery selected for every occasion.</p><b>Explore her edit <i class="bs-tri"></i></b></div></a>
+    <a class="bs-purpose__card bs-purpose__card--him" href="#"><img src="{{ '03-ban4-copyright.jpg' | asset_url }}" width="625" height="800" alt="For Him" loading="lazy"><span><small>Distinctive character</small>For Him</span></a>
+    <a class="bs-purpose__card" href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_2 }}" width="540" height="540" alt="For Couples" loading="lazy"><span><small>Shared milestones</small>For Couples</span></a>
+    <a class="bs-purpose__card" href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_3 }}" width="540" height="540" alt="Gifts and accessories" loading="lazy"><span><small>Celebrations and business gifting</small>Gifts &amp; Accessories</span></a>
+  </section>
+
+  {%- comment -%} ============ 4. HER / HIM ============ {%- endcomment -%}
+  <section class="bs-section bs-container">
+    <div class="bs-gender">
+      <a class="bs-panel bs-panel--her" href="{{ section.settings.her_url | default: '#' }}">
+        <div class="bs-panel__head">
+          <h2>{{ section.settings.her_heading | default: 'WATCHES' }}<br><em>{{ section.settings.her_italic | default: 'for' }}</em> {{ section.settings.her_word | default: 'HER' }}</h2>
+          <span class="bs-panel__cta"><span class="bs-label">{{ section.settings.her_cta | default: 'Explore the Collection' }}</span> <span class="bs-tri" aria-hidden="true"></span></span>
+        </div>
+        <div class="bs-panel__media">
+          {%- if section.settings.her_image != blank -%}
+            <img class="bs-prod bs-blend" src="{{ section.settings.her_image | image_url: width: 700 }}"
+                 width="{{ section.settings.her_image.width }}" height="{{ section.settings.her_image.height }}"
+                 alt="{{ section.settings.her_image.alt | default: 'Watches for her' | escape }}" loading="lazy">
+          {%- else -%}
+            <img class="bs-prod bs-blend" src="{{ fb_her }}" width="540" height="540"
+                 alt="Rama rose gold ladies watch with blue dial" loading="lazy">
+          {%- endif -%}
+        </div>
+      </a>
+      <a class="bs-panel bs-panel--him" href="{{ section.settings.him_url | default: '#' }}">
+        {%- if section.settings.him_image != blank -%}
+          <img src="{{ section.settings.him_image | image_url: width: 900 }}"
+               width="{{ section.settings.him_image.width }}" height="{{ section.settings.him_image.height }}"
+               alt="{{ section.settings.him_image.alt | default: 'Watches for him' | escape }}" loading="lazy">
+        {%- else -%}
+          <img src="{{ '03-ban4-copyright.jpg' | asset_url }}" width="625" height="800"
+               alt="Skeleton automatic watch on driftwood" loading="lazy">
+        {%- endif -%}
+        <div class="bs-panel__head">
+          <h2>{{ section.settings.him_heading | default: 'WATCHES' }}<br><em>{{ section.settings.him_italic | default: 'for' }}</em> {{ section.settings.him_word | default: 'HIM' }}</h2>
+          <span class="bs-panel__cta"><span class="bs-label">{{ section.settings.him_cta | default: 'Explore the Collection' }}</span> <span class="bs-tri" aria-hidden="true"></span></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  {%- comment -%} ============ 4B. CHOSEN TOGETHER ============ {%- endcomment -%}
+  <section class="bs-section bs-container bs-together" aria-label="Couple watches">
+    <div><span class="bs-label">For shared milestones</span><h2>Chosen<br><em>Together</em></h2><p>Complementary timepieces for anniversaries, weddings and the occasions you celebrate side by side.</p><a href="#">Explore Couple Watches <i class="bs-tri"></i></a></div>
+    <div class="bs-together__watches"><img class="bs-prod bs-blend" src="{{ fb_tile_3 }}" width="540" height="540" alt="Women's watch" loading="lazy"><img class="bs-prod bs-blend" src="{{ fb_tile_1 }}" width="540" height="540" alt="Men's watch" loading="lazy"></div>
+  </section>
+
+  {%- comment -%} ============ 5. ACCESSORIES AND GIFTING ============ {%- endcomment -%}
+  <section class="bs-section bs-container bs-beyond" aria-label="Accessories and gifting">
+    <div class="bs-beyond__grid"><a class="bs-beyond__feature" href="#"><img src="{{ '03-banner5-copyright.jpg' | asset_url }}" width="960" height="672" alt="Gift presentation" loading="lazy"><span>Gift Presentation <i class="bs-tri"></i></span></a><a href="#"><img class="bs-prod bs-blend" src="{{ fb_new }}" width="540" height="540" alt="Bracelets" loading="lazy"><span>Bracelets</span></a><a href="#"><img class="bs-prod bs-blend" src="{{ fb_her }}" width="540" height="540" alt="Jewellery" loading="lazy"><span>Jewellery</span></a><a href="#"><img class="bs-prod bs-blend" src="{{ fb_tile_3 }}" width="540" height="540" alt="Watch boxes" loading="lazy"><span>Watch Boxes</span></a><a href="#"><img class="bs-prod bs-blend" src="{{ fb_hero_2 }}" width="540" height="540" alt="Leather accessories" loading="lazy"><span>Leather Accessories</span></a></div>
+  </section>
+
+  {%- comment -%} ============ 5. CATEGORY LINKS ============ {%- endcomment -%}
+  {%- assign cat_links = section.blocks | where: 'type', 'category_link' -%}
+  <section class="bs-container" aria-label="Browse categories">
+    <div class="bs-cats">
+      <div class="bs-cats__title">
+        <div class="bs-cats__script">{{ section.settings.cats_script | default: 'browse' }}</div>
+        <h2>{{ section.settings.cats_heading | default: 'WATCHES' }}</h2>
+        <span class="bs-label">{{ section.settings.cats_subtext | default: 'Select a Category' }}</span>
+      </div>
+      {%- if cat_links.size > 0 -%}
+        <ul>{%- for block in cat_links -%}{%- if block.settings.column == '1' -%}<li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>{%- endif -%}{%- endfor -%}</ul>
+        <ul>{%- for block in cat_links -%}{%- if block.settings.column == '2' -%}<li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>{%- endif -%}{%- endfor -%}</ul>
+        <ul>{%- for block in cat_links -%}{%- if block.settings.column == '3' -%}<li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>{%- endif -%}{%- endfor -%}</ul>
+      {%- else -%}
+        <ul>
+          <li><a href="#">Men's Watches</a></li>
+          <li><a href="#">Women's Watches</a></li>
+          <li><a href="#">Luxury Watches</a></li>
+          <li><a href="#">Fashion Watches</a></li>
+          <li><a href="#">Leather Watches</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Kids' Watches</a></li>
+          <li><a href="#">Women's Bracelets</a></li>
+          <li><a href="#">Luxury Earrings</a></li>
+          <li><a href="#">Engagement</a></li>
+          <li><a href="#">New Necklaces</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Top Sellers</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Special Offers</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {% comment %} <section class="bs-section bs-container bs-services-watch" aria-label="Blue Salon services"><span>Complimentary Delivery Across Qatar</span><span>Gift Wrapping Available</span><span>Flexible Instalment Options</span><span>Boutique Support</span></section> {% endcomment %}
+
+  {%- comment -%} ============ 6. PRIVILEGE ============ {%- endcomment -%}
+  <section class="bs-container bs-priv">
+    <div class="bs-priv__media">
+      {%- if section.settings.priv_image != blank -%}
+        <img src="{{ section.settings.priv_image | image_url: width: 1200 }}"
+             width="{{ section.settings.priv_image.width }}" height="{{ section.settings.priv_image.height }}"
+             alt="{{ section.settings.priv_image.alt | default: 'Blue Salon Privilege' | escape }}" loading="lazy">
+      {%- else -%}
+        <img src="{{ '03-banner5-copyright.jpg' | asset_url }}" width="960" height="672"
+             alt="Blue Salon Privilege member" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="bs-priv__panel">
+      <div class="bs-priv__panel-inner">
+        <h2>{{ section.settings.priv_heading | default: 'BLUE SALON<br>PRIVILEGE' }}</h2>
+        <p>{{ section.settings.priv_text | default: 'Enjoy exclusive rewards, private offers and member-only experiences.' }}<br><small>Available to customers across Qatar.</small></p>
+        <a class="bs-priv__cta" href="{{ section.settings.priv_url | default: '#' }}">
+          {{ section.settings.priv_button | default: 'Join Blue Salon Privilege' }} <span class="bs-tri" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="{{ 'blue-salon-watches-editorial.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "BS Watches Editorial",
+  "tag": "section",
+  "class": "bs-watches-editorial-wrapper",
+  "settings": [
+    { "type": "header", "content": "Campaign tile (wide, dark)" },
+    { "type": "image_picker", "id": "campaign_image", "label": "Campaign image (dark, landscape)" },
+    { "type": "text", "id": "campaign_heading", "label": "Heading", "default": "SIGNATURE<br>COLLECTION", "info": "Use <br> for a line break" },
+    { "type": "text", "id": "campaign_subtext", "label": "Small label", "default": "Browse the Collection" },
+    { "type": "url", "id": "campaign_url", "label": "Link" },
+
+    { "type": "header", "content": "New arrivals tile" },
+    { "type": "image_picker", "id": "new_image", "label": "Product image" },
+    { "type": "text", "id": "new_heading", "label": "Heading", "default": "NEW ARRIVALS" },
+    { "type": "text", "id": "new_subtext", "label": "Small label", "default": "Shop Now" },
+    { "type": "url", "id": "new_url", "label": "Link" },
+
+    { "type": "header", "content": "Watches for Her panel" },
+    { "type": "image_picker", "id": "her_image", "label": "Product image" },
+    { "type": "text", "id": "her_heading", "label": "First line", "default": "WATCHES" },
+    { "type": "text", "id": "her_italic", "label": "Italic word", "default": "for" },
+    { "type": "text", "id": "her_word", "label": "Last word", "default": "HER" },
+    { "type": "text", "id": "her_cta", "label": "CTA label", "default": "Explore the Collection" },
+    { "type": "url", "id": "her_url", "label": "Link" },
+
+    { "type": "header", "content": "Watches for Him panel" },
+    { "type": "image_picker", "id": "him_image", "label": "Dark lifestyle image (portrait)" },
+    { "type": "text", "id": "him_heading", "label": "First line", "default": "WATCHES" },
+    { "type": "text", "id": "him_italic", "label": "Italic word", "default": "for" },
+    { "type": "text", "id": "him_word", "label": "Last word", "default": "HIM" },
+    { "type": "text", "id": "him_cta", "label": "CTA label", "default": "Explore the Collection" },
+    { "type": "url", "id": "him_url", "label": "Link" },
+
+    { "type": "header", "content": "Category links" },
+    { "type": "text", "id": "cats_script", "label": "Italic word", "default": "browse" },
+    { "type": "text", "id": "cats_heading", "label": "Heading", "default": "WATCHES" },
+    { "type": "text", "id": "cats_subtext", "label": "Small label", "default": "Select a Category" },
+
+    { "type": "header", "content": "Privilege banner" },
+    { "type": "image_picker", "id": "priv_image", "label": "Lifestyle image" },
+    { "type": "text", "id": "priv_heading", "label": "Heading", "default": "BLUE SALON<br>PRIVILEGE", "info": "Use <br> for a line break" },
+    { "type": "text", "id": "priv_text", "label": "Supporting line", "default": "Enjoy exclusive rewards, private offers and member-only experiences." },
+    { "type": "text", "id": "priv_button", "label": "Button label", "default": "Join Blue Salon Privilege" },
+    { "type": "url", "id": "priv_url", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "hero_slide",
+      "name": "Hero slide",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Rama — Swiss Made" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "The Classic Automatic" },
+        { "type": "textarea", "id": "description", "label": "Supporting line", "default": "Blue sunray dial · 40 mm polished steel bracelet" },
+        { "type": "text", "id": "price", "label": "Price", "default": "QAR 4,750" },
+        { "type": "text", "id": "button_text", "label": "Button label", "default": "Shop Now" },
+        { "type": "url", "id": "button_url", "label": "Button link" },
+        { "type": "image_picker", "id": "image", "label": "Watch image (white background or transparent)" }
+      ]
+    },
+    {
+      "type": "product_tile",
+      "name": "Product tile",
+      "limit": 3,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Watch image" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    },
+    {
+      "type": "category_link",
+      "name": "Category link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Men's Watches" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "select", "id": "column", "label": "Column", "default": "1",
+          "options": [
+            { "value": "1", "label": "Column 1" },
+            { "value": "2", "label": "Column 2" },
+            { "value": "3", "label": "Column 3" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BS Watches Editorial",
+      "blocks": [
+        { "type": "hero_slide" },
+        { "type": "hero_slide", "settings": { "eyebrow": "Smalto — Diamonds", "heading": "Midnight & Rose", "description": "Navy leather · diamond bezel · rose-gold case", "price": "QAR 2,890" } },
+        { "type": "product_tile" },
+        { "type": "product_tile" },
+        { "type": "product_tile" }
+      ]
+    }
+  ]
+}
+{% endschema %}

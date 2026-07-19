@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover Blue Salon Home & Linen: refined bedding, tableware, décor, bath and home fragrance curated for elegant living in Qatar.">
+<title>Blue Salon Home &amp; Linen — The Art of Beautiful Living</title>
+<link rel="icon" href="assets/app-icon.png">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="assets/blue-salon-home-linen.css">
+<style>body{margin:0}</style>
+</head>
+<body class="bsh-site">
+
+<!-- Shared Blue Salon header -->
+<header class="bs-nav-root bs-header">
+  <div class="bs-announce">
+    <div class="bs-announce-inner">
+      <span class="bs-announce-msg">Complimentary shipping on orders over QAR 499 &nbsp;·&nbsp; Split your payment into 4 installments</span>
+      <div class="bs-announce-utils">
+        <span class="bs-util-wrap bs-locale">
+          <button class="bs-iconbtn bs-locale-btn" type="button" id="localeBtn" aria-label="Switch language" title="Switch language">
+            <span class="bs-lang-switch is-ar" id="localeLangSwitch" aria-hidden="true">ع</span>
+          </button>
+        </span>
+        <button class="bs-iconbtn bs-locale-btn" type="button" aria-label="Store locator" title="Store locator"><span class="bs-lang-switch">Store</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="bs-topbar">
+    <button class="bs-iconbtn bs-hamburger" type="button" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileDrawer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <div class="bs-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="m21 21-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+      <input type="search" placeholder="Search 500+ luxury brands" aria-label="Search Blue Salon">
+    </div>
+    <a class="bs-logo" href="index.html"><img src="assets/logo-horizontal.svg" alt="Blue Salon"></a>
+    <div class="bs-utils">
+      <button class="bs-iconbtn" type="button" aria-label="Account" title="Account">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+      </button>
+      <span class="bs-util-wrap">
+        <button class="bs-iconbtn" type="button" aria-label="Wishlist" title="Wishlist"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l9 9 8.8-8.6a5.5 5.5 0 0 0-.2-7.8z"/></svg></button>
+        <span class="bs-count" id="wishCount" hidden>0</span>
+      </span>
+      <span class="bs-util-wrap">
+        <button class="bs-iconbtn" type="button" aria-label="Bag" title="Bag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 7h12l1 13H5z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></button>
+        <span class="bs-count" id="cartCount" hidden>0</span>
+      </span>
+    </div>
+  </div>
+  <div id="navZone">
+    <nav class="bs-nav" aria-label="Primary navigation">
+      <div class="bs-nav-inner" id="navInner">
+        <div class="bs-nav-item" data-menu="new">New In</div>
+        <div class="bs-nav-item" data-menu="women">Women</div>
+        <div class="bs-nav-item" data-menu="men">Men</div>
+        <div class="bs-nav-item" data-menu="kids">Kids &amp; Baby</div>
+        <div class="bs-nav-item" data-menu="beauty">Beauty</div>
+        <div class="bs-nav-item" data-menu="luggage">Luggage</div>
+        <div class="bs-nav-item" data-menu="home">Home &amp; Linen</div>
+        <div class="bs-nav-item" data-menu="gourmet">Gourmet</div>
+        <div class="bs-nav-item" data-menu="brands">Brands</div>
+        <div class="bs-nav-item" data-menu="gift">Gift</div>
+        <div class="bs-nav-item sale" data-menu="sale">Sale</div>
+        <div class="bs-mega-holder" id="megaHolder"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="bs-drawer-scrim" id="drawerScrim" hidden></div>
+<aside class="bs-drawer" id="mobileDrawer" aria-hidden="true" hidden>
+  <div class="bs-drawer-head">
+    <img class="bs-drawer-logo" src="assets/logo-horizontal.svg" alt="Blue Salon">
+    <button class="bs-iconbtn bs-drawer-close" type="button" id="drawerClose" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <nav class="bs-drawer-nav" id="drawerNav" aria-label="Mobile navigation"></nav>
+</aside>
+
+<main class="bsh-page">
+  <!-- <nav class="bsh-departments" aria-label="Home and Linen departments">
+    <div class="bsh-departments__inner bsh-shell">
+      <a href="https://www.bluesalon.com/collections/beddings">Bedding</a>
+      <a href="https://www.bluesalon.com/collections/dinnerware">Tableware</a>
+      <a href="https://www.bluesalon.com/collections/accessories-home-furnishing">Home Décor</a>
+      <a href="https://www.bluesalon.com/collections/bath">Bath</a>
+      <a href="https://www.bluesalon.com/collections/candles">Candles &amp; Fragrance</a>
+      <a href="https://www.bluesalon.com/collections/drinkware">Glassware</a>
+      <a href="https://www.bluesalon.com/collections/desk-accessories">Desk Accessories</a>
+      <a href="https://www.bluesalon.com/collections/kitchen">Kitchen</a>
+    </div>
+  </nav> -->
+
+  <section class="bsh-hero bsh-shell" aria-labelledby="bsh-hero-title">
+    <a class="bsh-hero__main" href="https://www.bluesalon.com/collections/accessories-home-furnishing">
+      <img src="https://www.bluesalon.com/cdn/shop/files/envato-labs-image-edit_25.png?v=1768395879" alt="Blue and white statement vase styled in a bright living room" width="1024" height="1024" fetchpriority="high">
+    </a>
+    <div class="bsh-hero__side">
+      <div class="bsh-hero__content">
+        <h1 id="bsh-hero-title">The Art of Beautiful Living</h1>
+        <p>Discover refined bedding, tableware, décor and home fragrance selected to bring comfort, beauty and character to every room.</p>
+        <div class="bsh-hero__actions">
+          <a class="bsh-btn" href="https://www.bluesalon.com/pages/home-furniture">Explore the Collection</a>
+          
+        </div>
+      </div>
+      <a class="bsh-hero__support" href="https://www.bluesalon.com/collections/candles">
+        <img src="https://www.bluesalon.com/cdn/shop/files/envato-labs-image-edit_32.png?v=1768398204" alt="Decorative candle creating a warm atmosphere at home" width="1024" height="1024">
+        <span class="bsh-hero__support-label"><small>The Finishing Touch</small>Candlelight, warm scent and softly layered atmosphere</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="bsh-section bsh-reveal" aria-labelledby="spaces-title">
+    <div class="bsh-shell">
+      <header class="bsh-section-head">
+        <div class="bsh-section-head__copy">
+          <h2 class="bsh-title" id="spaces-title">Designed for Every Space</h2>
+          <p class="bsh-copy">Discover considered pieces for the bedroom, dining room, living space and everyday rituals.</p>
+        </div>
+      </header>
+      <div class="bsh-category-grid">
+        <a class="bsh-category bsh-category--bedding" href="https://www.bluesalon.com/collections/beddings">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_36_91846832-79d6-4d4d-9fdd-109b4d0461f9.jpg?v=1769072722" alt="Refined neutral floral bedding and layered cushions" width="540" height="540" loading="lazy">
+          <span class="bsh-category__label"><strong>Bedding</strong></span>
+        </a>
+        <a class="bsh-category bsh-category--wide" href="https://www.bluesalon.com/collections/dinnerware">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_20_f8f2f626-b0a4-41b8-9106-476ee8f1e4c6.jpg?v=1769072035" alt="Emerald dinnerware arranged on a wooden dining table" width="540" height="540" loading="lazy">
+          <span class="bsh-category__label"><strong>Dining</strong></span>
+        </a>
+        <a class="bsh-category bsh-category--wide" href="https://www.bluesalon.com/collections/bath">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_35_bb44b905-5644-43a3-b893-3be73440f2cd.jpg?v=1769072560" alt="Colourful premium bath rugs displayed in a bright room" width="540" height="540" loading="lazy">
+          <span class="bsh-category__label"><strong>Bath</strong></span>
+        </a>
+        <a class="bsh-category bsh-category--wide" href="https://www.bluesalon.com/collections/desk-accessories">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_7_7b28e4e2-48ce-4bca-a4ea-8ae3976f7089.jpg?v=1768398600" alt="Gold mantel clock styled on a modern desk" width="540" height="540" loading="lazy">
+          <span class="bsh-category__label"><strong>Décor</strong></span>
+        </a>
+        <a class="bsh-category bsh-category--wide" href="https://www.bluesalon.com/collections/diffuser">
+          <img src="https://www.bluesalon.com/cdn/shop/files/New_Project_21_843fd0db-5541-42ed-8e8c-fe00740fbdc5.jpg?v=1769072207" alt="Sculptural diffuser surrounded by colourful presentation boxes" width="540" height="540" loading="lazy">
+          <span class="bsh-category__label"><strong>Fragrance</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bsh-section bsh-band--warm bsh-reveal" id="new-for-home" aria-labelledby="new-home-title">
+    <div class="bsh-shell">
+      <header class="bsh-section-head">
+        <div class="bsh-section-head__copy">
+          <h2 class="bsh-title" id="new-home-title">New for the Home</h2>
+          <p class="bsh-copy">Fresh discoveries selected for thoughtful spaces and elegant everyday moments.</p>
+        </div>
+        <a class="bsh-text-link" href="https://www.bluesalon.com/pages/home-furniture">View All</a>
+      </header>
+      <div class="bsh-products">
+        <a class="bsh-product" href="https://www.bluesalon.com/products/f00152310fc0-13x18cm-live-pink-photo-framewhite-epoxy">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Winko_Polished_Silver_Rectangular_Keepsake_Box_with_Midnight_Black_Guilloch_Lid_front_view_WNK103ACC00009_0.jpg?v=1776607767" alt="Winko polished silver keepsake box" loading="lazy"></span>
+          <span class="bsh-product__brand">Winko</span><span class="bsh-product__name">Polished Silver Rectangular Keepsake Box</span><span class="bsh-product__material">Polished silver, mirror finish</span><span class="bsh-product__price">QAR 205.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/1040775-boxes-6-pcs-coffee-cups-platinum-finish">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Same_Cristal_Platinum_Finish_Gahwa_Cups_Set_of_6_pcs-close-view-SCL103DKW00011_1.jpg?v=1773829083" alt="Same Cristal platinum finish Gahwa cups" loading="lazy"></span>
+          <span class="bsh-product__brand">Same Cristal</span><span class="bsh-product__name">Platinum Finish Gahwa Cups, Set of 6</span><span class="bsh-product__material">Platinum-finished crystal</span><span class="bsh-product__price">QAR 680.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/j15610301fc0-musical-trinekt-boxw45pcs-pearl-16pcs-stones">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Winko_Vintage_Silver_Scalloped_Jewelry_Box_with_Heart_Engravings_Velvet_Interior_front_view_WNK103ACC00014_0.jpg?v=1776669446" alt="Winko vintage silver scalloped jewellery box" loading="lazy"></span>
+          <span class="bsh-product__brand">Winko</span><span class="bsh-product__name">Vintage Silver Scalloped Jewellery Box</span><span class="bsh-product__material">Velvet-lined vintage silver</span><span class="bsh-product__price">QAR 275.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/3081932-boxes-6-pcs-juice-gold-finish">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/Same_Cristal_Crystal_Frosted_Leaf_Design_Juice_Glass_Gold_Finish_1_pc_glass_front_view_SCL103DKW00006_1.jpg?v=1773827461" alt="Same Cristal frosted leaf juice glass" loading="lazy"></span>
+          <span class="bsh-product__brand">Same Cristal</span><span class="bsh-product__name">Frosted Leaf Juice Glasses, Set of 6</span><span class="bsh-product__material">Sculptural frosted glass</span><span class="bsh-product__price">QAR 795.00</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section class="bsh-section bsh-band--warm bsh-reveal" aria-labelledby="objects-title">
+    <div class="bsh-shell">
+      <header class="bsh-section-head">
+        <div class="bsh-section-head__copy">
+          <h2 class="bsh-title" id="objects-title">Objects of Character</h2>
+          <p class="bsh-copy">Sculptural forms, distinctive finishes and expressive accents chosen to bring personality to every room.</p>
+        </div>
+        <a class="bsh-text-link" href="https://www.bluesalon.com/collections/accessories-home-furnishing">Explore Décor</a>
+      </header>
+      <div class="bsh-spotlights">
+        <a class="bsh-spotlight" href="https://www.bluesalon.com/collections/accessories-home-furnishing">
+          <span class="bsh-spotlight__stage"><img src="https://www.bluesalon.com/cdn/shop/files/envato-labs-image-edit_25.png?v=1768395879" alt="Blue and white statement vase styled in a bright living room" loading="lazy"></span>
+          <span class="bsh-spotlight__body">
+            <span class="bsh-spotlight__meta">Home D&eacute;cor</span>
+            <span class="bsh-spotlight__name">Sculptural Vases</span>
+            <span class="bsh-spotlight__cta">Shop Vases</span>
+          </span>
+        </a>
+        <a class="bsh-spotlight" href="https://www.bluesalon.com/collections/desk-accessories">
+          <span class="bsh-spotlight__stage"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_7_7b28e4e2-48ce-4bca-a4ea-8ae3976f7089.jpg?v=1768398600" alt="Gold mantel clock styled on a warm shelf" loading="lazy"></span>
+          <span class="bsh-spotlight__body">
+            <span class="bsh-spotlight__meta">Decorative Accents</span>
+            <span class="bsh-spotlight__name">Gilded Accents</span>
+            <span class="bsh-spotlight__cta">Shop D&eacute;cor</span>
+          </span>
+        </a>
+        <a class="bsh-spotlight" href="https://www.bluesalon.com/collections/drinkware">
+          <span class="bsh-spotlight__stage"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_9_e9f59f3d-15ca-468f-b5bc-544c03241c67.jpg?v=1768401058" alt="Gold and black coffee cups styled on a marble table" loading="lazy"></span>
+          <span class="bsh-spotlight__body">
+            <span class="bsh-spotlight__meta">Glassware</span>
+            <span class="bsh-spotlight__name">Crystal &amp; Glass</span>
+            <span class="bsh-spotlight__cta">Shop Glassware</span>
+          </span>
+        </a>
+        <a class="bsh-spotlight" href="https://www.bluesalon.com/collections/diffuser">
+          <span class="bsh-spotlight__stage"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_21_843fd0db-5541-42ed-8e8c-fe00740fbdc5.jpg?v=1769072207" alt="Sculptural diffuser styled with presentation boxes" loading="lazy"></span>
+          <span class="bsh-spotlight__body">
+            <span class="bsh-spotlight__meta">Home Fragrance</span>
+            <span class="bsh-spotlight__name">Scent &amp; Ambience</span>
+            <span class="bsh-spotlight__cta">Shop Fragrance</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bsh-section bsh-reveal" aria-labelledby="table-title">
+    <div class="bsh-shell">
+      <div class="bsh-trio">
+        <div class="bsh-trio__media"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_20_f8f2f626-b0a4-41b8-9106-476ee8f1e4c6.jpg?v=1769072035" alt="Emerald dinnerware and glassware arranged for dining" width="540" height="540" loading="lazy"></div>
+        <div class="bsh-trio__panel">
+          <h2 class="bsh-title" id="table-title">Set the Table Beautifully</h2>
+          <p>Considered pieces for morning coffee, intimate dinners and every gathering in between.</p>
+         
+        </div>
+        <div class="bsh-trio__media"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_9_e9f59f3d-15ca-468f-b5bc-544c03241c67.jpg?v=1768401058" alt="Gold and black coffee cups styled on a marble table" width="540" height="540" loading="lazy"></div>
+      </div>
+      <div class="bsh-products bsh-table-products">
+        <a class="bsh-product" href="https://www.bluesalon.com/products/stechol-s19711aclrcns057-fine-bone-china-12pcs-cns057-v-shape-tea-cu">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/WTS103DKW00084_1.jpg?v=1739685696" alt="Stechol fine bone china V shape tea set" loading="lazy"></span>
+          <span class="bsh-product__brand">Stechol</span><span class="bsh-product__name">Fine Bone China V Shape Tea Set, 12 Pieces</span><span class="bsh-product__material">Fine bone china</span><span class="bsh-product__price">QAR 225.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/stechol-s19711cclrcns057-fine-bone-china-12pcs-cns057-v-shape-tea-cu">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/WTS103DKW00090_1.jpg?v=1739685798" alt="Stechol floral fine bone china tea set" loading="lazy"></span>
+          <span class="bsh-product__brand">Stechol</span><span class="bsh-product__name">Floral Fine Bone China Tea Set, 12 Pieces</span><span class="bsh-product__material">Hand-decorated bone china</span><span class="bsh-product__price">QAR 225.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/stechol-s18875l-pur-cns243-fine-bone-china-12pcs-tea-cup-and-saucer-set-purple">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/products/WTS103DKW00020_1.jpg?v=1675674731" alt="Stechol purple tea cups and saucers" loading="lazy"></span>
+          <span class="bsh-product__brand">Stechol</span><span class="bsh-product__name">Purple Tea Cups &amp; Saucers, 12 Pieces</span><span class="bsh-product__material">Fine bone china</span><span class="bsh-product__price">QAR 245.00</span>
+        </a>
+        <a class="bsh-product" href="https://www.bluesalon.com/products/stechol-s19711aclrcns019-fine-bone-china-12pcs-cns019-coffee-cup-s">
+          <span class="bsh-product__media"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/WTS103DKW00085_1.jpg?v=1739686130" alt="Stechol fine bone china coffee cup and saucer set" loading="lazy"></span>
+          <span class="bsh-product__brand">Stechol</span><span class="bsh-product__name">Fine Bone China Coffee Set, 12 Pieces</span><span class="bsh-product__material">Gilded rim detail</span><span class="bsh-product__price">QAR 195.00</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bsh-section bsh-band--warm bsh-reveal" aria-labelledby="ideas-title">
+    <div class="bsh-shell">
+      <header class="bsh-section-head"><div class="bsh-section-head__copy"><h2 class="bsh-title" id="ideas-title">Ideas for Beautiful Living</h2></div></header>
+      <div class="bsh-journal bsh-journal--feature">
+        <a class="bsh-journal-card bsh-journal-card--tall" href="https://www.bluesalon.com/collections/beddings"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_36_91846832-79d6-4d4d-9fdd-109b4d0461f9.jpg?v=1769072722" alt="Layered bedding and cushions" width="540" height="540" loading="lazy"><span class="bsh-journal-card__copy"><strong>How to Layer a Bed</strong></span></a>
+        <a class="bsh-journal-card" href="https://www.bluesalon.com/collections/dinnerware"><img src="https://www.bluesalon.com/cdn/shop/files/New_Project_9_e9f59f3d-15ca-468f-b5bc-544c03241c67.jpg?v=1768401058" alt="Gold and black coffee cups styled on a table" width="540" height="540" loading="lazy"><span class="bsh-journal-card__copy"><strong>How to Style a Dining Table</strong></span></a>
+        <a class="bsh-journal-card" href="https://www.bluesalon.com/collections/accessories-home-furnishing"><img src="https://www.bluesalon.com/cdn/shop/files/envato-labs-image-edit_25.png?v=1768395879" alt="Statement blue and white vase in a bright living space" width="1024" height="1024" loading="lazy"><span class="bsh-journal-card__copy"><strong>Choosing Objects for Your Space</strong></span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Shared Blue Salon footer -->
+<footer class="bs-footer">
+  <div class="bs-shopmore"><div class="bs-shopmore-inner"><h2>Shop more</h2><div class="bs-shopmore-grid" id="shopMoreGrid"></div></div></div>
+  <div class="bs-appband">
+    <div class="bs-appband-inner">
+      <div><h3>Never miss a thing</h3><p class="bs-appband-copy">Sign up for exclusive launches, offers, and in-store events.</p><form class="bs-newsletter-form" onsubmit="return false;"><input type="email" placeholder="Your email address" aria-label="Email address"><button type="submit">Sign up</button></form><p class="bs-newsletter-fine">By subscribing you agree to our privacy policy. Unsubscribe anytime.</p></div>
+      <div><h3>Download our App</h3><p class="bs-app-sub">Your pocket-sized Blue Salon</p><p class="bs-appband-copy bs-app-copy">The iOS and Android app puts the extraordinary world of Blue Salon at your fingertips — with personalised inspiration from the brands you love.</p></div>
+      <div class="bs-qr"><div class="bs-qr-label">Scan to download</div><div class="foot-qr-code"><a href="https://apps.apple.com/qa/app/blue-salon-%D8%A7%D9%84%D8%B5%D8%A7%D9%84%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%B2%D8%B1%D9%82/id1512188214" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-01.svg?v=1632989194" alt="Download on the App Store" width="98"></a><a href="https://play.google.com/store/apps/details?id=co.shopney.bluesaloncom&amp;hl=en&amp;gl=US" target="_blank" rel="noopener"><img src="https://cdn.shopify.com/s/files/1/0370/6444/1991/files/qrapp-02.svg?v=1632667366" alt="Get it on Google Play" width="120"></a></div></div>
+    </div>
+  </div>
+  <div class="bs-mainfooter">
+    <div class="bs-mainfooter-inner">
+      <div class="bs-mainfooter-about"><img src="https://www.bluesalon.com/cdn/shop/files/BS_Logo_horizontal-01-white1.png?v=1644232279" alt="Blue Salon"><p>Qatar's first and foremost luxury department store since 1981. Over 500 international and niche brands, curated for you.</p><ul class="bs-contact"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Suhaim Bin Hamad Street, Doha, Qatar</span></li></ul></div>
+      <div id="footerCols" class="bs-mainfooter-cols"></div>
+    </div>
+    <div class="bs-bottomstrip"><div class="bs-bottomstrip-inner"><span class="bs-copyright">© Copyright 2026 <a class="bs-copyright-aih" href="https://www.abuissa.com" target="_blank" rel="noopener">AbuIssa Holding</a>. All rights reserved.</span><ul class="payment-methods"><li><img src="//www.bluesalon.com/cdn/shop/files/Visa_Inverted_x32_5700ab8c-cb49-4355-83c3-4d1146a8076c_x32.png?v=1644226717" alt="Visa" loading="lazy"></li><li><img src="//www.bluesalon.com/cdn/shop/files/mastercard-logo-design-history-1979_x32.jpg?v=1644232735" alt="Mastercard" loading="lazy"></li><li><img src="//www.bluesalon.com/cdn/shop/files/Group_1_x32.jpg?v=1660140162" alt="Apple Pay" loading="lazy"></li></ul></div></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+(function(){
+  "use strict";
+  var items=document.querySelectorAll(".bsh-reveal");
+  if(!items.length)return;
+  if(!("IntersectionObserver" in window)){items.forEach(function(item){item.classList.add("is-visible")});return;}
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-visible");observer.unobserve(entry.target);}});},{threshold:.08,rootMargin:"0px 0px -40px"});
+  items.forEach(function(item){observer.observe(item)});
+})();
+</script>
+</body>
+</html>
