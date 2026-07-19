@@ -198,7 +198,11 @@
 
 /* ============ 5. SHOP BY CATEGORY ============ */
 /* ---- shop by category: flat editorial gallery ---- */
-.bsb-catgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2.4vw,40px)}
+.bsb-catgrid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(34px,3vw,40px) 24px;   /* roomier rows, tight 24px columns */
+  margin-top:10px;                 /* extra air below the section heading */
+}
 .bsb-cat{display:flex;flex-direction:column}
 /* square-cornered portrait image, quiet zoom only */
 .bsb-cat__stage{
@@ -216,13 +220,15 @@
   padding-top:clamp(14px,1.4vw,20px);
 }
 .bsb-cat__eyebrow{
-  font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);
 }
 /* name carries an understated underline-reveal on hover */
 .bs-beauty-page .bsb-cat__name{
-  font-family:var(--serif);font-weight:var(--fw-light);line-height:var(--lh-tight);
-  font-size:clamp(22px,2vw,30px);letter-spacing:var(--ls-tight);color:var(--text-strong);
+  font-family:var(--serif);font-weight:400;line-height:1.25;
+  font-size:clamp(18px,1.5vw,20px);letter-spacing:var(--ls-tight);color:var(--ink);
   position:relative;
+  /* never more than two lines */
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
 }
 .bsb-cat__name::after{
   content:"";position:absolute;left:0;bottom:-2px;height:1px;width:100%;
@@ -231,6 +237,53 @@
 }
 .bsb-cat:hover .bsb-cat__name::after,
 .bsb-cat:focus-visible .bsb-cat__name::after{transform:scaleX(1)}
+/* staggered scroll reveal — .is-reveal is added by JS, so no-JS stays visible */
+.bsb-catgrid.is-reveal .bsb-cat{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.16,.84,.32,1);
+}
+.bsb-catgrid.is-reveal .bsb-cat.is-inview{opacity:1;transform:none}
+
+/* ============ 5b. SKINCARE MASTERY — BRAND SPOTLIGHTS ============ */
+/* heading sits a consistent ~36px above the cards */
+#bsbMastery .bsb-heading{margin-bottom:clamp(30px,3vw,36px)}
+.bsb-mastery{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,1.6vw,24px)}
+/* whole card is one link; soft per-brand tint carried on --tint */
+.bsb-mastery__card{display:flex;flex-direction:column;background:var(--tint,var(--ivory))}
+.bsb-mastery__stage{display:block;aspect-ratio:1/1;overflow:hidden}
+.bsb-mastery__stage img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  transition:transform 1.2s cubic-bezier(.16,.84,.32,1);
+}
+.bsb-mastery__card:hover .bsb-mastery__stage img,
+.bsb-mastery__card:focus-visible .bsb-mastery__stage img{transform:scale(1.045)}
+.bsb-mastery__body{
+  flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  padding:clamp(20px,2vw,28px);
+}
+.bs-beauty-page .bsb-mastery__name{
+  font-family:var(--serif);font-weight:var(--fw-light);line-height:var(--lh-tight);
+  font-size:clamp(22px,2vw,28px);letter-spacing:var(--ls-tight);color:var(--text-strong);
+}
+.bsb-mastery__desc{flex:1;font-size:13.5px;line-height:1.6;color:var(--ink);opacity:.72}
+.bsb-mastery__cta{
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:3px;transition:.25s;
+}
+.bsb-mastery__card:hover .bsb-mastery__cta{color:var(--brown)}
+@media (max-width:1024px){
+  .bsb-mastery{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  /* swipeable row on phones — scroll-snap, no JS */
+  .bsb-mastery{
+    display:flex;gap:14px;overflow-x:auto;
+    scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+  }
+  .bsb-mastery::-webkit-scrollbar{display:none}
+  .bsb-mastery__card{flex:0 0 76%;scroll-snap-align:start}
+}
 
 /* ============ 6. EDITORIAL GRID ============ */
 .bsb-editorial{
@@ -347,20 +400,20 @@
 .bsb-feature__model img{width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
 /* right: product content, left-aligned, connected & filled */
 .bsb-feature__panel{
-  text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:10px;
-  max-width:480px;justify-content:center;
+  text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  max-width:540px;justify-content:center;
 }
-.bsb-feature__eyebrow{color:var(--brown);font-size:12px;margin-bottom:4px}
+.bsb-feature__eyebrow{color:var(--brown);font-size:12px;font-weight:600;letter-spacing:.24em;margin-bottom:4px}
 .bsb-feature__stage{
   width:100%;max-width:none;aspect-ratio:5/4;background:var(--ivory);
-  display:grid;place-items:center;overflow:hidden;margin-bottom:6px;
+  display:grid;place-items:center;overflow:hidden;margin-bottom:4px;
 }
 .bsb-feature__stage img{width:100%;height:100%;object-fit:cover;transition:opacity .3s ease}
 .bsb-feature__brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
 .bsb-feature__name{font-family:var(--serif);font-weight:var(--fw-light);font-size:clamp(24px,2.6vw,34px);line-height:var(--lh-tight);letter-spacing:var(--ls-tight);color:var(--text-strong)}
 .bsb-feature__desc{font-size:14.5px;line-height:1.6;color:var(--muted);max-width:400px}
 .bsb-feature__price{font-size:18px;color:var(--ink);letter-spacing:.02em;margin-top:2px}
-.bsb-feature__cta{margin-top:12px;padding:14px 32px}
+.bsb-feature__cta{margin-top:12px;padding:15px 32px;min-width:240px;text-align:center}
 /* compact controls row: prev · dots · next, all grouped together */
 .bsb-feature__controls{display:flex;align-items:center;gap:16px;margin-top:22px}
 .bsb-feature__dots{display:flex;gap:8px}
@@ -388,12 +441,34 @@
 .bsb-insta__grid a:hover::after{background:rgba(37,30,27,.34)}
 .bsb-insta__grid a:hover .bsb-insta__icon{opacity:1;transform:scale(1)}
 
-/* ============ 9b. BEFORE / AFTER COMPARE ============ */
+/* ============ 9b. INTRODUCING — IMAGE COMPARISON ============ */
+/* comparison image left, circular campaign badge right; stacks below 1000px */
+.bsb-divine{display:flex;align-items:center;gap:clamp(24px,3vw,48px)}
+.bsb-divine .bsb-compare{flex:1;min-width:0}
+.bsb-divine__badge{
+  flex:0 0 auto;width:clamp(340px,30vw,440px);aspect-ratio:1/1;border-radius:50%;
+  border:1px solid rgba(37,30,27,.3);   /* lighter ring so it reads as an accent */
+  background:linear-gradient(135deg,#DAEFE4 13%,#FAF0DF 86%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  text-align:center;padding:clamp(36px,4vw,56px);
+}
+.bs-beauty-page .bsb-divine__title{
+  font-family:var(--serif);font-weight:var(--fw-light);line-height:var(--lh-tight);
+  font-size:clamp(26px,2.4vw,34px);letter-spacing:var(--ls-tight);color:var(--ink);
+  max-width:10ch;
+}
+.bsb-divine__text{font-size:15px;color:var(--muted);max-width:24ch}
+.bsb-divine__badge .bsb-btn{margin-top:10px}
+@media (max-width:999px){
+  .bsb-divine{flex-direction:column}
+  .bsb-divine__badge{width:min(420px,86vw)}
+}
+
 .bsb-compare{
   --pos:50%;
   position:relative;overflow:hidden;
   width:100%;aspect-ratio:16/9;background:var(--ivory);
-  cursor:ew-resize;touch-action:none;user-select:none;
+  cursor:ew-resize;touch-action:none;-webkit-user-select:none;user-select:none;
 }
 .bsb-compare__after,
 .bsb-compare__before{
@@ -427,20 +502,22 @@
 .bsb-compare__grip svg{width:20px;height:20px}
 
 /* ============ 10. BRAND ROW (auto-scrolling logo marquee) ============ */
-.bsb-brands{overflow:hidden}
+/* thin dividers frame the strip so it holds its own after the image sections */
+.bsb-brands{overflow:hidden;border-block:1px solid var(--border);padding-block:clamp(28px,3vw,40px)}
 .bsb-brands__track{display:flex;width:max-content;animation:bsb-marquee 45s linear infinite}
 .bsb-brands:hover .bsb-brands__track{animation-play-state:paused}
 @keyframes bsb-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.bsb-brand{flex:0 0 auto;width:210px;margin-inline-end:clamp(32px,4vw,72px);display:flex}
+.bsb-brand{flex:0 0 auto;width:230px;margin-inline-end:clamp(48px,5vw,88px);display:flex}
 .bsb-brand__logo{
-  display:flex;align-items:center;justify-content:center;width:100%;min-height:80px;padding:8px;
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:84px;padding:8px;
   background:none;border:0;
 }
+/* max-height (not width) governs size so every logo reads at equal visual height */
 .bsb-brand__logo img{
-  max-width:100%;max-height:52px;object-fit:contain;
-  filter:grayscale(1);opacity:.55;transition:filter .3s,opacity .3s;
+  max-width:100%;max-height:60px;object-fit:contain;
+  filter:grayscale(1);opacity:.6;transition:filter .3s,opacity .3s;
 }
-.bsb-brand:hover .bsb-brand__logo img{filter:grayscale(1);opacity:1}
+.bsb-brand:hover .bsb-brand__logo img{filter:grayscale(0);opacity:1}
 @media (prefers-reduced-motion:reduce){
   .bsb-brands{overflow-x:auto}
   .bsb-brands__track{animation:none}
@@ -522,7 +599,7 @@
   .bsb-strip__list{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
   .bsb-strip__list li{scroll-snap-align:start;flex:0 0 auto}
 
-  .bsb-catgrid{gap:16px}
+  .bsb-catgrid{gap:26px 14px}
   .bsb-products{grid-template-columns:repeat(2,1fr)}
 
   /* editorial tiles stack with varied heights */

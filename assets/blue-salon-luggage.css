@@ -1,0 +1,356 @@
+/* ============================================================
+   BLUE SALON LUGGAGE & TRAVEL — LANDING PAGE
+   All rules scoped under .bs-luggage-page.
+   Cool navy-led palette · boxed 1440px · no eyebrows ·
+   light overlays only · quiet editorial motion.
+   ============================================================ */
+
+.bs-luggage-page{
+  /* ---- cool neutral surface system: page white · pale gray stage · blue-gray panel ---- */
+  --white:#FFFFFF;
+  --stage:#F3F6F8;    /* cool product/category image stages */
+  --panel:#EEF2F5;
+  --slate:#4E5967;
+  --navy:#003979;
+  --ink:#1C2430;
+  --border:#E7E4DE;
+
+  /* ---- editorial frame ---- */
+  --page:1240px;
+  --pad:20px;
+  --gap:14px;
+
+  /* ---- type ---- */
+  --serif:var(--font-display);
+  --sans:var(--font-sans);
+
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+.bs-luggage-page *,
+.bs-luggage-page *::before,
+.bs-luggage-page *::after{box-sizing:border-box;margin:0;padding:0}
+.bs-luggage-page img{display:block;max-width:100%;border:0}
+.bs-luggage-page a{text-decoration:none;color:inherit}
+.bs-luggage-page button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
+.bs-luggage-page ul{list-style:none}
+
+/* ---- shared shell: strictly boxed at 1440 with slim gutters ---- */
+.bsl-shell{
+  width:min(var(--page),100% - var(--pad) * 2);
+  margin-inline:auto;
+}
+
+/* ---- section rhythm ---- */
+.bsl-section{padding-block:clamp(88px,7.5vw,104px)}
+.bsl-section + .bsl-section{padding-top:0}
+
+/* ---- centered heading (no eyebrows on this page); 28–34px above cards ---- */
+.bsl-heading{text-align:center;margin-bottom:clamp(30px,3vw,36px)}
+.bsl-heading__title{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(30px,3.4vw,38px);line-height:1.2;letter-spacing:var(--ls-tight);color:var(--ink);
+}
+.bsl-heading__sub{margin-top:14px;max-width:600px;margin-inline:auto;color:var(--slate);font-size:15.5px;line-height:1.65}
+#bslCats .bsl-heading__sub{margin-top:18px;color:#5f6976;font-size:16px}
+
+/* ---- buttons + text arrow ---- */
+.bsl-btn{
+  display:inline-block;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  padding:15px 34px;border:1px solid transparent;transition:.25s ease;
+}
+.bs-luggage-page .bsl-btn--dark{background:var(--navy);color:#fff}
+.bs-luggage-page .bsl-btn--dark:hover{background:var(--ink);color:#fff}
+.bsl-arrow{
+  display:inline-block;width:14px;height:1px;background:currentColor;position:relative;
+  vertical-align:middle;margin-left:7px;
+}
+.bsl-arrow::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;
+  border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}
+
+/* ============ 0. CATEGORY QUICK-NAV (shared circle component) ============ */
+/* Rides on app.css .men-quicknav; sized/typeset to match this page. */
+/* the page reset strips app.css's margin/padding — restore centring here */
+.luggage-quicknav{
+  max-width:var(--container-max,1440px);margin-inline:auto;
+  padding:28px 24px clamp(26px,2.5vw,36px);
+}
+.luggage-quicknav .men-quicknav-row{
+  max-width:700px;margin-inline:auto;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+}
+.luggage-quicknav .men-quicknav-item{margin-inline:auto;width:100%}
+.luggage-quicknav .men-quicknav-title{
+  margin:0 0 35px;
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,3.2vw,36px);line-height:1.2;letter-spacing:var(--ls-tight);
+  color:var(--ink);
+}
+.luggage-quicknav-sub{
+  text-align:center;margin:0 0 clamp(24px,2.5vw,32px);
+  font-size:15px;color:var(--slate);
+}
+.luggage-quicknav .men-quicknav-circle{
+  width:100%;max-width:74px;margin-inline:auto;background:var(--stage);
+}
+.luggage-quicknav .men-quicknav-circle img{width:100%;height:100%;object-fit:cover}
+.luggage-quicknav .men-quicknav-label{
+  width:100%;text-align:center;margin-top:12px;
+  font-size:14px;font-weight:600;letter-spacing:.015em;color:var(--ink);
+}
+@media (max-width:640px){
+  .luggage-quicknav .men-quicknav-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 8px}
+  .luggage-quicknav .men-quicknav-circle{max-width:84px}
+}
+
+/* ============ 1. EDITORIAL HERO ============ */
+.bsl-hero-grid{
+  display:grid;grid-template-columns:minmax(0,2fr) minmax(250px,1fr);
+  grid-template-rows:repeat(2,minmax(0,1fr));gap:var(--gap);height:clamp(600px,60vw,790px);
+}
+.bsl-hero-card{position:relative;overflow:hidden;background:var(--stage);isolation:isolate}
+.bsl-hero-card--main{grid-row:1 / -1}
+.bsl-hero-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,.84,.32,1)}
+.bsl-hero-card--main img{object-position:center 56%}
+.bsl-hero-card--side img{object-position:center}
+.bsl-hero-card--city img{object-position:center 62%}
+.bsl-hero-card--destination img{object-position:center 56%}
+.bsl-hero-card::after{
+  content:"";position:absolute;inset:35% 0 0;z-index:0;
+  background:linear-gradient(to bottom,transparent,rgba(11,20,31,.62));pointer-events:none;
+}
+.bsl-hero-card:hover img{transform:scale(1.025)}
+.bsl-hero-card__label{
+  position:absolute;left:18px;bottom:16px;z-index:1;background:#fff;color:var(--ink);
+  padding:10px 15px;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+  box-shadow:0 3px 14px rgba(10,18,28,.18);
+}
+.bsl-hero-card__label--main{left:24px;bottom:22px;padding:11px 17px}
+
+/* ============ 2. ASYMMETRIC CATEGORY EDIT ============ */
+.bsl-cats{
+  display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:repeat(2,250px);
+  grid-template-areas:
+    "carry carry carry checked checked checked checked backpacks backpacks backpacks business business"
+    "duffles duffles duffles checked checked checked checked backpacks backpacks backpacks accessories accessories";
+  gap:var(--gap);
+}
+.bsl-cat{position:relative;overflow:hidden;background:var(--stage);min-height:0}
+.bsl-cat--carry{grid-area:carry}
+.bsl-cat--checked{grid-area:checked}
+.bsl-cat--backpacks{grid-area:backpacks}
+.bsl-cat--business{grid-area:business}
+.bsl-cat--duffles{grid-area:duffles}
+.bsl-cat--accessories{grid-area:accessories}
+.bsl-cat__stage{display:block;width:100%;height:100%;overflow:hidden}
+.bsl-cat__stage img{
+  width:100%;height:100%;object-fit:cover;object-position:center;padding:0;
+  transition:transform 1s cubic-bezier(.16,.84,.32,1);
+}
+.bsl-cat:hover .bsl-cat__stage img,.bsl-cat:focus-visible .bsl-cat__stage img{transform:scale(1.055)}
+.bsl-cat__name{
+  position:absolute;left:14px;bottom:12px;background:#fff;color:var(--ink);padding:7px 11px;
+  font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;z-index:1;
+  box-shadow:0 2px 10px rgba(10,18,28,.12);
+}
+
+/* shared tab language for the Travel Edit */
+.bsl-brandtab{
+  font-size:14px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);
+  padding-bottom:9px;position:relative;transition:color .25s;
+}
+.bsl-brandtab.is-active{font-weight:600}
+.bsl-brandtab::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--navy);
+  transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(.16,.84,.32,1);
+}
+.bsl-brandtab:hover{color:var(--ink)}
+.bsl-brandtab.is-active{color:var(--navy)}
+.bsl-brandtab.is-active::after{transform:scaleX(1)}
+/* ============ 6. TRAVEL STORIES ============ */
+.bsl-heading--stories{text-align:left;display:flex;align-items:end;justify-content:space-between;gap:32px}
+.bsl-heading--stories .bsl-heading__sub{margin:0;max-width:460px;text-align:right}
+.bsl-stories{
+  display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:var(--gap);height:clamp(390px,40vw,520px);
+}
+.bsl-story-card{position:relative;overflow:hidden;background:var(--stage);isolation:isolate}
+.bsl-story-card img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1s cubic-bezier(.16,.84,.32,1)}
+.bsl-story-card::after{
+  content:"";position:absolute;inset:38% 0 0;z-index:0;
+  background:linear-gradient(to bottom,transparent,rgba(10,18,28,.76));
+}
+.bsl-story-card:hover img{transform:scale(1.04)}
+.bsl-story-card__copy{
+  position:absolute;left:18px;right:18px;bottom:18px;z-index:1;color:#fff;display:flex;flex-direction:column;gap:4px;
+}
+.bsl-story-card__copy small{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.bsl-story-card__copy strong{font-family:var(--serif);font-size:clamp(20px,1.8vw,26px);line-height:1.18;font-weight:400;text-shadow:0 1px 10px rgba(0,0,0,.42)}
+.bsl-brandrail{display:grid;grid-template-columns:1.15fr repeat(3,1fr);gap:var(--gap);margin-top:0}
+.bsl-brandrail span{
+  min-height:68px;display:grid;place-items:center;text-align:center;padding:10px;
+  font-family:var(--serif);font-size:17px;color:var(--ink);border-bottom:1px solid var(--border);
+}
+
+/* ============ 4. EDITORIAL SPLIT ============ */
+/* restrained blue-gray panel keeps the editorial split cool and modern */
+.bsl-story{display:grid;grid-template-columns:58fr 42fr;height:clamp(420px,42vw,560px);background:var(--panel)}
+.bsl-story__media{overflow:hidden}
+.bsl-story__media img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s cubic-bezier(.16,.84,.32,1);
+}
+.bsl-story:hover .bsl-story__media img{transform:scale(1.03)}
+.bsl-story__panel{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:20px;
+  padding:clamp(36px,4.5vw,72px);
+}
+.bs-luggage-page .bsl-story__title{
+  font-family:var(--serif);font-weight:400;line-height:1.2;
+  max-width:9ch;font-size:clamp(36px,3.8vw,50px);letter-spacing:var(--ls-tight);color:var(--ink);
+}
+.bsl-story__text{font-size:16.5px;line-height:1.7;color:var(--slate);max-width:32ch}
+.bsl-story__panel .bsl-btn{margin-top:8px;min-width:220px;text-align:center}
+
+/* ============ 5. THE TRAVEL EDIT (tabbed products) ============ */
+/* tabs reuse the Travel Houses tab style for one consistent tab language */
+.bsl-edittabs{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(24px,3vw,34px);
+  margin-bottom:clamp(22px,2.4vw,30px);
+}
+.bsl-products{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,2vw,24px)}
+/* only the active panel shows; switching fades the grid in */
+#bslEdit .bsl-products{display:none}
+#bslEdit .bsl-products.is-active{display:grid;animation:bslTabFade .4s ease}
+@keyframes bslTabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.bsl-card{display:flex;flex-direction:column;text-align:left}
+/* white stage with a hairline outline — photos blend in, the card stays defined */
+.bsl-card__stage{width:100%;aspect-ratio:4/5;overflow:hidden;background:#fff;border:1px solid #edf0f2}
+/* contain + shared padding + bottom baseline: natural scale, no crops */
+.bsl-card__stage img{
+  width:100%;height:100%;object-fit:contain;object-position:center bottom;
+  padding:9% 9% 10%;
+  transition:transform .9s cubic-bezier(.16,.84,.32,1);
+}
+.bsl-card:hover .bsl-card__stage img{transform:scale(1.05)}
+.bsl-card__brand{margin-top:16px;font-size:10.75px;letter-spacing:.14em;text-transform:uppercase;color:#68727e;font-weight:500}
+/* two lines max, two lines reserved — prices land on one shared baseline */
+.bsl-card__name{
+  margin-top:6px;font-size:16.5px;font-weight:500;color:var(--ink);line-height:1.45;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
+  min-height:2.9em;
+}
+.bsl-card__price{margin-top:10px;font-size:15.5px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+
+/* ============ 3. MORE TO EXPLORE ============ */
+.bsl-size{display:grid;grid-template-columns:.9fr repeat(4,1fr);gap:var(--gap);align-items:start}
+.bsl-size__intro{
+  align-self:start;margin-top:clamp(46px,4.5vw,64px);
+  padding:20px clamp(12px,2vw,28px) 0 0;border-top:1px solid var(--border);
+}
+.bs-luggage-page .bsl-size__title{
+  font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.2vw,44px);line-height:1.1;color:var(--ink);
+}
+.bsl-size__intro p{margin-top:16px;max-width:22ch;font-size:15px;line-height:1.65;color:var(--slate)}
+.bsl-size__intro a{
+  display:inline-block;margin-top:24px;padding-bottom:4px;border-bottom:1px solid currentColor;
+  color:var(--navy);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+}
+.bsl-size__item{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.bsl-size__stage{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--stage)}
+.bsl-size__stage img{
+  width:100%;height:100%;object-fit:cover;object-position:center;padding:0;
+  transition:transform .9s cubic-bezier(.16,.84,.32,1);
+}
+.bsl-size__item:hover .bsl-size__stage img,
+.bsl-size__item:focus-visible .bsl-size__stage img{transform:scale(1.06)}
+.bs-luggage-page .bsl-size__name{
+  margin-top:12px;font-family:var(--serif);font-weight:400;line-height:1.2;
+  font-size:clamp(18px,1.6vw,21px);letter-spacing:var(--ls-tight);color:var(--ink);
+  transition:color .25s;
+}
+.bsl-size__item:hover .bsl-size__name{color:var(--navy)}
+.bsl-size__hint{margin-top:6px;font-size:13.5px;line-height:1.45;color:var(--slate)}
+
+/* ============ 7. SERVICE STRIP ============ */
+.bsl-services{background:var(--stage);border-block:1px solid var(--border)}
+.bsl-services__grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3vw,48px);
+  padding-block:clamp(40px,4vw,56px);text-align:center;
+}
+.bsl-service{display:flex;flex-direction:column;align-items:center}
+.bsl-service__icon{color:var(--navy);width:34px;height:34px;margin-bottom:14px}
+.bsl-service__icon svg{width:100%;height:100%}
+.bsl-services h4{font-size:13.5px;letter-spacing:.085em;text-transform:uppercase;color:var(--ink);margin-bottom:7px;font-weight:700}
+.bsl-services p{font-size:13.5px;line-height:1.55;color:var(--slate);max-width:240px}
+
+/* ---- staggered scroll reveal (JS adds .is-reveal, so no-JS stays visible) ---- */
+.is-reveal .bsl-cat,
+.is-reveal .bsl-card,
+.is-reveal .bsl-size__item{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s ease,transform .6s cubic-bezier(.16,.84,.32,1);
+}
+.is-reveal .bsl-cat.is-inview,
+.is-reveal .bsl-card.is-inview,
+.is-reveal .bsl-size__item.is-inview{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1024px){
+  .bsl-hero-grid{grid-template-columns:1.55fr 1fr;height:520px}
+  .bsl-cats{
+    grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,220px);
+    grid-template-areas:
+      "carry carry checked checked checked checked"
+      "backpacks backpacks backpacks business business business"
+      "duffles duffles duffles accessories accessories accessories";
+  }
+  .bsl-products{grid-template-columns:repeat(2,1fr)}
+  .bsl-size{grid-template-columns:repeat(4,1fr)}
+  .bsl-size__intro{grid-column:1 / -1;max-width:520px;margin-top:0;padding:18px 0 22px}
+  .bsl-stories{grid-template-columns:repeat(2,1fr);height:auto}
+  .bsl-story-card{aspect-ratio:4/3}
+  .bsl-story-card--lead{grid-column:1 / -1;aspect-ratio:16/7}
+  .bsl-story{grid-template-columns:1fr;height:auto}
+  .bsl-story__media{aspect-ratio:16/10}
+}
+@media (max-width:640px){
+  .bs-luggage-page{--pad:14px;--gap:10px}
+  .bsl-section{padding-block:58px}
+  .bsl-hero-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:340px 165px;height:auto}
+  .bsl-hero-card--main{grid-column:1 / -1;grid-row:auto}
+  .bsl-hero-card__label{left:10px;bottom:10px;padding:8px 10px;font-size:10px}
+  /* category edit becomes a swipeable editorial rail */
+  .bsl-cats{
+    display:flex;gap:12px;overflow-x:auto;
+    scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+  }
+  .bsl-cats::-webkit-scrollbar{display:none}
+  .bsl-cat{flex:0 0 74%;height:360px;scroll-snap-align:start}
+  .bsl-products{gap:14px}
+  .bsl-size{grid-template-columns:repeat(2,1fr);gap:28px 10px}
+  .bsl-size__stage{aspect-ratio:4/5}
+  .bsl-size__hint{font-size:12.5px}
+  .bsl-heading--stories{display:block}
+  .bsl-heading--stories .bsl-heading__sub{margin:10px 0 0;text-align:left}
+  .bsl-stories{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
+  .bsl-stories::-webkit-scrollbar{display:none}
+  .bsl-story-card,.bsl-story-card--lead{flex:0 0 78%;aspect-ratio:4/5;scroll-snap-align:start}
+  .bsl-brandrail{display:flex;overflow-x:auto;scrollbar-width:none}
+  .bsl-brandrail::-webkit-scrollbar{display:none}
+  .bsl-brandrail span{flex:0 0 42%;border-right:1px solid var(--border)}
+  /* edit tabs scroll horizontally instead of wrapping */
+  .bsl-edittabs{
+    flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;
+    scrollbar-width:none;gap:22px;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+  }
+  .bsl-edittabs::-webkit-scrollbar{display:none}
+  .bsl-edittabs .bsl-brandtab{flex:0 0 auto;white-space:nowrap}
+  .bsl-services__grid{grid-template-columns:repeat(2,1fr);gap:20px 14px}
+}

@@ -428,6 +428,7 @@ text-decoration: none;
 display: flex;
 flex-direction: column;
 align-items: center;
+max-width: 74px;
 }
 .men-quicknav-item:hover { text-decoration: none; }
 .men-quicknav-circle {
